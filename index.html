@@ -1430,6 +1430,10 @@ function menuIllustration(item) {
   const name = item.name.toLowerCase();
   const hash = [...name].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
   const variant = hash % 4;
+  const hueA = hash % 360;
+  const hueB = (hash * 3) % 360;
+  const accentA = `hsl(${hueA} 65% 58%)`;
+  const accentB = `hsl(${hueB} 58% 68%)`;
   let art = `<g transform="translate(84 96)">
     <ellipse cx="30" cy="58" rx="25" ry="25" fill="#171a14"/><ellipse cx="30" cy="58" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="30" cy="58" rx="8" ry="8" fill="#c02a08"/>
     <ellipse cx="88" cy="54" rx="25" ry="25" fill="#171a14"/><ellipse cx="88" cy="54" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="88" cy="54" rx="8" ry="8" fill="#d4a840"/>
@@ -1514,42 +1518,38 @@ function menuIllustration(item) {
       <path d="M138 86 C128 64 148 58 138 42" stroke="#f5f0e8" stroke-width="2" fill="none"><animate attributeName="opacity" values=".1;.55;.1" dur="3s" repeatCount="indefinite"/></path>
       <path d="M214 84 C204 62 224 56 214 40" stroke="#f5f0e8" stroke-width="2" fill="none"><animate attributeName="opacity" values=".05;.45;.05" dur="3.6s" repeatCount="indefinite"/></path>`;
   } else if (name.includes('juice') || name.includes('soda') || name.includes('coke') || name.includes('sprite') || name.includes('shirley') || name.includes('water') || name.includes('tea')) {
-    const drinkArts = [
-      `<ellipse cx="200" cy="222" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-        <rect x="118" y="86" width="46" height="114" rx="8" fill="#1d3328"/><rect x="126" y="102" width="30" height="76" rx="4" fill="#d4a840" opacity=".65"/>
-        <rect x="190" y="112" width="58" height="88" rx="9" fill="#efe6d4" opacity=".18"/><rect x="198" y="128" width="42" height="52" rx="6" fill="#c98a3a" opacity=".75"/>
-        <ellipse cx="219" cy="128" rx="21" ry="6" fill="#f7e8b0" opacity=".8"/><path d="M270 145 Q302 132 320 150 Q304 170 270 160 Z" fill="#6eb89a" opacity=".75"/>`,
-      `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
-        <rect x="118" y="96" width="54" height="102" rx="12" fill="#efe6d4" opacity=".16"/><rect x="126" y="114" width="38" height="66" rx="8" fill="#d45330" opacity=".82"/>
-        <rect x="208" y="90" width="64" height="110" rx="16" fill="#efe6d4" opacity=".15"/><rect x="218" y="108" width="44" height="74" rx="10" fill="#f0b340" opacity=".82"/>
-        <path d="M145 92 L155 72" stroke="#1d3328" stroke-width="4" stroke-linecap="round"/><path d="M238 96 L248 72" stroke="#1d3328" stroke-width="4" stroke-linecap="round"/>`,
-      `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
-        <rect x="126" y="82" width="40" height="118" rx="6" fill="#203430"/><rect x="132" y="98" width="28" height="92" rx="4" fill="#7fd0e8" opacity=".78"/>
-        <rect x="196" y="108" width="70" height="92" rx="12" fill="#efe6d4" opacity=".14"/><rect x="206" y="122" width="50" height="58" rx="8" fill="#5a6a78" opacity=".72"/>
-        <circle cx="230" cy="138" r="18" fill="#f5f7fa" opacity=".8"/><circle cx="230" cy="138" r="10" fill="#d8ecff" opacity=".6"/>`,
-      `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
-        <rect x="110" y="92" width="66" height="108" rx="20" fill="#efe6d4" opacity=".14"/><rect x="120" y="112" width="46" height="68" rx="14" fill="#7b3f22" opacity=".78"/>
-        <rect x="220" y="78" width="28" height="122" rx="8" fill="#244a5a"/><rect x="254" y="90" width="28" height="110" rx="8" fill="#5a3c28"/>
-        <path d="M122 122 Q142 108 162 122" stroke="#f5f0e8" stroke-width="3" fill="none" opacity=".35"/>`
-    ];
-    art = drinkArts[variant];
+    const leftX = 108 + (hash % 18);
+    const rightX = 198 + ((hash >> 2) % 24);
+    const leftW = 36 + (hash % 20);
+    const rightW = 40 + ((hash >> 3) % 22);
+    const leftFill = name.includes('coke') || name.includes('tea') ? '#7b3f22' : accentA;
+    const rightFill = name.includes('water') ? '#7fd0e8' : name.includes('sprite') ? '#97d16c' : accentB;
+    const straw = variant % 2 === 0;
+    art = `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
+      <rect x="${leftX}" y="${86 + (hash % 12)}" width="${leftW}" height="${110 - (hash % 14)}" rx="${8 + (hash % 10)}" fill="#efe6d4" opacity=".14"/>
+      <rect x="${leftX + 8}" y="${104 + (hash % 10)}" width="${leftW - 16}" height="${70 - (hash % 8)}" rx="${6 + (hash % 6)}" fill="${leftFill}" opacity=".82"/>
+      <rect x="${rightX}" y="${92 - (hash % 10)}" width="${rightW}" height="${112 - ((hash >> 1) % 16)}" rx="${10 + ((hash >> 2) % 10)}" fill="#efe6d4" opacity=".15"/>
+      <rect x="${rightX + 9}" y="${110 - (hash % 6)}" width="${rightW - 18}" height="${72 - ((hash >> 2) % 12)}" rx="${7 + ((hash >> 1) % 6)}" fill="${rightFill}" opacity=".82"/>
+      ${straw ? `<path d="M${leftX + leftW - 14} ${92 + (hash % 10)} L${leftX + leftW - 4} ${68 + (hash % 8)}" stroke="#1d3328" stroke-width="4" stroke-linecap="round"/>` : ``}
+      <ellipse cx="${rightX + rightW / 2}" cy="${118 - (hash % 6)}" rx="${14 + (hash % 8)}" ry="6" fill="#f5f0e8" opacity=".22"/>`;
   } else if (name.includes('cake') || name.includes('oreo') || name.includes('cheesecake')) {
-    const dessertArts = [
-      `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-        <path d="M78 184 Q200 132 322 184 Q292 210 200 214 Q108 210 78 184 Z" fill="#e8e0d0" opacity=".22"/>
-        <circle cx="146" cy="156" r="34" fill="#b8394a"/><circle cx="200" cy="144" r="34" fill="#6eb89a"/><circle cx="254" cy="156" r="34" fill="#d4a840"/>`,
-      `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
-        <path d="M110 196 L152 124 L238 124 L280 196 Z" fill="#5b3326"/><path d="M132 144 L216 144" stroke="#f0d8c0" stroke-width="6" opacity=".35"/>
-        <circle cx="154" cy="114" r="10" fill="#b8394a"/><circle cx="246" cy="114" r="10" fill="#b8394a"/>`,
-      `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
-        <rect x="110" y="138" width="180" height="44" rx="14" fill="#e0caa8"/><rect x="122" y="150" width="156" height="20" rx="10" fill="#f5efe2"/>
-        <path d="M132 138 Q200 104 268 138" stroke="#d4a840" stroke-width="8" fill="none" opacity=".7"/>`,
-      `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
-        <circle cx="146" cy="168" r="24" fill="#2b1a18"/><circle cx="192" cy="152" r="24" fill="#2b1a18"/><circle cx="238" cy="168" r="24" fill="#2b1a18"/>
-        <circle cx="146" cy="168" r="10" fill="#f5efe2"/><circle cx="192" cy="152" r="10" fill="#f5efe2"/><circle cx="238" cy="168" r="10" fill="#f5efe2"/>
-        <path d="M118 122 Q200 92 282 122" stroke="#d45330" stroke-width="6" fill="none" opacity=".65"/>`
-    ];
-    art = dessertArts[variant];
+    if (name.includes('oreo')) {
+      const cx1 = 144 + (hash % 18);
+      const cx2 = 194 + ((hash >> 2) % 20);
+      const cx3 = 244 + ((hash >> 3) % 16);
+      art = `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <circle cx="${cx1}" cy="168" r="24" fill="#2b1a18"/><circle cx="${cx2}" cy="152" r="24" fill="#2b1a18"/><circle cx="${cx3}" cy="168" r="24" fill="#2b1a18"/>
+        <circle cx="${cx1}" cy="168" r="10" fill="#f5efe2"/><circle cx="${cx2}" cy="152" r="10" fill="#f5efe2"/><circle cx="${cx3}" cy="168" r="10" fill="#f5efe2"/>
+        <path d="M118 122 Q200 92 282 122" stroke="${accentA}" stroke-width="6" fill="none" opacity=".65"/>`;
+    } else if (name.includes('cheesecake')) {
+      art = `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="${110 + (hash % 10)}" y="138" width="${170 - (hash % 8)}" height="44" rx="14" fill="#e0caa8"/><rect x="${122 + (hash % 8)}" y="150" width="${146 - (hash % 12)}" height="20" rx="10" fill="#f5efe2"/>
+        <path d="M132 138 Q200 ${104 - (hash % 8)} 268 138" stroke="${accentA}" stroke-width="8" fill="none" opacity=".7"/>`;
+    } else {
+      art = `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <path d="M${110 + (hash % 12)} 196 L${152 + (hash % 8)} 124 L${238 - (hash % 8)} 124 L${280 - (hash % 12)} 196 Z" fill="#5b3326"/><path d="M132 144 L216 144" stroke="#f0d8c0" stroke-width="6" opacity=".35"/>
+        <circle cx="${154 + (hash % 10)}" cy="${114 + (hash % 6)}" r="10" fill="${accentA}"/><circle cx="${246 - (hash % 10)}" cy="${114 + ((hash >> 1) % 6)}" r="10" fill="${accentB}"/>`;
+    }
   } else if (name.includes('edamame') || name.includes('sunomono')) {
     art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
       <path d="M78 174 Q132 122 194 166 Q140 218 78 174 Z" fill="#4a8a50"/><path d="M176 162 Q232 112 306 164 Q248 220 176 162 Z" fill="#5aaa60"/>
@@ -1591,35 +1591,24 @@ function menuIllustration(item) {
     ];
     art = teriyakiArts[variant];
   } else if (name.includes('roll')) {
-    const rollArts = [
-      `<g transform="translate(84 96)">
-        <ellipse cx="30" cy="58" rx="25" ry="25" fill="#171a14"/><ellipse cx="30" cy="58" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="30" cy="58" rx="8" ry="8" fill="#c02a08"/>
-        <ellipse cx="88" cy="54" rx="25" ry="25" fill="#171a14"/><ellipse cx="88" cy="54" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="88" cy="54" rx="8" ry="8" fill="#d4a840"/>
-        <ellipse cx="146" cy="58" rx="25" ry="25" fill="#171a14"/><ellipse cx="146" cy="58" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="146" cy="58" rx="8" ry="8" fill="#6eb89a"/>
-        <path d="M4 126 Q90 105 176 126" stroke="#8b5a00" stroke-width="4" fill="none" opacity=".65"/>
-      </g>`,
-      `<g transform="translate(70 90)">
-        <ellipse cx="42" cy="118" rx="34" ry="22" fill="#171a14"/><ellipse cx="42" cy="118" rx="26" ry="16" fill="#f4efe6"/><rect x="20" y="108" width="44" height="16" rx="8" fill="#c02a08"/>
-        <ellipse cx="132" cy="108" rx="38" ry="24" fill="#171a14"/><ellipse cx="132" cy="108" rx="30" ry="18" fill="#f4efe6"/><rect x="106" y="98" width="52" height="18" rx="9" fill="#d4a840"/>
-        <ellipse cx="224" cy="116" rx="30" ry="20" fill="#171a14"/><ellipse cx="224" cy="116" rx="22" ry="14" fill="#f4efe6"/><rect x="204" y="108" width="40" height="14" rx="7" fill="#6eb89a"/>
-        <path d="M18 148 Q132 134 248 148" stroke="#8b5a00" stroke-width="4" fill="none" opacity=".55"/>
-      </g>`,
-      `<g transform="translate(80 94)">
-        <rect x="8" y="34" width="172" height="70" rx="8" fill="#2a2014"/><path d="M18 70 Q56 34 94 66 Q130 34 168 70" stroke="#3b2a14" stroke-width="6" fill="none"/>
-        <ellipse cx="32" cy="56" rx="25" ry="17" fill="#171a14"/><ellipse cx="32" cy="56" rx="16" ry="10" fill="#d86060"/>
-        <ellipse cx="86" cy="56" rx="25" ry="17" fill="#171a14"/><ellipse cx="86" cy="56" rx="16" ry="10" fill="#e8906e"/>
-        <ellipse cx="140" cy="56" rx="25" ry="17" fill="#171a14"/><ellipse cx="140" cy="56" rx="16" ry="10" fill="#d4a840"/>
-        <ellipse cx="86" cy="104" rx="10" ry="4" fill="#6eb89a"/><ellipse cx="142" cy="98" rx="10" ry="4" fill="#5a8d48"/>
-      </g>`,
-      `<g transform="translate(68 96)">
-        <ellipse cx="54" cy="82" rx="48" ry="28" fill="#233048"/><ellipse cx="138" cy="84" rx="56" ry="32" fill="#233048"/><ellipse cx="216" cy="80" rx="44" ry="26" fill="#36281f"/>
-        <circle cx="32" cy="54" r="12" fill="#e8e0d0"/><circle cx="32" cy="54" r="7" fill="#6eb89a"/>
-        <circle cx="68" cy="52" r="12" fill="#e8e0d0"/><circle cx="68" cy="52" r="7" fill="#e8906e"/>
-        <circle cx="104" cy="54" r="12" fill="#e8e0d0"/><circle cx="104" cy="54" r="7" fill="#d4a840"/>
-        <circle cx="140" cy="52" r="12" fill="#e8e0d0"/><circle cx="140" cy="52" r="7" fill="#c02a08"/>
-        <path d="M20 100 Q56 84 90 100" stroke="#8b5a00" stroke-width="4" fill="none"/><path d="M164 84 Q190 52 220 72" stroke="#d4a840" stroke-width="5" fill="none"/><path d="M224 72 Q246 56 266 78" stroke="#e8906e" stroke-width="5" fill="none"/>`
-    ];
-    art = rollArts[variant];
+    const pieceCount = 3 + (hash % 3);
+    const startX = 74 + (hash % 26);
+    const baseY = 148 + (hash % 20);
+    const tilt = (hash % 7) - 3;
+    const step = 42 + ((hash >> 1) % 12);
+    const seaweed = ['#171a14', '#233048', '#2a2014', '#36281f'][variant];
+    const centers = Array.from({ length: pieceCount }, (_, i) => startX + i * step);
+    const dots = centers.map((cx, i) => {
+      const cy = baseY - (i % 2 === 0 ? (hash % 10) : ((hash >> 2) % 8));
+      const fill = i % 3 === 0 ? accentA : i % 3 === 1 ? accentB : '#d4a840';
+      return `<ellipse cx="${cx}" cy="${cy}" rx="${20 + ((hash + i) % 8)}" ry="${14 + ((hash >> 1) % 5)}" fill="${seaweed}"/><ellipse cx="${cx}" cy="${cy}" rx="${13 + ((hash + i) % 5)}" ry="${9 + ((hash >> 2) % 3)}" fill="#f4efe6"/><ellipse cx="${cx}" cy="${cy}" rx="${6 + ((hash + i) % 4)}" ry="${6 + ((hash >> 3) % 3)}" fill="${fill}"/>`;
+    }).join('');
+    const garnishY = 214 - (hash % 10);
+    art = `<ellipse cx="200" cy="226" rx="${118 + (hash % 20)}" ry="22" fill="#120b0c" opacity=".55"/>
+      <g transform="rotate(${tilt} 200 150)">${dots}</g>
+      <path d="M${startX - 18} ${garnishY} Q200 ${garnishY - (10 + (hash % 12))} ${startX + (pieceCount - 1) * step + 18} ${garnishY}" stroke="#8b5a00" stroke-width="4" fill="none" opacity=".65"/>
+      <circle cx="${120 + (hash % 120)}" cy="${200 + (hash % 12)}" r="${4 + (hash % 3)}" fill="#6eb89a" opacity=".8"/>
+      <circle cx="${220 + (hash % 90)}" cy="${194 + ((hash >> 1) % 12)}" r="${4 + ((hash >> 2) % 3)}" fill="#c9a96e" opacity=".75"/>`;
   }
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280"><defs><radialGradient id="bg" cx="50%" cy="45%" r="75%"><stop offset="0%" stop-color="#192018"/><stop offset="100%" stop-color="#0d0a0b"/></radialGradient></defs><rect width="400" height="280" fill="url(#bg)"/><ellipse cx="200" cy="222" rx="130" ry="24" fill="#120b0c" opacity=".45"/>${art}</svg>`;
