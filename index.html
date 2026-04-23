@@ -89,12 +89,51 @@ body::before{
 #banner{
   background:linear-gradient(90deg,var(--accent3),var(--accent),var(--accent3));
   color:#fff;text-align:center;
-  padding:10px 20px;
+  padding:18px 20px;
   font-family:'Josefin Sans',sans-serif;
-  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
-  position:relative;z-index:200;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  position:relative;z-index:10;
 }
-#banner span{opacity:.7;margin:0 14px}
+#banner strong{display:block;font-size:.82rem;letter-spacing:.18em;margin-bottom:10px}
+#banner .bons-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin:0 auto;
+  max-width:980px;
+}
+#banner .bons-badge{
+  width:108px;
+  height:108px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+#banner .bons-badge img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+#banner .banner-note{
+  margin-top:12px;
+  opacity:1;
+  display:block;
+  font-size:.66rem;
+  letter-spacing:.12em;
+}
+#banner .salem-note{
+  display:block;
+  margin-top:14px;
+  font-size:.84rem;
+  letter-spacing:.14em;
+  line-height:1.6;
+  opacity:1;
+  text-transform:uppercase;
+  font-weight:700;
+}
 
 /* ── NAV ── */
 nav{
@@ -132,14 +171,6 @@ nav{
   transition:all .2s;
 }
 #theme-btn:hover{border-color:var(--accent);color:var(--accent)}
-#chat-btn{
-  background:var(--accent);border:none;cursor:pointer;
-  color:#fff;padding:9px 18px;border-radius:22px;
-  font-family:'Josefin Sans',sans-serif;font-size:.72rem;letter-spacing:.12em;
-  text-transform:uppercase;font-weight:600;
-  transition:background .2s,transform .1s;
-}
-#chat-btn:hover{background:var(--accent2);transform:translateY(-1px)}
 #hamburger{
   display:none;background:none;border:none;cursor:pointer;
   color:var(--text);font-size:1.4rem;padding:8px;
@@ -240,7 +271,25 @@ nav{
   box-shadow:0 8px 30px rgba(155,35,53,.35);
 }
 .hero-cta:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(155,35,53,.45)}
-
+.hero-actions{
+  margin-top:36px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+}
+.hero-cta.secondary{
+  background:rgba(247,242,236,.92);
+  color:#22161a;
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+.hero-cta.secondary:hover{
+  background:#fff;
+  border-color:rgba(255,255,255,.7);
+  color:var(--accent);
+  box-shadow:0 12px 30px rgba(0,0,0,.16);
+}
 /* decorative kanji */
 .hero-kanji{
   position:absolute;right:6%;top:15%;
@@ -384,16 +433,6 @@ nav{
   color:var(--text2);line-height:1.7;font-size:1rem;
   font-style:italic;margin-bottom:20px;
 }
-.modal-fact-box{
-  background:var(--surface);border-left:3px solid var(--accent);
-  border-radius:0 8px 8px 0;padding:14px 18px;
-}
-.modal-fact-label{
-  font-family:'Josefin Sans',sans-serif;font-size:.6rem;
-  letter-spacing:.25em;text-transform:uppercase;color:var(--accent);
-  margin-bottom:6px;display:block;
-}
-#modal-fact{color:var(--text2);font-size:.9rem;line-height:1.65}
 #modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 
 /* ── ABOUT ── */
@@ -490,9 +529,191 @@ nav{
 }
 .catering-box p{opacity:.88;line-height:1.7;font-size:1rem;margin-bottom:16px}
 .catering-note{
-  background:rgba(255,255,255,.12);border-radius:8px;
+  background:color-mix(in srgb, var(--surface2) 88%, var(--accent) 12%);
+  border:1px solid color-mix(in srgb, var(--accent) 22%, var(--border) 78%);
+  border-radius:8px;
   padding:12px 18px;font-family:'Josefin Sans',sans-serif;
-  font-size:.72rem;letter-spacing:.1em;
+  font-size:.86rem;letter-spacing:.04em;
+  color:var(--text);
+  line-height:1.45;
+}
+[data-theme="light"] .catering-note{color:var(--text)}
+[data-theme="dark"] .catering-note{color:#fff}
+.catering-note a{
+  color:var(--accent);
+  font-weight:700;
+  text-decoration:none;
+}
+.catering-note a:hover{text-decoration:underline}
+.catering-page-wrap{
+  max-width:1180px;
+  margin:0 auto 90px;
+  padding:0 5%;
+}
+.catering-intro{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);
+  gap:24px;
+  align-items:stretch;
+  margin-bottom:28px;
+}
+.catering-panel{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:30px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(12px);
+}
+.catering-panel h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.6rem;
+  color:var(--text);
+  margin-bottom:12px;
+}
+.catering-panel p{
+  color:var(--text2);
+  line-height:1.7;
+  font-size:.98rem;
+}
+.catering-contact{
+  display:grid;
+  gap:14px;
+}
+.catering-contact a{
+  color:var(--gold2);
+  text-decoration:none;
+}
+.catering-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+.catering-actions a{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 20px;border-radius:999px;
+  font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;text-decoration:none;
+}
+.catering-actions button{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 20px;border-radius:999px;
+  font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;text-decoration:none;
+}
+.catering-actions .primary{background:var(--accent);color:#fff}
+.catering-actions .secondary{
+  border:1px solid var(--border);
+  color:var(--text);
+  background:transparent;
+}
+.catering-menu-frame{
+  background:rgba(0,0,0,.22);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.catering-menu-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+.catering-menu-layout{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+}
+.catering-section-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+.catering-section-card.full{grid-column:1/-1}
+.catering-section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.catering-section-head h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.5rem;
+  color:var(--text);
+}
+.catering-section-head span{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.65rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text3);
+}
+.catering-item{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  padding:18px 0;
+  border-bottom:1px solid var(--border);
+}
+.catering-item:last-child{border-bottom:none;padding-bottom:0}
+.catering-item:first-child{padding-top:0}
+.catering-item-name{
+  display:block;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.9rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--text);
+  margin-bottom:6px;
+}
+.catering-item-meta{
+  display:block;
+  color:var(--text3);
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.64rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.catering-item p{
+  font-size:.95rem;
+  color:var(--text2);
+  line-height:1.65;
+}
+.catering-price{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.45rem;
+  color:var(--gold2);
+  white-space:nowrap;
+}
+.catering-cta-strip{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+}
+.catering-cta-copy{
+  color:var(--text2);
+  font-size:.95rem;
+  line-height:1.6;
+}
+.catering-contact-card{
+  text-align:center;
+}
+.catering-contact-card p{
+  max-width:760px;
+  margin:0 auto;
 }
 
 /* ── CHATBOT ── */
@@ -605,6 +826,11 @@ footer{
   flex-wrap:wrap;gap:12px;
 }
 .footer-bottom p{color:var(--text3);font-size:.8rem;font-family:'Josefin Sans',sans-serif;letter-spacing:.05em}
+.footer-bottom .footer-credit a{
+  color:var(--gold2);
+  text-decoration:none;
+}
+.footer-bottom .footer-credit a:hover{text-decoration:underline}
 
 /* ── PHOTO GALLERY ── */
 .photo-strip{
@@ -789,6 +1015,18 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
+  .catering-intro{grid-template-columns:1fr}
+  .catering-menu-layout{grid-template-columns:1fr}
+  #banner{
+    padding:12px 14px;
+    font-size:.66rem;
+    letter-spacing:.12em;
+    line-height:1.45;
+  }
+  #banner strong{font-size:.74rem;letter-spacing:.15em}
+  #banner .bons-badge{width:92px;height:92px;border-radius:20px}
+  #banner .salem-note{font-size:.58rem}
+  #banner .banner-note{margin-top:5px}
   .nav-links{display:none}
   #hamburger{display:flex}
   .about-grid,.visit-grid{grid-template-columns:1fr}
@@ -798,6 +1036,20 @@ footer{
   .photo-strip-item:first-child,.photo-strip-item:nth-child(4){grid-row:auto;aspect-ratio:3/4}
 }
 @media(max-width:600px){
+  .catering-panel{padding:22px}
+  .catering-actions{flex-direction:column}
+  .catering-actions a{width:100%}
+  .catering-item{grid-template-columns:1fr}
+  #banner{
+    padding:10px 12px;
+    font-size:.58rem;
+    letter-spacing:.08em;
+  }
+  #banner strong{font-size:.66rem;letter-spacing:.12em}
+  #banner .bons-row{gap:8px}
+  #banner .bons-badge{width:74px;height:74px;border-radius:16px}
+  #banner .salem-note{font-size:.52rem;line-height:1.4}
+  #banner .banner-note{margin-top:4px}
   .footer-grid{grid-template-columns:1fr}
   #chatbot-window{width:290px}
   .section-header{padding:50px 5% 30px}
@@ -814,15 +1066,6 @@ footer{
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BANNER -->
-<div id="banner">
-  Best of the North Shore · Editor's &amp; Readers' Choice · Northshore Magazine 2023
-  <span>•</span>
-  Walk-ins welcome · Reservations for parties of 6+
-  <span>•</span>
-  Catering available
-</div>
-
 <!-- NAV -->
 <nav>
   <div class="nav-logo" onclick="showPage('home')" style="background:none;padding:0">
@@ -831,12 +1074,12 @@ footer{
   <div class="nav-links">
     <button onclick="showPage('home')" id="nav-home" class="active">Home</button>
     <button onclick="showPage('menu')" id="nav-menu">Menu</button>
+    <button onclick="showPage('catering')" id="nav-catering">Catering</button>
     <button onclick="showPage('about')" id="nav-about">About</button>
     <button onclick="showPage('visit')" id="nav-visit">Visit Us</button>
   </div>
   <div class="nav-right">
     <button id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☽</button>
-    <button id="chat-btn" onclick="openChat()">Maki Assistant</button>
     <button id="hamburger" onclick="toggleMobile()" aria-label="Menu">☰</button>
   </div>
 </nav>
@@ -846,6 +1089,7 @@ footer{
   <button id="mobile-close" onclick="toggleMobile()">✕</button>
   <button onclick="showPage('home');toggleMobile()">Home</button>
   <button onclick="showPage('menu');toggleMobile()">Menu</button>
+  <button onclick="showPage('catering');toggleMobile()">Catering</button>
   <button onclick="showPage('about');toggleMobile()">About</button>
   <button onclick="showPage('visit');toggleMobile()">Visit Us</button>
   <button onclick="openChat();toggleMobile()">Chat with Us</button>
@@ -858,7 +1102,11 @@ footer{
     <img src="assets/gallery/logo-design.png" alt="Maki Sushi Bar &amp; Grill" class="hero-logo" style="width:clamp(240px,40vw,420px);margin:0 auto 16px;display:block;filter:drop-shadow(0 4px 24px rgba(0,0,0,0.55));animation:fadeUp .6s .2s both;">
     <p class="hero-sub" style="animation:fadeUp .6s .3s both;">Where the art of Japan meets the heart of New England</p>
     <div class="hero-badge" style="animation:fadeUp .6s .4s both;">Est. in Peabody · 43 Main Street</div>
-    <button class="hero-cta" onclick="showPage('menu')" style="animation:fadeUp .6s .5s both;">Explore Our Menu →</button>
+    <div class="hero-actions" style="animation:fadeUp .6s .5s both;">
+      <button class="hero-cta" onclick="showPage('menu')">Explore Menu →</button>
+      <a class="hero-cta secondary" href="https://order.toasttab.com/online/maki-sushi-bar-grill-43-main-st" target="_blank" style="text-decoration:none">Online Ordering</a>
+    </div>
+    <p style="margin-top:16px;color:#fff;font-size:.96rem;line-height:1.7;text-align:center;font-weight:600;text-shadow:0 4px 18px rgba(0,0,0,.4);animation:fadeUp .6s .55s both;">Delivery available through Uber Eats, DoorDash, and Grubhub.</p>
 
     <!-- SVG Illustration: North Shore Coastline meets Japanese motifs -->
     <svg class="hero-svg" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -910,6 +1158,21 @@ footer{
     </div>
   </div>
 
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="banner">
+    <strong>The BONS - Best of Northshore</strong>
+    <div class="bons-row">
+      <div class="bons-badge"><img src="assets/gallery/BONS 2013-transparent.png" alt="BONS 2013 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-HOME-2018-LOGO-transparent.png" alt="BONS Home 2018 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2021-Black_550x825-transparent.png" alt="BONS 2021 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2023-Logo_550x825-transparent.png" alt="BONS 2023 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2024-Logo-transparent.png" alt="BONS 2024 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2025-transparent.png" alt="BONS 2025 award badge"></div>
+    </div>
+    <small class="salem-note">Best of The Salem News 2019, 2020, 2021, 2022, 2023, 2024</small>
+    <small class="banner-note">Walk-ins welcome · Reservations for parties of 6+</small>
+  </div>
+
   <!-- Photo Gallery -->
   <div class="gallery-header">
     <span class="section-label">Photos</span>
@@ -918,9 +1181,9 @@ footer{
     
   </div>
   <div class="photo-strip">
-    <div class="photo-strip-item" onclick="openLightbox('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0MDAgMjgwJz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0nYmcxJyBjeD0nNTAlJyBjeT0nNTAlJyByPSc3MCUnPjxzdG9wIG9mZnNldD0nMCUnIHN0b3AtY29sb3I9JyMxYTJlMjAnLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9JyMwZDE1MTAnLz48L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI4MCcgZmlsbD0ndXJsKCNiZzEpJy8+CiAgPGVsbGlwc2UgY3g9JzIwMCcgY3k9JzI0OCcgcng9JzE2NScgcnk9JzE2JyBmaWxsPSdyZ2JhKDAsMCwwLDAuNCknLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nNTQnIHJ5PSc1NCcgZmlsbD0nIzFhMWExNCcvPgogIDxlbGxpcHNlIGN4PScxMDgnIGN5PScxNTUnIHJ4PSc0NCcgcnk9JzQ0JyBmaWxsPScjZjVmMGUwJyBvcGFjaXR5PScwLjEnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nMzInIHJ5PSczMicgZmlsbD0nIzZlYjg5YScgb3BhY2l0eT0nMC43Jy8+CiAgPGVsbGlwc2UgY3g9JzEwOCcgY3k9JzE1NScgcng9JzE4JyByeT0nMTgnIGZpbGw9JyNlMDUwNTAnIG9wYWNpdHk9JzAuODUnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nOCcgcnk9JzgnIGZpbGw9JyNmZjcwNzAnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nNTQnIHJ5PSc1NCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMWExYTBlJyBzdHJva2Utd2lkdGg9JzknLz4KICA8Y2lyY2xlIGN4PSc4NCcgY3k9JzE0OCcgcj0nMycgZmlsbD0nd2hpdGUnIG9wYWNpdHk9JzAuNTUnLz4KICA8Y2lyY2xlIGN4PScxMzInIGN5PScxNjInIHI9JzMnIGZpbGw9J3doaXRlJyBvcGFjaXR5PScwLjU1Jy8+CiAgPGNpcmNsZSBjeD0nMTA4JyBjeT0nMTMwJyByPSczJyBmaWxsPSd3aGl0ZScgb3BhY2l0eT0nMC40NScvPgogIDxlbGxpcHNlIGN4PScyMjInIGN5PScxNDgnIHJ4PSc1OCcgcnk9JzU4JyBmaWxsPScjMWExYTE0Jy8+CiAgPGVsbGlwc2UgY3g9JzIyMicgY3k9JzE0OCcgcng9JzQ3JyByeT0nNDcnIGZpbGw9JyNmNWYwZTAnIG9wYWNpdHk9JzAuMDgnLz4KICA8ZWxsaXBzZSBjeD0nMjIyJyBjeT0nMTQ4JyByeD0nMzUnIHJ5PSczNScgZmlsbD0nI2M5YTk2ZScgb3BhY2l0eT0nMC42Jy8+CiAgPGVsbGlwc2UgY3g9JzIyMicgY3k9JzE0OCcgcng9JzIwJyByeT0nMjAnIGZpbGw9JyNlODk1NmUnIG9wYWNpdHk9JzAuOScvPgogIDxlbGxpcHNlIGN4PScyMjInIGN5PScxNDgnIHJ4PSc5JyByeT0nOScgZmlsbD0nI2ZmODA0MCcvPgogIDxlbGxpcHNlIGN4PScyMjInIGN5PScxNDgnIHJ4PSc1OCcgcnk9JzU4JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYTFhMGUnIHN0cm9rZS13aWR0aD0nOScvPgogIDxjaXJjbGUgY3g9JzE5NicgY3k9JzEzOCcgcj0nMy41JyBmaWxsPSd3aGl0ZScgb3BhY2l0eT0nMC41Jy8+CiAgPGNpcmNsZSBjeD0nMjQ4JyBjeT0nMTU4JyByPSczLjUnIGZpbGw9J3doaXRlJyBvcGFjaXR5PScwLjUnLz4KICA8ZWxsaXBzZSBjeD0nMzMyJyBjeT0nMTY1JyByeD0nMzgnIHJ5PSczOCcgZmlsbD0nIzFhMWExNCcvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PScyOScgcnk9JzI5JyBmaWxsPScjNmViODlhJyBvcGFjaXR5PScwLjUnLz4KICA8ZWxsaXBzZSBjeD0nMzMyJyBjeT0nMTY1JyByeD0nMTUnIHJ5PScxNScgZmlsbD0nI2QwNjA2MCcgb3BhY2l0eT0nMC44NScvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PSc3JyByeT0nNycgZmlsbD0nI2ZmNjA2MCcvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PSczOCcgcnk9JzM4JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYTFhMGUnIHN0cm9rZS13aWR0aD0nNycvPgogIDxlbGxpcHNlIGN4PScxNTgnIGN5PScyMTInIHJ4PSc0JyByeT0nMicgZmlsbD0nI2U4ZDhhMCcgb3BhY2l0eT0nMC43JyB0cmFuc2Zvcm09J3JvdGF0ZSgtMjAgMTU4IDIxMiknLz4KICA8ZWxsaXBzZSBjeD0nMTc4JyBjeT0nMjA3JyByeD0nNCcgcnk9JzInIGZpbGw9JyNlOGQ4YTAnIG9wYWNpdHk9JzAuNicgdHJhbnNmb3JtPSdyb3RhdGUoMTAgMTc4IDIwNyknLz4KICA8ZWxsaXBzZSBjeD0nMjYyJyBjeT0nMjE3JyByeD0nNCcgcnk9JzInIGZpbGw9JyNlOGQ4YTAnIG9wYWNpdHk9JzAuNycgdHJhbnNmb3JtPSdyb3RhdGUoMzAgMjYyIDIxNyknLz4KICA8cGF0aCBkPSdNNzUgMjI1IFExMjAgMjE1IDE2NSAyMjUgUTIwNSAyMzUgMjQ1IDIyMCBRMjg1IDIwNSAzMjUgMjE4JyBzdHJva2U9JyM4QjVBMDAnIHN0cm9rZS13aWR0aD0nMycgZmlsbD0nbm9uZScgb3BhY2l0eT0nMC41NScgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJy8+CiAgPHBhdGggZD0nTTM0NSAyMDIgUTM2MCAxODggMzcyIDIwMiBRMzYyIDIxNiAzNDggMjEwWicgZmlsbD0nI2ZmYjNiMycgb3BhY2l0eT0nMC42Jy8+CiAgPHBhdGggZD0nTTM1NSAxOTcgUTM2OCAxODMgMzc4IDE5NyBRMzY4IDIxMSAzNTYgMjA1WicgZmlsbD0nI2ZmYzhjOCcgb3BhY2l0eT0nMC41Jy8+CiAgPGxpbmUgeDE9JzQ4JyB5MT0nMjQyJyB4Mj0nNDgnIHkyPScyMTInIHN0cm9rZT0nIzZlYjg5YScgc3Ryb2tlLXdpZHRoPScyJyBvcGFjaXR5PScwLjYnLz4KICA8ZWxsaXBzZSBjeD0nNDMnIGN5PScyMTQnIHJ4PSc4JyByeT0nNScgZmlsbD0nIzZlYjg5YScgb3BhY2l0eT0nMC41JyB0cmFuc2Zvcm09J3JvdGF0ZSgtMjAgNDMgMjE0KScvPgogIDxlbGxpcHNlIGN4PSc1MycgY3k9JzIyMCcgcng9JzcnIHJ5PSc0JyBmaWxsPScjNWVhODhhJyBvcGFjaXR5PScwLjUnIHRyYW5zZm9ybT0ncm90YXRlKDE1IDUzIDIyMCknLz4KPC9zdmc+','Maki Sushi — Signature Rolls')">
+    <div class="photo-strip-item" onclick="openLightbox('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0MDAgMjgwJz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0nYmcxJyBjeD0nNTAlJyBjeT0nNTAlJyByPSc3MCUnPjxzdG9wIG9mZnNldD0nMCUnIHN0b3AtY29sb3I9JyMxYTJlMjAnLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9JyMwZDE1MTAnLz48L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI4MCcgZmlsbD0ndXJsKCNiZzEpJy8+CiAgPGVsbGlwc2UgY3g9JzIwMCcgY3k9JzI0OCcgcng9JzE2NScgcnk9JzE2JyBmaWxsPSdyZ2JhKDAsMCwwLDAuNCknLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nNTQnIHJ5PSc1NCcgZmlsbD0nIzFhMWExNCcvPgogIDxlbGxpcHNlIGN4PScxMDgnIGN5PScxNTUnIHJ4PSc0NCcgcnk9JzQ0JyBmaWxsPScjZjVmMGUwJyBvcGFjaXR5PScwLjEnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nMzInIHJ5PSczMicgZmlsbD0nIzZlYjg5YScgb3BhY2l0eT0nMC43Jy8+CiAgPGVsbGlwc2UgY3g9JzEwOCcgY3k9JzE1NScgcng9JzE4JyByeT0nMTgnIGZpbGw9JyNlMDUwNTAnIG9wYWNpdHk9JyAuODUnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nOCcgcnk9JzgnIGZpbGw9JyNmZjcwNzAnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nNTQnIHJ5PSc1NCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMWExYTBlJyBzdHJva2Utd2lkdGg9JzknLz4KICA8Y2lyY2xlIGN4PSc4NCcgY3k9JzE0OCcgcj0nMycgZmlsbD0nd2hpdGUnIG9wYWNpdHk9JyAuNTUnLz4KICA8Y2lyY2xlIGN4PScxMzInIGN5PScxNjInIHI9JzMnIGZpbGw9J3doaXRlJyBvcGFjaXR5PScuNTUnLz4KICA8Y2lyY2xlIGN4PScxMDgnIGN5PScxMzAnIHI9JzMnIGZpbGw9J3doaXRlJyBvcGFjaXR5PScuNDUnLz4KICA8ZWxsaXBzZSBjeD0nMjIyJyBjeT0nMTQ4JyByeD0nNTgnIHJ5PSc1OCcgZmlsbD0nIzFhMWExNCcvPgogIDxlbGxpcHNlIGN4PScyMjInIGN5PScxNDgnIHJ4PSc0Nycgcng9JzQ3JyBmaWxsPScjZjVmMGUwJyBvcGFjaXR5PScuMDgnLz4KICA8ZWxsaXBzZSBjeD0nMjIyJyBjeT0nMTQ4JyByeD0nMzUnIHJ5PSczNScgZmlsbD0nI2M5YTk2ZScgb3BhY2l0eT0nLjYnLz4KICA8ZWxsaXBzZSBjeD0nMjIyJyBjeT0nMTQ4JyByeD0nMjAnIHJ5PScyMCcgZmlsbD0nI2U4OTU2ZScgb3BhY2l0eT0nLjknLz4KICA8ZWxsaXBzZSBjeD0nMjIyJyBjeT0nMTQ4JyByeD0nOScgcnk9JzknIGZpbGw9JyNmZjgwNDAnLz4KICA8ZWxsaXBzZSBjeD0nMjIyJyBjeT0nMTQ4JyByeD0nNTgnIHJ5PSc1OCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMWExYTBlJyBzdHJva2Utd2lkdGg9JzknLz4KICA8Y2lyY2xlIGN4PScxOTYnIGN5PScxMzgnIHI9JzMuNScgZmlsbD0nd2hpdGUnIG9wYWNpdHk9Jy41Jy8+CiAgPGNpcmNsZSBjeD0nMjQ4JyBjeT0nMTU4JyByPSczLjUnIGZpbGw9J3doaXRlJyBvcGFjaXR5PScuNScvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PSczOCcgcng9JzM4JyBmaWxsPScjMWExYTE0Jy8+CiAgPGVsbGlwc2UgY3g9JzMzMicgY3k9JzE2NScgcng9JzI5JyByeT0nMjknIGZpbGw9JyM2ZWI4OWEnIG9wYWNpdHk9Jy41Jy8+CiAgPGVsbGlwc2UgY3g9JzMzMicgY3k9JzE2NScgcng9JzE1JyByeT0nMTUnIGZpbGw9JyNkMDYwNjAnIG9wYWNpdHk9Jy44NScvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PSc3JyByeT0nNycgZmlsbD0nI2ZmNjA2MCcvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PSczOCcgcnk9JzM4JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYTFhMGUnIHN0cm9rZS13aWR0aD0nNycvPgogIDxlbGxpcHNlIGN4PScxNTgnIGN5PScyMTInIHJ4PSc0JyByeT0nMicgZmlsbD0nI2U4ZDhhMCcgb3BhY2l0eT0nLjcnIHRyYW5zZm9ybT0ncm90YXRlKC0yMCAxNTggMjEyKScvPgogIDxlbGxpcHNlIGN4PScxNzgnIGN5PScyMDcnIHJ4PSc0JyByeT0nMicgZmlsbD0nI2U4ZDhhMCcgb3BhY2l0eT0nLjYnIHRyYW5zZm9ybT0ncm90YXRlKDEwIDE3OCAyMDcpJy8+CiAgPGVsbGlwc2UgY3g9JzI2MicgY3k9JzIxNycgcng9JzQnIHJ5PScyJyBmaWxsPScjZThkOGEwJyBvcGFjaXR5PScuNycgdHJhbnNmb3JtPSdyb3RhdGUoMzAgMjYyIDIxNyknLz4KICA8cGF0aCBkPSdNNzUgMjI1IFExMjAgMjE1IDE2NSAyMjUgUTIwNSAyMzUgMjQ1IDIyMCBRMjg1IDIwNSAzMjUgMjE4JyBzdHJva2U9JyM4QjVBMDAnIHN0cm9rZS13aWR0aD0nMycgZmlsbD0nbm9uZScgb3BhY2l0eT0nLjU1JyBzdHJva2UtbGluZWNhcD0ncm91bmQnLz4KICA8cGF0aCBkPSdNMzQ1IDIwMiBRMzYwIDE4OCAzNzIgMjAyIFEzNjIgMjE2IDM0OCAyMTBaJyBmaWxsPScjZmZiM2IzJyBvcGFjaXR5PScuNicvPgogIDxwYXRoIGQ9J00zNTUgMTk3IFEzNjggMTgzIDM3OCAxOTcgUTM2OCAyMTEgMzU2IDIwNVonIGZpbGw9JyNmZmM4YzgnIG9wYWNpdHk9Jy41Jy8+CiAgPGxpbmUgeDE9JzQ4JyB5MT0nMjQyJyB4Mj0nNDgnIHkyPScyMTInIHN0cm9rZT0nIzZlYjg5YScgc3Ryb2tlLXdpZHRoPScyJyBvcGFjaXR5PScuNicvPgogIDxlbGxpcHNlIGN4PSc0MycgY3k9JzIxNCcgcng9JzgnIHJ5PSc1JyBmaWxsPScjNmViODlhJyBvcGFjaXR5PScuNScgdHJhbnNmb3JtPSdyb3RhdGUoLTIwIDQzIDIxNCknLz4KICA8ZWxsaXBzZSBjeD0nNTMnIGN5PScyMjAnIHJ4PSc3JyByeT0nNCcgZmlsbD0nIzVlYTg4YScgb3BhY2l0eT0nLjUnIHRyYW5zZm9ybT0ncm90YXRlKDE1IDUzIDIyMCknLz4KPC9zdmc+','Maki Sushi — Special Rolls')">
       <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0MDAgMjgwJz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0nYmcxJyBjeD0nNTAlJyBjeT0nNTAlJyByPSc3MCUnPjxzdG9wIG9mZnNldD0nMCUnIHN0b3AtY29sb3I9JyMxYTJlMjAnLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9JyMwZDE1MTAnLz48L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI4MCcgZmlsbD0ndXJsKCNiZzEpJy8+CiAgPGVsbGlwc2UgY3g9JzIwMCcgY3k9JzI0OCcgcng9JzE2NScgcnk9JzE2JyBmaWxsPSdyZ2JhKDAsMCwwLDAuNCknLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nNTQnIHJ5PSc1NCcgZmlsbD0nIzFhMWExNCcvPgogIDxlbGxpcHNlIGN4PScxMDgnIGN5PScxNTUnIHJ4PSc0NCcgcnk9JzQ0JyBmaWxsPScjZjVmMGUwJyBvcGFjaXR5PScwLjEnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nMzInIHJ5PSczMicgZmlsbD0nIzZlYjg5YScgb3BhY2l0eT0nMC43Jy8+CiAgPGVsbGlwc2UgY3g9JzEwOCcgY3k9JzE1NScgcng9JzE4JyByeT0nMTgnIGZpbGw9JyNlMDUwNTAnIG9wYWNpdHk9JzAuODUnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nOCcgcnk9JzgnIGZpbGw9JyNmZjcwNzAnLz4KICA8ZWxsaXBzZSBjeD0nMTA4JyBjeT0nMTU1JyByeD0nNTQnIHJ5PSc1NCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjMWExYTBlJyBzdHJva2Utd2lkdGg9JzknLz4KICA8Y2lyY2xlIGN4PSc4NCcgY3k9JzE0OCcgcj0nMycgZmlsbD0nd2hpdGUnIG9wYWNpdHk9JzAuNTUnLz4KICA8Y2lyY2xlIGN4PScxMzInIGN5PScxNjInIHI9JzMnIGZpbGw9J3doaXRlJyBvcGFjaXR5PScwLjU1Jy8+CiAgPGNpcmNsZSBjeD0nMTA4JyBjeT0nMTMwJyByPSczJyBmaWxsPSd3aGl0ZScgb3BhY2l0eT0nMC40NScvPgogIDxlbGxpcHNlIGN4PScyMjInIGN5PScxNDgnIHJ4PSc1OCcgcnk9JzU4JyBmaWxsPScjMWExYTE0Jy8+CiAgPGVsbGlwc2UgY3g9JzIyMicgY3k9JzE0OCcgcng9JzQ3JyByeT0nNDcnIGZpbGw9JyNmNWYwZTAnIG9wYWNpdHk9JzAuMDgnLz4KICA8ZWxsaXBzZSBjeD0nMjIyJyBjeT0nMTQ4JyByeD0nMzUnIHJ5PSczNScgZmlsbD0nI2M5YTk2ZScgb3BhY2l0eT0nMC42Jy8+CiAgPGVsbGlwc2UgY3g9JzIyMicgY3k9JzE0OCcgcng9JzIwJyByeT0nMjAnIGZpbGw9JyNlODk1NmUnIG9wYWNpdHk9JzAuOScvPgogIDxlbGxpcHNlIGN4PScyMjInIGN5PScxNDgnIHJ4PSc5JyByeT0nOScgZmlsbD0nI2ZmODA0MCcvPgogIDxlbGxpcHNlIGN4PScyMjInIGN5PScxNDgnIHJ4PSc1OCcgcnk9JzU4JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYTFhMGUnIHN0cm9rZS13aWR0aD0nOScvPgogIDxjaXJjbGUgY3g9JzE5NicgY3k9JzEzOCcgcj0nMy41JyBmaWxsPSd3aGl0ZScgb3BhY2l0eT0nMC41Jy8+CiAgPGNpcmNsZSBjeD0nMjQ4JyBjeT0nMTU4JyByPSczLjUnIGZpbGw9J3doaXRlJyBvcGFjaXR5PScwLjUnLz4KICA8ZWxsaXBzZSBjeD0nMzMyJyBjeT0nMTY1JyByeD0nMzgnIHJ5PSczOCcgZmlsbD0nIzFhMWExNCcvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PScyOScgcnk9JzI5JyBmaWxsPScjNmViODlhJyBvcGFjaXR5PScwLjUnLz4KICA8ZWxsaXBzZSBjeD0nMzMyJyBjeT0nMTY1JyByeD0nMTUnIHJ5PScxNScgZmlsbD0nI2QwNjA2MCcgb3BhY2l0eT0nMC44NScvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PSc3JyByeT0nNycgZmlsbD0nI2ZmNjA2MCcvPgogIDxlbGxpcHNlIGN4PSczMzInIGN5PScxNjUnIHJ4PSczOCcgcnk9JzM4JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYTFhMGUnIHN0cm9rZS13aWR0aD0nNycvPgogIDxlbGxpcHNlIGN4PScxNTgnIGN5PScyMTInIHJ4PSc0JyByeT0nMicgZmlsbD0nI2U4ZDhhMCcgb3BhY2l0eT0nMC43JyB0cmFuc2Zvcm09J3JvdGF0ZSgtMjAgMTU4IDIxMiknLz4KICA8ZWxsaXBzZSBjeD0nMTc4JyBjeT0nMjA3JyByeD0nNCcgcnk9JzInIGZpbGw9JyNlOGQ4YTAnIG9wYWNpdHk9JzAuNicgdHJhbnNmb3JtPSdyb3RhdGUoMTAgMTc4IDIwNyknLz4KICA8ZWxsaXBzZSBjeD0nMjYyJyBjeT0nMjE3JyByeD0nNCcgcnk9JzInIGZpbGw9JyNlOGQ4YTAnIG9wYWNpdHk9JzAuNycgdHJhbnNmb3JtPSdyb3RhdGUoMzAgMjYyIDIxNyknLz4KICA8cGF0aCBkPSdNNzUgMjI1IFExMjAgMjE1IDE2NSAyMjUgUTIwNSAyMzUgMjQ1IDIyMCBRMjg1IDIwNSAzMjUgMjE4JyBzdHJva2U9JyM4QjVBMDAnIHN0cm9rZS13aWR0aD0nMycgZmlsbD0nbm9uZScgb3BhY2l0eT0nMC41NScgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJy8+CiAgPHBhdGggZD0nTTM0NSAyMDIgUTM2MCAxODggMzcyIDIwMiBRMzYyIDIxNiAzNDggMjEwWicgZmlsbD0nI2ZmYjNiMycgb3BhY2l0eT0nMC42Jy8+CiAgPHBhdGggZD0nTTM1NSAxOTcgUTM2OCAxODMgMzc4IDE5NyBRMzY4IDIxMSAzNTYgMjA1WicgZmlsbD0nI2ZmYzhjOCcgb3BhY2l0eT0nMC41Jy8+CiAgPGxpbmUgeDE9JzQ4JyB5MT0nMjQyJyB4Mj0nNDgnIHkyPScyMTInIHN0cm9rZT0nIzZlYjg5YScgc3Ryb2tlLXdpZHRoPScyJyBvcGFjaXR5PScwLjYnLz4KICA8ZWxsaXBzZSBjeD0nNDMnIGN5PScyMTQnIHJ4PSc4JyByeT0nNScgZmlsbD0nIzZlYjg5YScgb3BhY2l0eT0nMC41JyB0cmFuc2Zvcm09J3JvdGF0ZSgtMjAgNDMgMjE0KScvPgogIDxlbGxpcHNlIGN4PSc1MycgY3k9JzIyMCcgcng9JzcnIHJ5PSc0JyBmaWxsPScjNWVhODhhJyBvcGFjaXR5PScwLjUnIHRyYW5zZm9ybT0ncm90YXRlKDE1IDUzIDIyMCknLz4KPC9zdmc+" alt="Maki Sushi Rolls" loading="lazy">
-      <span class="photo-strip-label">Signature Rolls</span>
+      <span class="photo-strip-label">Maki's Special Rolls</span>
     </div>
     <div class="photo-strip-item" onclick="openLightbox('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0MDAgMjgwJz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0nYmcyJyBjeD0nNTAlJyBjeT0nMzAlJyByPSc4MCUnPjxzdG9wIG9mZnNldD0nMCUnIHN0b3AtY29sb3I9JyMxZTE4MjAnLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9JyMxMDBkMTQnLz48L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI4MCcgZmlsbD0ndXJsKCNiZzIpJy8+CiAgPGVsbGlwc2UgY3g9JzIwMCcgY3k9JzIxMicgcng9JzE3OCcgcnk9JzQyJyBmaWxsPScjMWUxYzI4JyBvcGFjaXR5PScwLjknLz4KICA8ZWxsaXBzZSBjeD0nMjAwJyBjeT0nMjA2JyByeD0nMTcwJyByeT0nMzQnIGZpbGw9JyMyMjIwMzUnIG9wYWNpdHk9JzAuNicvPgogIDxwYXRoIGQ9J001NSAxNjggUTk4IDE1MyAxNDAgMTY1IEwxMzggMTk2IFE5NiAyMTIgNTMgMTk4WicgZmlsbD0nI2MwNDA2MCcgb3BhY2l0eT0nMC45MicvPgogIDxwYXRoIGQ9J002MCAxNzAgUTk4IDE1OCAxMzUgMTY4JyBzdHJva2U9JyNlMDYwNzAnIHN0cm9rZS13aWR0aD0nMS41JyBmaWxsPSdub25lJyBvcGFjaXR5PScwLjQ1Jy8+CiAgPHBhdGggZD0nTTYwIDE3NyBROTggMTY1IDEzNSAxNzUnIHN0cm9rZT0nI2UwNjA3MCcgc3Ryb2tlLXdpZHRoPScxJyBmaWxsPSdub25lJyBvcGFjaXR5PScwLjMnLz4KICA8cGF0aCBkPSdNMTQyIDE1OCBRMTgzIDE0MiAyMjUgMTU0IEwyMjMgMTg2IFExODEgMjA0IDE0MCAxOTJaJyBmaWxsPScjZTA3ODQwJyBvcGFjaXR5PScwLjkzJy8+CiAgPHBhdGggZD0nTTE0NyAxNjEgUTE4MyAxNDggMjIwIDE1OCcgc3Ryb2tlPScjZjA5MDYwJyBzdHJva2Utd2lkdGg9JzEuNScgZmlsbD0nbm9uZScgb3BhY2l0eT0nMC41Jy8+CiAgPHBhdGggZD0nTTE1OCAxNjggUTE3NSAxNjMgMTkyIDE3MCcgc3Ryb2tlPSd3aGl0ZScgc3Ryb2tlLXdpZHRoPScxJyBmaWxsPSdub25lJyBvcGFjaXR5PScwLjInLz4KICA8cGF0aCBkPSdNMTc4IDE3NSBRMTk4IDE3MCAyMTUgMTc4JyBzdHJva2U9J3doaXRlJyBzdHJva2Utd2lkdGg9JzEnIGZpbGw9J25vbmUnIG9wYWNpdHk9JzAuMTUnLz4KICA8cGF0aCBkPSdNMjI4IDE1MiBRMjY4IDEzNiAzMDggMTQ4IEwzMDYgMTgwIFEyNjQgMTk4IDIyNiAxODRaJyBmaWxsPScjZDRiMDYwJyBvcGFjaXR5PScwLjg4Jy8+CiAgPHBhdGggZD0nTTIzMiAxNTUgUTI2OCAxNDIgMzA0IDE1MScgc3Ryb2tlPScjZThjODcwJyBzdHJva2Utd2lkdGg9JzEuNScgZmlsbD0nbm9uZScgb3BhY2l0eT0nMC40NScvPgogIDxwYXRoIGQ9J00zMTIgMTYwIFEzNDAgMTQ5IDM2OCAxNTcgTDM2NiAxODQgUTM0MCAxOTYgMzEwIDE4OFonIGZpbGw9JyNiODMwNTAnIG9wYWNpdHk9JzAuODYnLz4KICA8ZWxsaXBzZSBjeD0nNzgnIGN5PScyMTgnIHJ4PScyMicgcnk9JzEyJyBmaWxsPScjNGE4YTUwJyBvcGFjaXR5PScwLjgnLz4KICA8ZWxsaXBzZSBjeD0nNzgnIGN5PScyMTMnIHJ4PScxNicgcnk9JzgnIGZpbGw9JyM1YWFhNjAnIG9wYWNpdHk9JzAuNycvPgogIDxlbGxpcHNlIGN4PSc3OCcgY3k9JzIxMCcgcng9JzEwJyByeT0nNScgZmlsbD0nIzZhYmI2YScgb3BhY2l0eT0nMC44Jy8+CiAgPHBhdGggZD0nTTMxOCAyMTAgUTMzOCAyMDIgMzU0IDIxMiBRMzQ0IDIyNCAzMjIgMjIwWicgZmlsbD0nI2ZmYTBhMCcgb3BhY2l0eT0nMC42NScvPgogIDxwYXRoIGQ9J00zMjYgMjA4IFEzNDQgMjAwIDM1OCAyMTAgUTM0OCAyMjIgMzI4IDIxN1onIGZpbGw9JyNmZmI4YjgnIG9wYWNpdHk9JzAuNicvPgogIDxsaW5lIHgxPSc4OCcgeTE9JzI0MicgeDI9JzM2MicgeTI9JzIzNCcgc3Ryb2tlPScjYzlhOTZlJyBzdHJva2Utd2lkdGg9JzUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgb3BhY2l0eT0nMC40NScvPgogIDxsaW5lIHgxPSc4OCcgeTE9JzI1MicgeDI9JzM0MicgeTI9JzI0NCcgc3Ryb2tlPScjYzlhOTZlJyBzdHJva2Utd2lkdGg9JzUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgb3BhY2l0eT0nMC4zNScvPgogIDxlbGxpcHNlIGN4PScxODUnIGN5PScyNDInIHJ4PScyOCcgcnk9JzEyJyBmaWxsPScjMTAwODFhJyBvcGFjaXR5PScwLjknLz4KICA8ZWxsaXBzZSBjeD0nMTg1JyBjeT0nMjQwJyByeD0nMjInIHJ5PSc4JyBmaWxsPScjMGUwNjE2Jy8+Cjwvc3ZnPg==','Maki Sushi — Fresh from the Kitchen')">
       <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0MDAgMjgwJz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0nYmcyJyBjeD0nNTAlJyBjeT0nMzAlJyByPSc4MCUnPjxzdG9wIG9mZnNldD0nMCUnIHN0b3AtY29sb3I9JyMxZTE4MjAnLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9JyMxMDBkMTQnLz48L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0nNDAwJyBoZWlnaHQ9JzI4MCcgZmlsbD0ndXJsKCNiZzIpJy8+CiAgPGVsbGlwc2UgY3g9JzIwMCcgY3k9JzIxMicgcng9JzE3OCcgcnk9JzQyJyBmaWxsPScjMWUxYzI4JyBvcGFjaXR5PScwLjknLz4KICA8ZWxsaXBzZSBjeD0nMjAwJyBjeT0nMjA2JyByeD0nMTcwJyByeT0nMzQnIGZpbGw9JyMyMjIwMzUnIG9wYWNpdHk9JzAuNicvPgogIDxwYXRoIGQ9J001NSAxNjggUTk4IDE1MyAxNDAgMTY1IEwxMzggMTk2IFE5NiAyMTIgNTMgMTk4WicgZmlsbD0nI2MwNDA2MCcgb3BhY2l0eT0nMC45MicvPgogIDxwYXRoIGQ9J002MCAxNzAgUTk4IDE1OCAxMzUgMTY4JyBzdHJva2U9JyNlMDYwNzAnIHN0cm9rZS13aWR0aD0nMS41JyBmaWxsPSdub25lJyBvcGFjaXR5PScwLjQ1Jy8+CiAgPHBhdGggZD0nTTYwIDE3NyBROTggMTY1IDEzNSAxNzUnIHN0cm9rZT0nI2UwNjA3MCcgc3Ryb2tlLXdpZHRoPScxJyBmaWxsPSdub25lJyBvcGFjaXR5PScwLjMnLz4KICA8cGF0aCBkPSdNMTQyIDE1OCBRMTgzIDE0MiAyMjUgMTU0IEwyMjMgMTg2IFExODEgMjA0IDE0MCAxOTJaJyBmaWxsPScjZTA3ODQwJyBvcGFjaXR5PScwLjkzJy8+CiAgPHBhdGggZD0nTTE0NyAxNjEgUTE4MyAxNDggMjIwIDE1OCcgc3Ryb2tlPScjZjA5MDYwJyBzdHJva2Utd2lkdGg9JzEuNScgZmlsbD0nbm9uZScgb3BhY2l0eT0nMC41Jy8+CiAgPHBhdGggZD0nTTE1OCAxNjggUTE3NSAxNjMgMTkyIDE3MCcgc3Ryb2tlPSd3aGl0ZScgc3Ryb2tlLXdpZHRoPScxJyBmaWxsPSdub25lJyBvcGFjaXR5PScwLjInLz4KICA8cGF0aCBkPSdNMTc4IDE3NSBRMTk4IDE3MCAyMTUgMTc4JyBzdHJva2U9J3doaXRlJyBzdHJva2Utd2lkdGg9JzEnIGZpbGw9J25vbmUnIG9wYWNpdHk9JzAuMTUnLz4KICA8cGF0aCBkPSdNMjI4IDE1MiBRMjY4IDEzNiAzMDggMTQ4IEwzMDYgMTgwIFEyNjQgMTk4IDIyNiAxODRaJyBmaWxsPScjZDRiMDYwJyBvcGFjaXR5PScwLjg4Jy8+CiAgPHBhdGggZD0nTTIzMiAxNTUgUTI2OCAxNDIgMzA0IDE1MScgc3Ryb2tlPScjZThjODcwJyBzdHJva2Utd2lkdGg9JzEuNScgZmlsbD0nbm9uZScgb3BhY2l0eT0nMC40NScvPgogIDxwYXRoIGQ9J00zMTIgMTYwIFEzNDAgMTQ5IDM2OCAxNTcgTDM2NiAxODQgUTM0MCAxOTYgMzEwIDE4OFonIGZpbGw9JyNiODMwNTAnIG9wYWNpdHk9JzAuODYnLz4KICA8ZWxsaXBzZSBjeD0nNzgnIGN5PScyMTgnIHJ4PScyMicgcnk9JzEyJyBmaWxsPScjNGE4YTUwJyBvcGFjaXR5PScwLjgnLz4KICA8ZWxsaXBzZSBjeD0nNzgnIGN5PScyMTMnIHJ4PScxNicgcnk9JzgnIGZpbGw9JyM1YWFhNjAnIG9wYWNpdHk9JzAuNycvPgogIDxlbGxpcHNlIGN4PSc3OCcgY3k9JzIxMCcgcng9JzEwJyByeT0nNScgZmlsbD0nIzZhYmI2YScgb3BhY2l0eT0nMC44Jy8+CiAgPHBhdGggZD0nTTMxOCAyMTAgUTMzOCAyMDIgMzU0IDIxMiBRMzQ0IDIyNCAzMjIgMjIwWicgZmlsbD0nI2ZmYTBhMCcgb3BhY2l0eT0nMC42NScvPgogIDxwYXRoIGQ9J00zMjYgMjA4IFEzNDQgMjAwIDM1OCAyMTAgUTM0OCAyMjIgMzI4IDIxN1onIGZpbGw9JyNmZmI4YjgnIG9wYWNpdHk9JzAuNicvPgogIDxsaW5lIHgxPSc4OCcgeTE9JzI0MicgeDI9JzM2MicgeTI9JzIzNCcgc3Ryb2tlPScjYzlhOTZlJyBzdHJva2Utd2lkdGg9JzUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgb3BhY2l0eT0nMC40NScvPgogIDxsaW5lIHgxPSc4OCcgeTE9JzI1MicgeDI9JzM0MicgeTI9JzI0NCcgc3Ryb2tlPScjYzlhOTZlJyBzdHJva2Utd2lkdGg9JzUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgb3BhY2l0eT0nMC4zNScvPgogIDxlbGxpcHNlIGN4PScxODUnIGN5PScyNDInIHJ4PScyOCcgcnk9JzEyJyBmaWxsPScjMTAwODFhJyBvcGFjaXR5PScwLjknLz4KICA8ZWxsaXBzZSBjeD0nMTg1JyBjeT0nMjQwJyByeD0nMjInIHJ5PSc4JyBmaWxsPScjMGUwNjE2Jy8+Cjwvc3ZnPg==" alt="Maki Sushi" loading="lazy">
@@ -976,7 +1239,7 @@ footer{
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px;padding:0 5% 80px;max-width:1200px;margin:0 auto">
     <div onclick="showPage('menu')" style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px;cursor:pointer;transition:transform .2s,border-color .2s;backdrop-filter:blur(10px)" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border)'">
       <div class="feat-icon"></div>
-      <h3 style="font-family:'Shippori Mincho',serif;font-size:1.25rem;color:var(--text);margin-bottom:8px">Signature Rolls</h3>
+      <h3 style="font-family:'Shippori Mincho',serif;font-size:1.25rem;color:var(--text);margin-bottom:8px">Maki's Special Rolls</h3>
       <p style="color:var(--text2);font-size:.9rem;line-height:1.6;font-style:italic">Over 50 specialty rolls to choose from.</p>
     </div>
     <div onclick="showPage('menu')" style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px;cursor:pointer;transition:transform .2s,border-color .2s;backdrop-filter:blur(10px)" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--accent)'" onmouseout="this.style.transform='';this.style.borderColor='var(--border)'">
@@ -998,10 +1261,15 @@ footer{
     <span class="section-label">Explore Our Offerings</span>
     <h2 class="section-title">The <em>Menu</em></h2>
     <div class="section-divider"></div>
+    <div class="hero-actions" style="margin-top:26px">
+      <button class="hero-cta" onclick="showPage('menu')">Explore Menu</button>
+      <a class="hero-cta secondary" href="https://order.toasttab.com/online/maki-sushi-bar-grill-43-main-st" target="_blank" style="text-decoration:none">Online Ordering</a>
+    </div>
+    <p style="margin-top:16px;color:var(--text);font-size:.96rem;line-height:1.7;text-align:center;font-weight:600">Delivery available through Uber Eats, DoorDash, and Grubhub.</p>
   </div>
 
   <div class="menu-tabs">
-    <button class="tab-btn active" onclick="switchTab('rolls')">Signature Rolls</button>
+    <button class="tab-btn active" onclick="switchTab('rolls')">Maki's Special Rolls</button>
     <button class="tab-btn" onclick="switchTab('nigiri')">Nigiri & Sashimi</button>
     <button class="tab-btn" onclick="switchTab('appetizers')">Appetizers</button>
     <button class="tab-btn" onclick="switchTab('entrees')">Entrees & Grill</button>
@@ -1011,22 +1279,148 @@ footer{
   <!-- ROLLS -->
   <div class="menu-panel active" id="tab-rolls">
     <div class="menu-grid" id="grid-rolls"></div>
+    <p style="max-width:1100px;margin:28px auto 0;padding:0 5%;color:var(--text3);font-size:.82rem;line-height:1.7;text-align:center">
+      ***Consuming raw or undercooked food may increase your risk of food borne illness. Before placing your order, please inform your server if a person in your party has a food allergy. A gratuity of 20% will be added to parties of six or larger. Menu and prices are subject to change without notice***
+    </p>
   </div>
   <!-- NIGIRI -->
   <div class="menu-panel" id="tab-nigiri">
     <div class="menu-grid" id="grid-nigiri"></div>
+    <p style="max-width:1100px;margin:28px auto 0;padding:0 5%;color:var(--text3);font-size:.82rem;line-height:1.7;text-align:center">
+      ***Consuming raw or undercooked food may increase your risk of food borne illness. Before placing your order, please inform your server if a person in your party has a food allergy. A gratuity of 20% will be added to parties of six or larger. Menu and prices are subject to change without notice***
+    </p>
   </div>
   <!-- APPETIZERS -->
   <div class="menu-panel" id="tab-appetizers">
     <div class="menu-grid" id="grid-appetizers"></div>
+    <p style="max-width:1100px;margin:28px auto 0;padding:0 5%;color:var(--text3);font-size:.82rem;line-height:1.7;text-align:center">
+      ***Consuming raw or undercooked food may increase your risk of food borne illness. Before placing your order, please inform your server if a person in your party has a food allergy. A gratuity of 20% will be added to parties of six or larger. Menu and prices are subject to change without notice***
+    </p>
   </div>
   <!-- ENTREES -->
   <div class="menu-panel" id="tab-entrees">
     <div class="menu-grid" id="grid-entrees"></div>
+    <p style="max-width:1100px;margin:28px auto 0;padding:0 5%;color:var(--text3);font-size:.82rem;line-height:1.7;text-align:center">
+      ***Consuming raw or undercooked food may increase your risk of food borne illness. Before placing your order, please inform your server if a person in your party has a food allergy. A gratuity of 20% will be added to parties of six or larger. Menu and prices are subject to change without notice***
+    </p>
   </div>
   <!-- DRINKS -->
   <div class="menu-panel" id="tab-drinks">
     <div class="menu-grid" id="grid-drinks"></div>
+    <p style="max-width:1100px;margin:28px auto 0;padding:0 5%;color:var(--text3);font-size:.82rem;line-height:1.7;text-align:center">
+      ***Consuming raw or undercooked food may increase your risk of food borne illness. Before placing your order, please inform your server if a person in your party has a food allergy. A gratuity of 20% will be added to parties of six or larger. Menu and prices are subject to change without notice***
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ CATERING PAGE ═══════════════ -->
+<div class="page" id="page-catering">
+  <div class="section-header">
+    <span class="section-label">Events & Gatherings</span>
+    <h2 class="section-title">Catering <em>Menu</em></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="catering-page-wrap">
+    <div class="catering-intro">
+      <div class="catering-panel">
+        <h3>Catering by Maki</h3>
+        <p>Choose from our sushi platters and appetizer trays for office lunches, celebrations, family parties, and larger group orders.</p>
+        <div class="catering-note" style="margin-top:18px">
+          Email is preferred for catering. Please send your event date, pickup time, and order details to <strong><a href="mailto:MakiPeabody@gmail.com">MakiPeabody@gmail.com</a></strong> rather than calling when discussing catering.
+        </div>
+        <div class="catering-cta-strip">
+          <div class="catering-cta-copy">
+            <strong style="color:var(--text);font-weight:700">Delivery available through Uber Eats, DoorDash, and Grubhub.</strong>
+          </div>
+        </div>
+      </div>
+      <div class="catering-panel catering-contact">
+        <div>
+          <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Preferred Contact</span>
+          <a href="mailto:MakiPeabody@gmail.com" style="font-family:'Shippori Mincho',serif;font-size:1.2rem">MakiPeabody@gmail.com</a>
+        </div>
+        <div>
+          <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Call to Order</span>
+          <p>During business hours 5pm-10pm at <a href="tel:9788545426" style="font-family:'Shippori Mincho',serif;font-size:1.1rem;color:var(--text)">(978) 854-5426</a>.</p>
+        </div>
+        <div>
+          <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Lead Time</span>
+          <p>Orders must be placed at least <strong style="color:var(--text)">72 hours in advance</strong> with a <strong style="color:var(--text)">50% deposit</strong>.</p>
+        </div>
+        <div>
+          <p>For catering orders, please email <a href="mailto:MakiPeabody@gmail.com" style="color:var(--gold2);font-weight:700;text-decoration:none">MakiPeabody@gmail.com</a> with your event date, pickup time, guest count, and the trays you want. If needed, you can also call during business hours from 5pm-10pm.</p>
+        </div>
+        <div class="catering-actions">
+          <a class="primary" href="mailto:MakiPeabody@gmail.com?subject=Catering%20Inquiry">Email Catering</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="catering-menu-layout">
+      <div class="catering-section-card">
+        <div class="catering-section-head">
+          <h3>Sushi Platters</h3>
+          <span>Best for gatherings</span>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Tray A</span>
+            <span class="catering-item-meta">6-8 people · 84 pieces</span>
+            <p>Boston Roll (2), California Roll (2), Firecracker Roll, Rainbow Roll, Shrimp Tempura Roll, Spicy Tuna Roll (2), Vegetable Tempura Roll (2).</p>
+          </div>
+          <div class="catering-price">$114.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Tray B</span>
+            <span class="catering-item-meta">All cooked sushi · 6-8 people · 128 pieces</span>
+            <p>Two each of: Avocado Roll, Butterfly Roll, Chicken Teriyaki Roll, California Roll, Mexican Roll, Shrimp Tempura Roll, Salmon Tempura Roll.</p>
+          </div>
+          <div class="catering-price">$140.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Tray C</span>
+            <span class="catering-item-meta">10-12 people · 192 pieces</span>
+            <p>Two each of: Bubba Roll, Crunchy Crab Roll, Crab Rangoon Roll, Double Tuna Roll, Firecracker Roll, Hurricane Roll, Kamikaze Roll, Mango Roll, Rainbow Roll, Spicy Salmon Roll, Spicy Tuna Roll, Sweet Potato Roll.</p>
+          </div>
+          <div class="catering-price">$295.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Vegetarian Tray</span>
+            <span class="catering-item-meta">6-8 people · 108 pieces</span>
+            <p>Two each of: Cucumber Roll, Avocado Roll, Avocado-Cucumber Roll, Avocado-Mango Roll, Sweet Potato Roll, Vegetable Tempura Roll.</p>
+          </div>
+          <div class="catering-price">$94.95</div>
+        </div>
+      </div>
+
+      <div class="catering-section-card">
+        <div class="catering-section-head">
+          <h3>Appetizer Trays</h3>
+          <span>Party starters</span>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Dumpling Tray</span>
+            <span class="catering-item-meta">50 pieces</span>
+            <p>Choose cream cheese dumplings, fried gyoza, or half-and-half.</p>
+          </div>
+          <div class="catering-price">$79.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Edamame Half Tray</span>
+            <span class="catering-item-meta">Half tray</span>
+            <p>Steamed edamame with sea salt. Maki spicy edamame add $5.</p>
+          </div>
+          <div class="catering-price">$45.95</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -1182,12 +1576,8 @@ footer{
       <div style="margin-top:18px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="tel:9788545426" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);color:#fff;padding:12px 22px;border-radius:6px;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.25)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call to Order
+          Call to Order (5pm-10pm)
         </a>
-        <button onclick="openChat()" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);cursor:pointer;padding:12px 22px;border-radius:6px;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          Ask via Chat
-        </button>
       </div>
     </div>
 
@@ -1221,10 +1611,6 @@ footer{
     <h2 id="modal-name"></h2>
     <div id="modal-price"></div>
     <p id="modal-desc"></p>
-    <div class="modal-fact-box">
-      <span class="modal-fact-label">✦ Fun Fact</span>
-      <p id="modal-fact"></p>
-    </div>
     <div id="modal-tags"></div>
   </div>
 </div>
@@ -1261,13 +1647,16 @@ footer{
       <div style="margin-top:18px;display:flex;gap:10px">
         <a href="https://www.facebook.com/MakiSushiBarPeabody/" target="_blank" style="background:var(--surface2);color:var(--text3);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;transition:background .2s" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text3)'">f</a>
         <a href="https://www.yelp.com/biz/maki-sushi-bar-peabody" target="_blank" style="background:var(--surface2);color:var(--text3);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;font-weight:700;transition:background .2s" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text3)'">y</a>
+        <a href="https://www.google.com/search?q=Maki+Sushi+Bar+%26+Grill+43+Main+St+Peabody+MA+01960" target="_blank" aria-label="Google listing for Maki Sushi Bar & Grill" style="background:var(--surface2);color:var(--text3);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.72rem;font-weight:700;transition:background .2s" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text3)'">G</a>
       </div>
+      <p style="margin-top:16px;color:var(--accent);font-size:.76rem;font-family:'Josefin Sans',sans-serif;letter-spacing:.06em;line-height:1.6">Best of the North Shore · Editor's &amp; Readers' Choice · Northshore Magazine 2023</p>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
         <li><button onclick="showPage('home')">Home</button></li>
         <li><button onclick="showPage('menu')">Menu</button></li>
+        <li><button onclick="showPage('catering')">Catering</button></li>
         <li><button onclick="showPage('about')">About Us</button></li>
         <li><button onclick="showPage('visit')">Visit Us</button></li>
       </ul>
@@ -1283,8 +1672,8 @@ footer{
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 Maki Sushi Bar & Grill · 43 Main St, Peabody MA</p>
-    <p style="color:var(--accent)">Best of the North Shore · Editor's &amp; Readers' Choice · Northshore Magazine 2023</p>
+    <p>© 2026 Maki Sushi Bar & Grill · 43 Main St, Peabody MA</p>
+    <p class="footer-credit">Made in MA by <a href="https://northshoredesigns.com" target="_blank" rel="noopener noreferrer">North Shore Designs</a></p>
   </div>
 </footer>
 
@@ -1300,203 +1689,139 @@ const sitePhotos = [
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA0MDAgMjgwJz4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0nYmc2JyBjeD0nNTAlJyBjeT0nNTAlJyByPSc4MCUnPjxzdG9wIG9mZnNldD0nMCUnIHN0b3AtY29sb3I9JyMxODFjMTgnLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9JyMwYTBlMGEnLz48L3JhZGlhbEdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSdnbCcgY3g9JzUwJScgY3k9JzUwJScgcj0nNTAlJz48c3RvcCBvZmZzZXQ9JzAlJyBzdG9wLWNvbG9yPScjNmViODlhJyBzdG9wLW9wYWNpdHk9JzAuMTInLz48c3RvcCBvZmZzZXQ9JzEwMCUnIHN0b3AtY29sb3I9J3RyYW5zcGFyZW50Jy8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9JzQwMCcgaGVpZ2h0PScyODAnIGZpbGw9J3VybCgjYmc2KScvPgogIDxyZWN0IHdpZHRoPSc0MDAnIGhlaWdodD0nMjgwJyBmaWxsPSd1cmwoI2dsKScvPgogIDxyZWN0IHg9JzAnIHk9JzIwMicgd2lkdGg9JzQwMCcgaGVpZ2h0PSc3OCcgZmlsbD0nIzFlMTQwOCcgb3BhY2l0eT0nMC45NScvPgogIDxyZWN0IHg9JzAnIHk9JzIwMicgd2lkdGg9JzQwMCcgaGVpZ2h0PSc1JyBmaWxsPScjYzlhOTZlJyBvcGFjaXR5PScwLjM4Jy8+CiAgPGxpbmUgeDE9JzAnIHkxPScyMTgnIHgyPSc0MDAnIHkyPScyMTgnIHN0cm9rZT0nIzJhMWUwZScgc3Ryb2tlLXdpZHRoPScxLjUnIG9wYWNpdHk9JzAuNScvPgogIDxsaW5lIHgxPScwJyB5MT0nMjMyJyB4Mj0nNDAwJyB5Mj0nMjMyJyBzdHJva2U9JyMyYTFlMGUnIHN0cm9rZS13aWR0aD0nMS41JyBvcGFjaXR5PScwLjQnLz4KICA8cmVjdCB4PScyOCcgeT0nMTAyJyB3aWR0aD0nMjInIGhlaWdodD0nOTAnIHJ4PSc0JyBmaWxsPScjMWEzMDIwJyBvcGFjaXR5PScwLjknLz4KICA8cmVjdCB4PScyOCcgeT0nOTYnIHdpZHRoPScyMicgaGVpZ2h0PScxNCcgcng9JzMnIGZpbGw9JyMyYTQwMzAnIG9wYWNpdHk9JzAuOCcvPgogIDxyZWN0IHg9JzM0JyB5PSc5MCcgd2lkdGg9JzEwJyBoZWlnaHQ9JzEyJyByeD0nMicgZmlsbD0nIzNhNTA0MCcgb3BhY2l0eT0nMC43Jy8+CiAgPHJlY3QgeD0nNTgnIHk9JzExMCcgd2lkdGg9JzIwJyBoZWlnaHQ9JzgyJyByeD0nNCcgZmlsbD0nIzMwMjAxMCcgb3BhY2l0eT0nMC44NScvPgogIDxyZWN0IHg9JzU4JyB5PScxMDQnIHdpZHRoPScyMCcgaGVpZ2h0PScxNCcgcng9JzMnIGZpbGw9JyMzYTJhMTgnIG9wYWNpdHk9JzAuOCcvPgogIDxyZWN0IHg9JzYyJyB5PSc5Nycgd2lkdGg9JzEyJyBoZWlnaHQ9JzEyJyByeD0nMicgZmlsbD0nIzRhM2EyOCcgb3BhY2l0eT0nMC43Jy8+CiAgPHBhdGggZD0nTTMwOCAxMjIgUTI5NCAxMzIgMjkwIDE1NyBMMjkwIDE5NyBRMjkwIDIwNyAzMDAgMjA3IEwzMzAgMjA3IFEzNDAgMjA3IDM0MCAxOTcgTDM0MCAxNTcgUTMzNSAxMzIgMzIwIDEyMlonIGZpbGw9JyNlOGUwY2MnIG9wYWNpdHk9JzAuMTMnLz4KICA8cGF0aCBkPSdNMzA4IDExOCBRMzE4IDExMCAzMjIgMTE4JyBzdHJva2U9JyNjOWE5NmUnIHN0cm9rZS13aWR0aD0nMicgZmlsbD0nbm9uZScgb3BhY2l0eT0nMC40NScvPgogIDxsaW5lIHgxPSc5OCcgeTE9JzE4NicgeDI9JzI3OCcgeTI9JzE5Mycgc3Ryb2tlPScjYzBjMGMwJyBzdHJva2Utd2lkdGg9JzMnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgb3BhY2l0eT0nMC4zMicvPgogIDxyZWN0IHg9Jzc4JyB5PScxODQnIHdpZHRoPScyNCcgaGVpZ2h0PSc4JyByeD0nMicgZmlsbD0nIzJhMWExMCcgb3BhY2l0eT0nMC41NScvPgogIDxyZWN0IHg9JzEyOCcgeT0nMTUyJyB3aWR0aD0nMTY0JyBoZWlnaHQ9JzQ1JyByeD0nNicgZmlsbD0nIzJhMWUxNCcgb3BhY2l0eT0nMC44Jy8+CiAgPGVsbGlwc2UgY3g9JzE1MCcgY3k9JzE2Nycgcng9JzE4JyByeT0nMTgnIGZpbGw9JyMxYTFhMTQnLz48ZWxsaXBzZSBjeD0nMTUwJyBjeT0nMTY3JyByeD0nMTInIHJ5PScxMicgZmlsbD0nIzZlYjg5YScgb3BhY2l0eT0nMC42Jy8+PGVsbGlwc2UgY3g9JzE1MCcgY3k9JzE2Nycgcng9JzYnIHJ5PSc2JyBmaWxsPScjZTA1MDUwJyBvcGFjaXR5PScwLjg1Jy8+PGVsbGlwc2UgY3g9JzE1MCcgY3k9JzE2Nycgcng9JzE4JyByeT0nMTgnIGZpbGw9J25vbmUnIHN0cm9rZT0nIzFhMWEwZScgc3Ryb2tlLXdpZHRoPSc2Jy8+CiAgPGVsbGlwc2UgY3g9JzE5NCcgY3k9JzE2NCcgcng9JzE4JyByeT0nMTgnIGZpbGw9JyMxYTFhMTQnLz48ZWxsaXBzZSBjeD0nMTk0JyBjeT0nMTY0JyByeD0nMTInIHJ5PScxMicgZmlsbD0nI2M5YTk2ZScgb3BhY2l0eT0nMC41NScvPjxlbGxpcHNlIGN4PScxOTQnIGN5PScxNjQnIHJ4PSc2JyByeT0nNicgZmlsbD0nI2UwODA0MCcgb3BhY2l0eT0nMC44NScvPjxlbGxpcHNlIGN4PScxOTQnIGN5PScxNjQnIHJ4PScxOCcgcnk9JzE4JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYTFhMGUnIHN0cm9rZS13aWR0aD0nNicvPgogIDxlbGxpcHNlIGN4PScyMzgnIGN5PScxNjYnIHJ4PScxOCcgcnk9JzE4JyBmaWxsPScjMWExYTE0Jy8+PGVsbGlwc2UgY3g9JzIzOCcgY3k9JzE2Nicgcng9JzEyJyByeT0nMTInIGZpbGw9JyM2ZWI4OWEnIG9wYWNpdHk9JzAuNicvPjxlbGxpcHNlIGN4PScyMzgnIGN5PScxNjYnIHJ4PSc2JyByeT0nNicgZmlsbD0nI2MwMzA1MCcgb3BhY2l0eT0nMC44NScvPjxlbGxpcHNlIGN4PScyMzgnIGN5PScxNjYnIHJ4PScxOCcgcnk9JzE4JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYTFhMGUnIHN0cm9rZS13aWR0aD0nNicvPgogIDxlbGxpcHNlIGN4PScyNjgnIGN5PScxNzAnIHJ4PScxNScgcnk9JzE1JyBmaWxsPScjMWExYTE0Jy8+PGVsbGlwc2UgY3g9JzI2OCcgY3k9JzE3MCcgcng9JzEwJyByeT0nMTAnIGZpbGw9JyNkNGE4NDAnIG9wYWNpdHk9JzAuNTUnLz48ZWxsaXBzZSBjeD0nMjY4JyBjeT0nMTcwJyByeD0nNScgcnk9JzUnIGZpbGw9JyNlMDcwNDAnIG9wYWNpdHk9JzAuODUnLz48ZWxsaXBzZSBjeD0nMjY4JyBjeT0nMTcwJyByeD0nMTUnIHJ5PScxNScgZmlsbD0nbm9uZScgc3Ryb2tlPScjMWExYTBlJyBzdHJva2Utd2lkdGg9JzUnLz4KICA8ZWxsaXBzZSBjeD0nMjAwJyBjeT0nMjAyJyByeD0nODInIHJ5PSc3JyBmaWxsPScjNmViODlhJyBvcGFjaXR5PScwLjA1Jy8+Cjwvc3ZnPg==',
 ];
 const menuData = {
-  // ─ SIGNATURE ROLLS ─
-  'rainbow-roll': {
-    name:'Rainbow Roll', price:'$18', category:'Signature Roll',
-    photo: sitePhotos[1],
-    desc:'California roll as the base, topped with a vibrant array of tuna, salmon, yellowtail, shrimp, and avocado. ',
-    fact:'The Rainbow Roll, a quintessential American-style sushi creation, likely emerged in Los Angeles in the 1980s. It was designed to showcase multiple fish simultaneously — inspired by the California Roll success.',
-    tags:['tuna','salmon','yellowtail','shrimp','avocado','crab']
-  },
-  'spider-roll': {
-    name:'Spider Roll', price:'$15', category:'Signature Roll',
-    desc:'Soft-shell crab tempura, cucumber, avocado, and spicy mayo, finished with tobiko. The crab legs peek out from the ends like a spider\'s legs.',
-    fact:'Soft-shell crab refers to blue crabs harvested right after molting their old shells. This 24-hour window gives chefs access to a uniquely tender, fully edible crab — shell and all.',
-    tags:['soft-shell crab','cucumber','avocado','spicy mayo','tobiko']
-  },
-  'volcano-roll': {
-    name:'Volcano Roll', price:'$17', category:'Signature Roll',
-    photo: sitePhotos[2],
-    desc:'Crunchy shrimp inside, topped with baked scallop, spicy kani, and our house volcano sauce. Broiled to perfection with a dramatic presentation.',
-    fact:'Baked sushi rolls are a uniquely American sushi innovation. Japanese purists initially resisted them, but they\'ve become beloved globally for their rich, warming contrast to traditional cold preparations.',
-    tags:['shrimp','scallop','spicy kani','volcano sauce','baked']
-  },
-  'maki-special': {
-    name:'Maki Special Roll', price:'$19', category:'Signature Roll',
-    photo: sitePhotos[3],
-    desc:'Our chef\'s signature creation — fresh tuna, salmon, and yellowtail inside with truffle oil, topped with crispy onions and a house ponzu drizzle. Exclusive to Maki.',
-    fact:'Ponzu is a Japanese citrus-based sauce made with yuzu, a fruit that resembles a small grapefruit but has a uniquely floral, tart flavor. True yuzu is so prized in Japan that a single fruit can cost $10 or more.',
-    tags:['tuna','salmon','yellowtail','truffle oil','ponzu','chef special']
-  },
-  'boston-roll': {
-    name:'Boston Roll', price:'$13', category:'Signature Roll',
-    desc:'Poached shrimp, avocado, and cucumber — a local classic done right. Light, clean, and perfect for those new to sushi or seeking an elegant simplicity.',
-    fact:'The Boston Roll is named as a nod to New England\'s proud seafood heritage. Massachusetts waters have supplied fresh shellfish to the region\'s tables for centuries — predating sushi by at least 300 years.',
-    tags:['shrimp','avocado','cucumber','classic','beginner-friendly']
-  },
-  'spicy-tuna': {
-    name:'Spicy Tuna Roll', price:'$14', category:'Signature Roll',
-    photo: sitePhotos[4],
-    desc:'Hand-chopped tuna mixed with our house spicy aioli, cucumber, and sesame seeds. A beloved staple with just the right level of heat.',
-    fact:'Sriracha, commonly used in spicy mayo, was invented by David Tran, a Vietnamese immigrant, in Los Angeles in 1980. He named it after Si Racha, a coastal city in Thailand where the recipe originated.',
-    tags:['tuna','spicy aioli','cucumber','sesame','tobiko']
-  },
-  'caterpillar-roll': {
-    name:'Caterpillar Roll', price:'$16', category:'Signature Roll',
-    photo: sitePhotos[5],
-    desc:'Eel and cucumber inside, completely wrapped in thin avocado slices to resemble a caterpillar, drizzled with eel sauce and sesame.',
-    fact:'Eel (unagi) has been a prized delicacy in Japan for over 1,000 years. July 23rd — "Doyo no Ushi no Hi" — is a national day in Japan dedicated to eating eel for strength during hot summer months.',
-    tags:['eel','cucumber','avocado','eel sauce','sesame']
-  },
+  'cream-cheese-dumplings': { name:'Cream Cheese Dumplings', price:'$7.95', category:'Starters', desc:'Crispy wontons with cream cheese, kanikama, and scallion filling [5 pcs].', tags:[] },
+  'edamame': { name:'Edamame', price:'$7.95', category:'Starters', desc:'Steamed edamame with sea salt.', tags:[] },
+  'gyoza': { name:'Gyoza', price:'$7.95', category:'Starters', desc:'Fried Japanese pork and cabbage dumplings [5pcs].', tags:[] },
+  'maki-signature-spicy-edamame': { name:'Maki Signature Spicy Edamame', price:'$8.95', category:'Starters', desc:'Steamed edamame with sea salt and Japanese seven spice schichimi pepper.', tags:[] },
+  'miso-soup': { name:'Miso Soup', price:'$1.95', category:'Starters', desc:'Miso broth with wakame and silken tofu.', tags:[] },
+  'nori-chips': { name:'Nori Chips', price:'$5.95', category:'Starters', desc:'Tempura nori chips served with house spicy mayo.', tags:[] },
+  'seaweed-salad': { name:'Seaweed Salad', price:'$7.95', category:'Starters', desc:'Wakame seaweed marinated in sesame oil, Japanese spices, and sesame seeds.', tags:[] },
+  'soft-shell-crab-tempura': { name:'Soft Shell Crab Tempura', price:'$14.95', category:'Starters', desc:'Tempura fried softshell crab and vegetables served with savory tempura sauce.', tags:[] },
+  'spicy-tuna-rice-crispy': { name:'Spicy Tuna Rice Crispy', price:'$19.95', category:"Maki's Signature Sushi Bar Specials", desc:'Crunchy rice crispy squares topped with avocado, spicy tuna, scallions, kabayaki glaze, spicy mayo, and sesame seeds.', tags:[] },
+  'tempura-shrimp': { name:'Tempura Shrimp', price:'$13.95', category:'Starters', desc:'Tempura fried tender shrimp and vegetables served with savory tempura sauce.', tags:[] },
+  'tempura-vegetables': { name:'Tempura Vegetables', price:'$12.95', category:'Starters', desc:'Broccoli, onion rings, and sweet potato served with savory tempura sauce.', tags:[] },
+  'tuna-tataki': { name:'Tuna Tataki', price:'$18.95', category:"Maki's Signature Sushi Bar Specials", desc:'Black pepper seared tuna with lemon soy vinaigrette.', tags:[] },
+  'yellowtail-firecracker': { name:'Yellowtail Firecracker', price:'$19.95', category:"Maki's Signature Sushi Bar Specials", desc:'Yellowtail topped with fresh jalapeños, Japanese seven spice schichimi pepper, sesame oil, sriracha, and lemon soy vinaigrette.', tags:[] },
 
-  // ─ NIGIRI & SASHIMI ─
-  'tuna-nigiri': {
-    name:'Tuna Nigiri', price:'$6 (2pc)', category:'Nigiri',
-    desc:'Premium-grade bluefin or yellowfin tuna, hand-pressed over seasoned sushi rice. The purest expression of quality fish.',
-    fact:'Bluefin tuna is one of the most expensive foods in the world. A single fish sold at Tokyo\'s Toyosu Market in 2023 fetched over $3.1 million — though that is an extreme auction record.',
-    tags:['tuna','sushi rice','wasabi','ginger']
-  },
-  'salmon-nigiri': {
-    name:'Salmon Nigiri', price:'$6 (2pc)', category:'Nigiri',
-    desc:'Silky Atlantic salmon over hand-formed sushi rice, brushed with a touch of house soy. ',
-    fact:'Raw salmon sushi is a relatively recent innovation. Until the 1980s, salmon was considered too fatty and parasite-prone for sushi in Japan. Norwegian diplomats literally gifted salmon to Japan to change this perception.',
-    tags:['salmon','sushi rice','house soy']
-  },
-  'yellowtail-nigiri': {
-    name:'Yellowtail Nigiri', price:'$7 (2pc)', category:'Nigiri',
-    desc:'Clean, mild Hamachi (Japanese yellowtail) with a delicate finish — perfect for those who enjoy a nuanced, lighter fish.',
-    fact:'Hamachi (yellowtail) is so popular in Japan that it has different names depending on its age and size — a cultural tradition showing how deeply fish is woven into Japanese identity.',
-    tags:['yellowtail','hamachi','sushi rice','light']
-  },
-  'eel-nigiri': {
-    name:'Eel Nigiri (Unagi)', price:'$8 (2pc)', category:'Nigiri',
-    desc:'Glazed freshwater eel grilled over charcoal, served warm atop sushi rice with sweet eel sauce. ',
-    fact:'Unagi kabayaki — grilled glazed eel — has been made in Japan since the Edo period (1603–1868). Traditional preparation takes years to master; the fish must be split, skewered, steamed, then grilled twice.',
-    tags:['eel','eel sauce','charcoal grilled','warm']
-  },
-  'tuna-sashimi': {
-    name:'Tuna Sashimi', price:'$14 (6pc)', category:'Sashimi',
-    photo: sitePhotos[2],
-    desc:'Six pristine slices of premium tuna, served with wasabi and pickled ginger. Served with wasabi and pickled ginger.',
-    fact:'Sashimi predates sushi by centuries in Japan. It was originally called "namasu" and was consumed as far back as the Heian period (794–1185 AD), well before rice was paired with fish.',
-    tags:['tuna','no rice','gluten-free','pure']
-  },
-  'salmon-sashimi': {
-    name:'Salmon Sashimi', price:'$14 (6pc)', category:'Sashimi',
-    desc:'Six slices of fresh Atlantic salmon, Served with wasabi and pickled ginger.',
-    fact:'The omega-3 fatty acids that give salmon its rich flavor are the same compounds credited with heart health benefits. Wild-caught Pacific salmon contains among the highest concentrations of any food.',
-    tags:['salmon','no rice','gluten-free','omega-3']
-  },
-  'chef-sashimi': {
-    name:'Chef\'s Sashimi Platter', price:'$34', category:'Sashimi',
-    photo: sitePhotos[0],
-    desc:'A curated selection of 15 pieces of our freshest daily sashimi — the chef\'s selection based on daily availability.',
-    fact:'The concept of "omakase" — trusting the chef — is central to Japanese dining culture. The word literally translates to "I leave it to you," reflecting a profound respect between diner and artisan.',
-    tags:['seasonal','chef choice','15pc']
-  },
+  '114-roll': { name:'114 Roll', price:'$15.95', category:"Maki's Special Rolls", desc:'Tempura shrimp, cream cheese, asparagus topped with kanikama salad, tempura crunch, mozzarella cheese, masago, and scallions with white sauce and kabayaki glaze.', tags:[] },
+  'alaska-roll': { name:'Alaska Roll*', price:'$11.95', category:"Maki's Special Rolls", desc:'Salmon, snow crab, avocado, and masago with nori outside.', tags:[] },
+  'asparagus-roll': { name:'Asparagus Roll', price:'$7.95', category:"Maki's Special Rolls", desc:'Tempura asparagus, with kabayaki glaze.', tags:[] },
+  'avocado-roll': { name:'Avocado Roll', price:'$6.95', category:"Maki's Special Rolls", desc:'Avocado and rice with nori outside.', tags:[] },
+  'beauty-and-the-beast-roll': { name:'Beauty and the Beast Roll*', price:'$15.95', category:"Maki's Special Rolls", desc:'Avocado, cucumber, and kanikama topped with tuna, avocado, broiled eel, and kabayaki glaze.', tags:[] },
+  'beef-teriyaki-roll': { name:'Beef Teriyaki Roll', price:'$9.95', category:"Maki's Special Rolls", desc:'Grilled beef, asparagus, cucumber, and kabayaki glaze.', tags:[] },
+  'blazing-tsunami-roll': { name:'Blazing Tsunami Roll*', price:'$18.95', category:"Maki's Special Rolls", desc:'Spicy tuna, cucumber, and avocado topped with torched yellowtail, salmon, spicy mayo, kabayaki glaze, scallions, masago, and sesame seeds.', tags:[] },
+  'blizzard-roll': { name:'Blizzard Roll', price:'$11.95', category:"Maki's Special Rolls", desc:'Yellowtail and scallions with white sauce and kabayaki glaze. [Tempura Fried]', tags:[] },
+  'boston-roll': { name:'Boston Roll', price:'$10.95', category:"Maki's Special Rolls", desc:'Steamed shrimp, kanikama, avocado, tempura crunch, and masago.', tags:[] },
+  'bubba-roll': { name:'Bubba Roll', price:'$14.95', category:"Maki's Special Rolls", desc:'Tempura shrimp, cream cheese, and scallions topped with steamed shrimp, avocado, and kabayaki glaze.', tags:[] },
+  'buffalo-chicken-roll': { name:'Buffalo Chicken Roll', price:'$14.95', category:"Maki's Special Rolls", desc:'Crispy chicken tenders, romaine lettuce, and mozzarella cheese wrapped in rice paper topped with white sauce and buffalo sauce.', tags:[] },
+  'butterfly-roll': { name:'Butterfly Roll', price:'$15.95', category:"Maki's Special Rolls", desc:'Avocado and tempura yellowtail topped with fresh strawberry, kiwi, and sweet chili sauce.', tags:[] },
+  'california-roll': { name:'California Roll', price:'$7.95', category:"Maki's Special Rolls", desc:'Avocado, cucumber, and kanikama.', tags:[] },
+  'california-roll-with-snow-crab': { name:'California Roll with Snow Crab', price:'$12.95', category:"Maki's Special Rolls", desc:'Snow crab, avocado, and cucumber.', tags:[] },
+  'caterpillar-roll': { name:'Caterpillar Roll', price:'$13.95', category:"Maki's Special Rolls", desc:'Broiled eel, avocado, and cucumber topped with avocado and kabayaki glaze.', tags:[] },
+  'chicken-teriyaki-roll': { name:'Chicken Teriyaki Roll', price:'$8.95', category:"Maki's Special Rolls", desc:'Grilled chicken with kabayaki glaze.', tags:[] },
+  'crab-rangoon-roll': { name:'Crab Rangoon Roll', price:'$12.95', category:"Maki's Special Rolls", desc:'Tempura kanikama, cream cheese, masago, avocado, cucumber with spicy mayo and kabayaki glaze.', tags:[] },
+  'crazy-roll': { name:'Crazy Roll', price:'$17.95', category:"Maki's Special Rolls", desc:'Avocado, cucumber, and kanikama roll tempura fried and topped with oven baked seafood, masago, scallions, and kabayaki glaze. [Tempura Fried]', tags:[] },
+  'crunchy-crab-roll': { name:'Crunchy Crab Roll', price:'$7.95', category:"Maki's Special Rolls", desc:'Tempura crunch and kanikama salad.', tags:[] },
+  'cucumber-roll': { name:'Cucumber Roll', price:'$6.95', category:"Maki's Special Rolls", desc:'Crunchy cucumber, rice, and toasted sesame seeds with nori outside.', tags:[] },
+  'dancing-eel-roll': { name:'Dancing Eel Roll', price:'$14.95', category:"Maki's Special Rolls", desc:'Avocado, cucumber, kanikama, topped with broiled eel, avocado, and kabayaki glaze.', tags:[] },
+  'diablo-roll': { name:'Diablo Roll*', price:'$18.95', category:"Maki's Special Rolls", desc:'Tempura soft shell crab, avocado, cucumber, and asparagus topped with kanikama salad, spicy tuna, masago, scallions, and kabayaki glaze.', tags:[] },
+  'double-tuna-roll': { name:'Double Tuna Roll*', price:'$15.95', category:"Maki's Special Rolls", desc:'Spicy tuna, scallions, and cucumber topped with tuna.', tags:[] },
+  'dynamite-roll': { name:'Dynamite Roll*', price:'$17.95', category:"Maki's Special Rolls", desc:'Tuna, white tuna, avocado, and wasabi topped with yellowtail and scallions.', tags:[] },
+  'eel-roll': { name:'Eel Roll', price:'$9.95', category:"Maki's Special Rolls", desc:'Broiled eel, avocado, and cucumber with kabayaki glaze.', tags:[] },
+  'firecracker-roll': { name:'Firecracker Roll*', price:'$15.95', category:"Maki's Special Rolls", desc:'Tempura shrimp and avocado topped with kanikama salad, spicy tuna, fresh jalapeños, spicy mayo, and kabayaki glaze.', tags:[] },
+  'hurricane-roll': { name:'Hurricane Roll', price:'$15.95', category:"Maki's Special Rolls", desc:'Tempura shrimp, avocado, and cucumber topped with broiled eel, avocado, and kabayaki glaze.', tags:[] },
+  'incredible-hulk-roll': { name:'Incredible Hulk Roll*', price:'$21.95', category:"Maki's Special Rolls", desc:'Tempura shrimp, spicy tuna, avocado, cucumber, and asparagus topped with snow crab, sliced avocado, tempura crunch, scallions, masago, spicy mayo, kabayaki glaze, and sriracha.', tags:[] },
+  'jalapeno-roll': { name:'Jalapeño Roll*', price:'$15.95', category:"Maki's Special Rolls", desc:'Tempura jalapeños and cream cheese topped with salmon, avocado, spicy mayo, and sriracha.', tags:[] },
+  'kamikaze-roll': { name:'Kamikaze Roll*', price:'$11.95', category:"Maki's Special Rolls", desc:'Tuna, salmon, tempura crunch, avocado, scallions, and masago with nori outside.', tags:[] },
+  'lava-roll': { name:'Lava Roll*', price:'$15.95', category:"Maki's Special Rolls", desc:'Salmon, cream cheese, avocado, topped with oven baked white tuna and kanikama salad, scallions, sriracha, spicy mayo, and kabayaki glaze. [Tempura Fried]', tags:[] },
+  'maki-sumo-roll': { name:"Maki's Sumo Roll*", price:'$15.95', category:"Maki's Special Rolls", desc:'Tuna, salmon, white tuna, kanikama, avocado, and cream cheese topped with masago, scallions, spicy mayo, kabayaki glaze, and white sauce. [Tempura Fried]', tags:[] },
+  'mango-roll': { name:'Mango Roll*', price:'$14.95', category:"Maki's Special Rolls", desc:'Spicy tuna and cucumber topped with fresh mango and sweet chili sauce.', tags:[] },
+  'mexican-roll': { name:'Mexican Roll*', price:'$10.95', category:"Maki's Special Rolls", desc:'Tempura shrimp, fresh jalapeños, seven spice schichimi pepper, and spicy mayo.', tags:[] },
+  'naruto-roll': { name:'Naruto Roll*', price:'$12.95', category:"Maki's Special Rolls", desc:'Tuna, salmon, white tuna, kanikama, and avocado wrapped in cucumber with lemon soy vinaigrette. [No Rice/No Nori]', tags:[] },
+  'peabody-roll': { name:'Peabody Roll*', price:'$15.95', category:"Maki's Special Rolls", desc:'Kanikama salad and tempura crunch topped with avocado, broiled eel, smoked salmon, and kabayaki glaze.', tags:[] },
+  'philly-roll': { name:'Philly Roll*', price:'$9.95', category:"Maki's Special Rolls", desc:'Smoked salmon, cream cheese, and avocado.', tags:[] },
+  'rainbow-roll': { name:'Rainbow Roll*', price:'$16.95', category:"Maki's Special Rolls", desc:'Avocado, cucumber, and kanikama topped with avocado, salmon, tuna, white tuna, and yellowtail.', tags:[] },
+  'salmon-roll': { name:'Salmon Roll*', price:'$7.95', category:"Maki's Special Rolls", desc:'Salmon with nori outside.', tags:[] },
+  'salmon-skin-roll': { name:'Salmon Skin Roll', price:'$7.95', category:"Maki's Special Rolls", desc:'Crispy salmon skin, asparagus, cucumber, scallions, and kabayaki glaze.', tags:[] },
+  'salmon-tempura-roll': { name:'Salmon Tempura Roll', price:'$10.95', category:"Maki's Special Rolls", desc:'Tempura salmon, avocado, and mayo topped with kabayaki glaze.', tags:[] },
+  'shrimp-tempura-roll': { name:'Shrimp Tempura Roll', price:'$10.95', category:"Maki's Special Rolls", desc:'Tempura shrimp, kanikama, cream cheese, avocado, and kabayaki glaze.', tags:[] },
+  'spicy-salmon-roll': { name:'Spicy Salmon Roll*', price:'$9.95', category:"Maki's Special Rolls", desc:'Salmon, sriracha, scallions, and cucumber.', tags:[] },
+  'spicy-scallop-roll': { name:'Spicy Scallop Roll*', price:'$11.95', category:"Maki's Special Rolls", desc:'Sea Scallops, sriracha, scallions, and cucumber.', tags:[] },
+  'spicy-tuna-roll': { name:'Spicy Tuna Roll*', price:'$9.95', category:"Maki's Special Rolls", desc:'Spicy tuna, scallions, and cucumber.', tags:[] },
+  'spicy-yellowtail-roll': { name:'Spicy Yellowtail Roll*', price:'$9.95', category:"Maki's Special Rolls", desc:'Yellowtail, sriracha, scallions, and cucumber.', tags:[] },
+  'spider-roll': { name:'Spider Roll*', price:'$14.95', category:"Maki's Special Rolls", desc:'Tempura soft shell crab, asparagus, avocado, cucumber, masago, scallions, and kabayaki glaze.', tags:[] },
+  'super-crunch-roll': { name:'Super Crunch Roll*', price:'$14.95', category:"Maki's Special Rolls", desc:'Kanikama salad and tempura crunch topped with smoked salmon, scallions, and kabayaki glaze.', tags:[] },
+  'sunset-roll': { name:'Sunset Roll*', price:'$15.95', category:"Maki's Special Rolls", desc:'Avocado and kanikama salad topped with salmon, thinly sliced lemon, lemon soy vinaigrette, and kabayaki glaze.', tags:[] },
+  'sushi-pizza': { name:'Sushi Pizza*', price:'$18.95', category:"Maki's Special Rolls", desc:'Tempura nori and sushi rice "crust" topped with avocado, tuna, steamed shrimp, scallions, and white sauce.', tags:[] },
+  'sweet-potato-roll': { name:'Sweet Potato Roll', price:'$7.95', category:"Maki's Special Rolls", desc:'Tempura sweet potato and kabayaki glaze.', tags:[] },
+  'tropical-roll': { name:'Tropical Roll', price:'$15.95', category:"Maki's Special Rolls", desc:'Tempura shrimp, avocado, and cucumber, topped with fresh slices of strawberry and mango, and sweet chili sauce.', tags:[] },
+  'tuna-roll': { name:'Tuna Roll*', price:'$7.95', category:"Maki's Special Rolls", desc:'Tuna with nori outside.', tags:[] },
+  'vegetable-tempura-roll': { name:'Vegetable Tempura Roll', price:'$9.95', category:"Maki's Special Rolls", desc:'Asparagus, broccoli, and sweet potato tempura with kabayaki glaze.', tags:[] },
+  'volcano-roll': { name:'Volcano Roll', price:'$16.95', category:"Maki's Special Rolls", desc:'Steamed shrimp, asparagus, and cream cheese topped with baked kanikama, scallop, and snow crab salad with tempura crunch, spicy mayo, white sauce, scallions, and masago.', tags:[] },
+  'yellowtail-roll': { name:'Yellowtail Roll*', price:'$8.95', category:"Maki's Special Rolls", desc:'Yellowtail and scallions with nori outside.', tags:[] },
 
-  // ─ APPETIZERS ─
-  'edamame': {
-    name:'Edamame', price:'$5', category:'Appetizer',
-    desc:'Steamed young soybeans, lightly salted and served in the pod. The perfect communal start to your Maki experience.',
-    fact:'Edamame means "beans on branches" in Japanese. They\'ve been grown in China and Japan for over 2,000 years, but only became popular in the United States in the 1990s — now consumed in enormous quantities.',
-    tags:['vegan','gluten-free','shareable','classic']
-  },
-  'gyoza': {
-    name:'Pan-Fried Gyoza', price:'$8 (6pc)', category:'Appetizer',
-    desc:'Crispy-bottomed dumplings filled with pork and vegetables, served with our house ponzu dipping sauce. Golden underneath, tender on top.',
-    fact:'Gyoza are the Japanese adaptation of Chinese jiaozi dumplings. They were introduced to Japan by soldiers returning from China after World War II and have since become a staple of Japanese cuisine.',
-    tags:['pork','pan-fried','ponzu','6 pieces']
-  },
-  'miso-soup': {
-    name:'Miso Soup', price:'$3', category:'Appetizer',
-    desc:'Traditional dashi broth with white miso paste, silken tofu, wakame seaweed, and sliced scallions. Warming, grounding, essential.',
-    fact:'Miso has been fermented in Japan since the 7th century. It contains living probiotic cultures and was used for centuries as a military ration — samurai warriors would drink miso broth before battle for strength.',
-    tags:['vegan-option','tofu','wakame','warm','traditional']
-  },
-  'agedashi-tofu': {
-    name:'Agedashi Tofu', price:'$8', category:'Appetizer',
-    desc:'Lightly battered silken tofu, fried until golden, served in a delicate dashi broth with grated daikon, bonito flakes, and scallions.',
-    fact:'Agedashi tofu has been documented in Japanese cookbooks since 1782. The starchy coating on the tofu thickens the dashi broth as it rests, creating a uniquely silky, rich sauce.',
-    tags:['tofu','dashi','daikon','bonito']
-  },
-  'shrimp-tempura-app': {
-    name:'Shrimp Tempura', price:'$11', category:'Appetizer',
-    desc:'Four jumbo shrimp in an impossibly light, airy batter — served with tempura dipping sauce and grated daikon.',
-    fact:'Tempura batter was introduced to Japan by Portuguese missionaries in the 16th century. The technique was adopted and perfected by Japanese chefs into what many consider the world\'s finest frying tradition.',
-    tags:['shrimp','light batter','dipping sauce','4 pieces']
-  },
-  'sunomono': {
-    name:'Sunomono (Cucumber Salad)', price:'$7', category:'Appetizer',
-    desc:'Thinly sliced Japanese cucumber marinated in seasoned rice vinegar with sesame seeds and wakame. Light, refreshing, palate-cleansing.',
-    fact:'Sunomono is part of a Japanese culinary philosophy called "kaiseki" — the belief that meals should include something cooling and cleansing alongside rich dishes to maintain balance and digestive harmony.',
-    tags:['vegan','gluten-free','light','refreshing']
-  },
+  'chirashi': { name:'Chirashi', price:'$32.95', category:'Sushi/Sashimi Combinations', desc:"18 pieces chef's choice sashimi over a bed of seasoned sushi rice.", tags:[] },
+  'eel-unagi': { name:'Eel (Unagi)', price:'$6.95 / $8.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
+  'imitation-crab-kanikama': { name:'Imitation Crab (Kanikama)', price:'$4.95 / $6.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
+  'maki-roll-combo': { name:'Maki Roll Combo', price:'$24.95', category:'Sushi/Sashimi Combinations', desc:'California Roll, Eel Roll, Spicy Tuna Roll.', tags:[] },
+  'maki-special-combo': { name:'Maki Special Combo', price:'$29.95', category:'Sushi/Sashimi Combinations', desc:'Crunchy Crab Roll, Mexican Roll, Sunset Roll.', tags:[] },
+  'salmon-sake': { name:'Salmon (Sake)', price:'$5.95 / $7.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
+  'sashimi-deluxe': { name:'Sashimi Deluxe', price:'$43.95', category:'Sushi/Sashimi Combinations', desc:"25 pieces chef's choice sashimi with a side of seasoned sushi rice.", tags:[] },
+  'scallop-hotategai': { name:'Scallop (Hotategai)', price:'$7.95 / $7.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
+  'steamed-shrimp-ebi': { name:'Steamed Shrimp (Ebi)', price:'$5.95 / $7.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
+  'sushi-boat-for-2': { name:'Sushi Boat for 2', price:'$58.95', category:'Sushi/Sashimi Combinations', desc:'6 pieces nigiri, 9 pieces sashimi, Crunchy Crab Roll, Shrimp Tempura Roll, and Tuna Roll.', tags:[] },
+  'sushi-boat-for-4': { name:'Sushi Boat for 4', price:'$134.95', category:'Sushi/Sashimi Combinations', desc:'9 pieces nigiri, 12 pieces sashimi, Blizzard Roll, California Roll, Crunchy Crab Roll, Mexican Roll, Rainbow Roll, Salmon Roll, Spicy Tuna Roll, and Spider Roll.', tags:[] },
+  'sushi-deluxe': { name:'Sushi Deluxe', price:'$29.95', category:'Sushi/Sashimi Combinations', desc:'Tuna Roll with 10 pieces assorted nigiri.', tags:[] },
+  'tuna-maguro': { name:'Tuna (Maguro)', price:'$5.95 / $7.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
+  'white-tuna-escolar': { name:'White Tuna (Escolar)', price:'$5.95 / $7.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
+  'yellowtail-hamachi': { name:'Yellowtail (Hamachi)', price:'$6.95 / $8.95', category:'Nigiri & Sashimi', desc:'2pcs/3pcs.', tags:[] },
 
-  // ─ ENTREES & GRILL ─
-  'chicken-teriyaki': {
-    name:'Chicken Teriyaki', price:'$18', category:'Grill Entree',
-    desc:'Grilled chicken thigh in our classic teriyaki glaze, charred at the edges and tender within. Served with steamed rice and seasonal vegetables.',
-    fact:'Teriyaki chicken became popular in the United States after Japanese immigrants began adapting the technique using local chickens in Hawaii in the 1960s. Hawaiian teriyaki remains distinct from mainland Japanese versions.',
-    tags:['chicken','teriyaki','rice','classic','popular']
-  },
-  'filet-mignon': {
-    name:'Filet Mignon Teriyaki', price:'$32', category:'Grill Entree',
-    desc:'8oz premium filet mignon grilled with teriyaki glaze, served with miso soup, salad, and steamed rice. ',
-    fact:'The filet mignon comes from the tenderloin muscle, which gets almost zero exercise — making it the most tender cut on the animal. The French phrase means "cute filet" or "dainty filet," coined in Paris in the 1800s.',
-    tags:['beef','filet mignon','8oz','teriyaki']
-  },
-  'udon-noodle': {
-    name:'Udon Noodle Soup', price:'$16', category:'Entree',
-    desc:'Thick, chewy wheat udon noodles in a rich dashi broth with your choice of protein, kamaboko fish cake, scallions, and nori.',
-    fact:'Udon noodles are among the oldest noodles in Japan, introduced from China over 1,200 years ago. The thick wheat noodles became especially popular in the Edo period as affordable, filling street food.',
-    tags:['noodles','dashi broth','choice of protein','warming']
-  },
+  'beef-teriyaki': { name:'Beef Teriyaki', price:'$18.95', category:'Katsu & Teriyaki', desc:'Served with steamed white rice, steamed mixed vegetables, and miso soup.', tags:[] },
+  'beef-teriyaki-kids': { name:'Beef Teriyaki', price:'$12.95', category:"Children's Menu", desc:'Choice of one side: French Fries, Steamed White Rice, Tempura Sweet Potato, or Steamed Mixed Vegetables.', tags:[] },
+  'chicken-fingers-kids': { name:'Chicken Fingers', price:'$10.95', category:"Children's Menu", desc:'Choice of one side: French Fries, Steamed White Rice, Tempura Sweet Potato, or Steamed Mixed Vegetables.', tags:[] },
+  'chicken-katsu': { name:'Chicken Katsu', price:'$16.95', category:'Katsu & Teriyaki', desc:'Served with steamed white rice, steamed mixed vegetables, and miso soup.', tags:[] },
+  'chicken-katsu-curry': { name:'Chicken Katsu Curry', price:'$20.95', category:'Katsu & Teriyaki', desc:'Served with steamed white rice, steamed mixed vegetables, and miso soup.', tags:[] },
+  'chicken-katsu-ramen': { name:'Chicken Katsu Ramen', price:'$17.95', category:'Noodle Soup', desc:'Fried chicken katsu, soy marinated bamboo, nori, and ramen noodles in a rich pork bone broth. [add Spicy Pepper Paste +2]', tags:[] },
+  'chicken-teriyaki': { name:'Chicken Teriyaki', price:'$16.95', category:'Katsu & Teriyaki', desc:'Served with steamed white rice, steamed mixed vegetables, and miso soup.', tags:[] },
+  'chicken-teriyaki-kids': { name:'Chicken Teriyaki', price:'$10.95', category:"Children's Menu", desc:'Choice of one side: French Fries, Steamed White Rice, Tempura Sweet Potato, or Steamed Mixed Vegetables.', tags:[] },
+  'egg-fried-rice': { name:'Egg Fried Rice', price:'$12.95', category:'Fried Rice', desc:'With peas. Add beef +5 | add chicken +4.', tags:[] },
+  'salmon-teriyaki': { name:'Salmon Teriyaki', price:'$21.95', category:'Katsu & Teriyaki', desc:'Served with steamed white rice, steamed mixed vegetables, and miso soup.', tags:[] },
+  'tempura-udon': { name:'Tempura Udon', price:'$14.95', category:'Noodle Soup', desc:'Tempura shrimp and tempura vegetables with udon noodles and soy broth.', tags:[] },
 
-  // ─ DRINKS & DESSERT ─
-  'sake': {
-    name:'House Sake (Hot or Cold)', price:'$8 / carafe', category:'Drink',
-    desc:'Our carefully selected house sake — enjoy it gently warmed in a traditional tokkuri carafe, or chilled on ice. Smooth, clean, and pairs beautifully with everything on our menu.',
-    fact:'Sake has been brewed in Japan for over 2,000 years. In ancient Japan, sake was exclusively produced in the Imperial court; it later spread to Shinto shrines, and eventually to commercial brewers by the 17th century.',
-    tags:['alcohol','hot or cold','traditional','gluten-contains wheat']
-  },
-  'japanese-beer': {
-    name:'Japanese Beer', price:'$6', category:'Drink',
-    desc:'Sapporo, Asahi, or Kirin on draft or bottle. Crisp, refreshing lagers brewed to complement the clean flavors of sushi.',
-    fact:'Sapporo is Japan\'s oldest beer brand, founded in 1876 by a German-trained Japanese brewer. The famous Sapporo brewery in Hokkaido was established to industrialize Japan\'s cold northern territory.',
-    tags:['alcohol','Sapporo','Asahi','Kirin','draft or bottle']
-  },
-  'green-tea': {
-    name:'Japanese Green Tea', price:'$4', category:'Drink',
-    desc:'Hot or iced premium sencha or matcha green tea. ',
-    fact:'Green tea has been consumed in Japan since 805 AD, brought back by the monk Eicho from China. It was originally a medicinal drink and wasn\'t sweetened — Japanese tea culture values the pure, bitter complexity.',
-    tags:['non-alcoholic','hot or iced','antioxidant','traditional']
-  },
-  'mochi': {
-    name:'Mochi Ice Cream', price:'$7 (3pc)', category:'Dessert',
-    desc:'Three pieces of housemade mochi — chewy rice cake wrapped around ice cream. Choose from green tea, mango, or strawberry.',
-    fact:'Mochi has been eaten in Japan for over 1,000 years and features heavily in New Year celebrations. The pounding of rice into mochi — "mochitsuki" — is a cherished winter ritual still practiced across Japan.',
-    tags:['green tea','mango','strawberry','3 pieces','gluten-free']
-  },
-  'tempura-ice-cream': {
-    name:'Tempura Ice Cream', price:'$9', category:'Dessert',
-    desc:'Vanilla ice cream coated in sponge cake and fried in light tempura batter served with honey and whipped cream.',
-    fact:'Fried ice cream appears in Japanese restaurants globally, but its origin is hotly contested. Some trace it to the 1893 Chicago World\'s Fair; others to Japanese-American fusion chefs in the 1970s in Los Angeles.',
-    tags:['vanilla','fried','hot-cold','hot-cold']
-  }
+  'apple-juice': { name:'Apple Juice', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'bottled-saratoga-water': { name:'Bottled Saratoga Water Sparkling/Still', price:'$3.95', category:'Non-Alcoholic Beverages', desc:'Sparkling or still bottled Saratoga water.', tags:[] },
+  'club-soda': { name:'Club Soda', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'coke': { name:'Coke', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'cranberry-juice': { name:'Cranberry Juice', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'diet-coke': { name:'Diet Coke', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'ginger-ale': { name:'Ginger Ale', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'hot-green-tea': { name:'Hot Green Tea', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'molten-chocolate-cake': { name:'Molten Chocolate Cake', price:'$11.95', category:'Sweets', desc:'Decadent chocolate cake with warm lava center with vanilla ice cream and strawberries.', tags:[] },
+  'orange-juice': { name:'Orange Juice', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'pineapple-juice': { name:'Pineapple Juice', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'shirley-temple': { name:'Shirley Temple', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'sprite': { name:'Sprite', price:'$2.95', category:'Non-Alcoholic Beverages', desc:'No free refills on Shirley Temples and juices.', tags:[] },
+  'tempura-cheesecake': { name:'Tempura Cheesecake', price:'$10.95', category:'Sweets', desc:'Tempura fried New York style cheesecake with vanilla ice cream.', tags:[] },
+  'tempura-fried-oreos': { name:'Tempura Fried Oreos', price:'$10.95', category:'Sweets', desc:'Fried Oreos served with vanilla ice cream and chocolate sauce.', tags:[] }
 };
 
 // ═══ BUILD MENU GRIDS ═══
 const tabMap = {
-  rolls: ['rainbow-roll','spider-roll','volcano-roll','maki-special','boston-roll','spicy-tuna','caterpillar-roll'],
-  nigiri: ['tuna-nigiri','salmon-nigiri','yellowtail-nigiri','eel-nigiri','tuna-sashimi','salmon-sashimi','chef-sashimi'],
-  appetizers: ['edamame','gyoza','miso-soup','agedashi-tofu','shrimp-tempura-app','sunomono'],
-  entrees: ['chicken-teriyaki','filet-mignon','udon-noodle'],
-  drinks: ['sake','japanese-beer','green-tea','mochi','tempura-ice-cream']
+  rolls: ['114-roll','alaska-roll','asparagus-roll','avocado-roll','beauty-and-the-beast-roll','beef-teriyaki-roll','blazing-tsunami-roll','blizzard-roll','boston-roll','bubba-roll','buffalo-chicken-roll','butterfly-roll','california-roll','california-roll-with-snow-crab','caterpillar-roll','chicken-teriyaki-roll','crab-rangoon-roll','crazy-roll','crunchy-crab-roll','cucumber-roll','dancing-eel-roll','diablo-roll','double-tuna-roll','dynamite-roll','eel-roll','firecracker-roll','hurricane-roll','incredible-hulk-roll','jalapeno-roll','kamikaze-roll','lava-roll','maki-sumo-roll','mango-roll','mexican-roll','naruto-roll','peabody-roll','philly-roll','rainbow-roll','salmon-roll','salmon-skin-roll','salmon-tempura-roll','shrimp-tempura-roll','spicy-salmon-roll','spicy-scallop-roll','spicy-tuna-roll','spicy-yellowtail-roll','spider-roll','super-crunch-roll','sunset-roll','sushi-pizza','sweet-potato-roll','tropical-roll','tuna-roll','vegetable-tempura-roll','volcano-roll','yellowtail-roll'],
+  nigiri: ['chirashi','eel-unagi','imitation-crab-kanikama','maki-roll-combo','maki-special-combo','salmon-sake','sashimi-deluxe','scallop-hotategai','steamed-shrimp-ebi','sushi-boat-for-2','sushi-boat-for-4','sushi-deluxe','tuna-maguro','white-tuna-escolar','yellowtail-hamachi'],
+  appetizers: ['cream-cheese-dumplings','edamame','gyoza','maki-signature-spicy-edamame','miso-soup','nori-chips','seaweed-salad','soft-shell-crab-tempura','spicy-tuna-rice-crispy','tempura-shrimp','tempura-vegetables','tuna-tataki','yellowtail-firecracker'],
+  entrees: ['beef-teriyaki','beef-teriyaki-kids','chicken-fingers-kids','chicken-katsu','chicken-katsu-curry','chicken-katsu-ramen','chicken-teriyaki','chicken-teriyaki-kids','egg-fried-rice','salmon-teriyaki','tempura-udon'],
+  drinks: ['apple-juice','bottled-saratoga-water','club-soda','coke','cranberry-juice','diet-coke','ginger-ale','hot-green-tea','molten-chocolate-cake','orange-juice','pineapple-juice','shirley-temple','sprite','tempura-cheesecake','tempura-fried-oreos']
 };
 
 function menuIllustration(item) {
   const name = item.name.toLowerCase();
+  const hash = [...name].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+  const variant = hash % 4;
+  const hueA = hash % 360;
+  const hueB = (hash * 3) % 360;
+  const accentA = `hsl(${hueA} 65% 58%)`;
+  const accentB = `hsl(${hueB} 58% 68%)`;
   let art = `<g transform="translate(84 96)">
     <ellipse cx="30" cy="58" rx="25" ry="25" fill="#171a14"/><ellipse cx="30" cy="58" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="30" cy="58" rx="8" ry="8" fill="#c02a08"/>
     <ellipse cx="88" cy="54" rx="25" ry="25" fill="#171a14"/><ellipse cx="88" cy="54" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="88" cy="54" rx="8" ry="8" fill="#d4a840"/>
@@ -1504,7 +1829,7 @@ function menuIllustration(item) {
     <path d="M4 126 Q90 105 176 126" stroke="#8b5a00" stroke-width="4" fill="none" opacity=".65"/>
   </g>`;
 
-  if (name.includes('nigiri') || name.includes('sashimi')) {
+  if (name.includes('nigiri') || name.includes('sashimi') || name.includes('chirashi') || name.includes('combo') || name.includes('boat') || name.includes('deluxe')) {
     let fish = ['#c02a08', '#d4a840', '#6eb89a'];
     let garnish = '#8b5a00';
     let layout = 'nigiri';
@@ -1521,83 +1846,309 @@ function menuIllustration(item) {
     } else if (name.includes('eel') || name.includes('unagi')) {
       fish = ['#5d3820', '#8a552d', '#b7753a'];
       garnish = '#3d2414';
-    } else if (name.includes('chef')) {
+    } else if (name.includes('scallop') || name.includes('hotategai')) {
+      fish = ['#e8d8c0', '#f2e8d8', '#d4c4b0'];
+      garnish = '#a58a6c';
+    } else if (name.includes('shrimp') || name.includes('ebi')) {
+      fish = ['#e8906e', '#f2b39b', '#ffd0be'];
+      garnish = '#b85a30';
+    } else if (name.includes('crab') || name.includes('kanikama')) {
+      fish = ['#d86060', '#f0b0a0', '#fff0ec'];
+      garnish = '#8f3232';
+    } else if (name.includes('chef') || name.includes('chirashi') || name.includes('combo') || name.includes('boat') || name.includes('deluxe')) {
       fish = ['#c02a08', '#6eb89a', '#d4a840', '#e8906e', '#8d4cc2'];
       garnish = '#c9a96e';
       layout = 'platter';
     }
 
     if (layout === 'platter') {
+      const pieceCount = 4 + (hash % 3);
+      const pieceWidth = 24 + (hash % 8);
+      const spacing = 26 + ((hash >> 1) % 12);
+      const startX = 108 + (hash % 14);
       art = `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
         <rect x="86" y="138" width="228" height="62" rx="12" fill="#2b2016"/>
         <rect x="98" y="150" width="204" height="38" rx="10" fill="#3a2a1d"/>
-        ${fish.map((color, i) => {
-          const x = 118 + i * 34;
-          return `<path d="M${x} 160 Q${x + 18} 145 ${x + 36} 160 L${x + 34} 174 Q${x + 18} 186 ${x} 174 Z" fill="${color}" opacity=".95"/>`;
+        ${Array.from({ length: pieceCount }, (_, i) => {
+          const color = fish[i % fish.length];
+          const x = startX + i * spacing;
+          const y = 158 + ((hash + i) % 10);
+          return `<path d="M${x} ${y} Q${x + pieceWidth / 2} ${y - 15 - ((hash + i) % 6)} ${x + pieceWidth} ${y} L${x + pieceWidth - 2} ${y + 14} Q${x + pieceWidth / 2} ${y + 24} ${x} ${y + 14} Z" fill="${color}" opacity=".95"/>`;
         }).join('')}
-        <ellipse cx="196" cy="212" rx="10" ry="4" fill="#5a8d48" opacity=".85"/>
-        <ellipse cx="242" cy="208" rx="11" ry="4" fill="#4d7a3d" opacity=".75"/>`;
+        <ellipse cx="${176 + (hash % 36)}" cy="${210 + (hash % 8)}" rx="10" ry="4" fill="#5a8d48" opacity=".85"/>
+        <ellipse cx="${230 + ((hash >> 1) % 30)}" cy="${206 + ((hash >> 2) % 8)}" rx="11" ry="4" fill="#4d7a3d" opacity=".75"/>`;
     } else {
-      const pieces = name.includes('sashimi')
-        ? [
-            { x: 110, y: 160, w: 64, h: 34, r: 11, c: fish[0] },
-            { x: 178, y: 154, w: 64, h: 34, r: 11, c: fish[1] || fish[0] },
-            { x: 246, y: 160, w: 64, h: 34, r: 11, c: fish[2] || fish[0] }
-          ]
-        : [
-            { x: 102, y: 166, w: 58, h: 28, r: 18, c: fish[0] },
-            { x: 171, y: 162, w: 58, h: 28, r: 18, c: fish[1] || fish[0] },
-            { x: 240, y: 166, w: 58, h: 28, r: 18, c: fish[2] || fish[0] }
-          ];
+      const sashimiMode = name.includes('sashimi');
+      const singlePiece = name.includes('eel') || name.includes('unagi') || name.includes('salmon (sake)') || name.includes('tuna (maguro)') || name.includes('white tuna') || name.includes('yellowtail') || name.includes('hamachi') || name.includes('scallop') || name.includes('hotategai') || name.includes('steamed shrimp') || name.includes('ebi') || name.includes('imitation crab') || name.includes('kanikama');
 
-      art = `<ellipse cx="200" cy="224" rx="130" ry="24" fill="#120b0c" opacity=".55"/>
-        ${pieces.map((piece) => {
-          const riceY = name.includes('sashimi') ? piece.y + 22 : piece.y + 18;
-          const rice = name.includes('sashimi') ? '' : `<rect x="${piece.x - 2}" y="${riceY}" width="${piece.w}" height="14" rx="6" fill="#f4efe6" opacity=".95"/>`;
-          const shine = `<path d="M${piece.x + 8} ${piece.y + 8} Q${piece.x + piece.w / 2} ${piece.y + 2} ${piece.x + piece.w - 8} ${piece.y + 8}" stroke="#f7d8c7" stroke-width="2" fill="none" opacity=".32"/>`;
-          return `${rice}<rect x="${piece.x}" y="${piece.y}" width="${piece.w}" height="${piece.h}" rx="${piece.r}" fill="${piece.c}" opacity=".96"/>${shine}`;
-        }).join('')}
-        <path d="M98 212 Q156 198 214 212 Q272 226 320 210" stroke="${garnish}" stroke-width="4" fill="none" opacity=".65"/>
-        <circle cx="128" cy="210" r="5" fill="#6eb89a" opacity=".75"/>
-        <circle cx="282" cy="208" r="5" fill="#c9a96e" opacity=".75"/>`;
+      if (singlePiece) {
+        const baseY = sashimiMode ? 146 : 156;
+        const rice = sashimiMode ? '' : `<rect x="118" y="${baseY + 42}" width="164" height="22" rx="10" fill="#f4efe6" opacity=".96"/>`;
+        let protein = '';
+
+        if (name.includes('eel') || name.includes('unagi')) {
+          protein = `<path d="M120 ${baseY + 22} Q164 ${baseY - 6} 224 ${baseY + 10} T284 ${baseY + 20} L278 ${baseY + 42} Q214 ${baseY + 54} 126 ${baseY + 38} Z" fill="#6b3a1f"/>
+            <path d="M132 ${baseY + 28} Q194 ${baseY + 6} 274 ${baseY + 26}" stroke="#c98945" stroke-width="5" fill="none" opacity=".65"/>`;
+        } else if (name.includes('salmon')) {
+          protein = `<path d="M118 ${baseY + 12} Q202 ${baseY - 10} 286 ${baseY + 12} L272 ${baseY + 42} Q198 ${baseY + 58} 124 ${baseY + 40} Z" fill="#ff8b63"/>
+            <path d="M138 ${baseY + 18} Q198 ${baseY + 6} 266 ${baseY + 18}" stroke="#ffd6bf" stroke-width="4" fill="none" opacity=".45"/>
+            <path d="M132 ${baseY + 30} Q198 ${baseY + 16} 272 ${baseY + 28}" stroke="#ffd6bf" stroke-width="3" fill="none" opacity=".35"/>`;
+        } else if (name.includes('tuna') || name.includes('maguro')) {
+          protein = `<rect x="120" y="${baseY + 2}" width="164" height="40" rx="18" fill="#bf2d37"/>
+            <path d="M134 ${baseY + 14} Q198 ${baseY} 270 ${baseY + 14}" stroke="#f3a3ad" stroke-width="4" fill="none" opacity=".32"/>`;
+        } else if (name.includes('white tuna') || name.includes('escolar')) {
+          protein = `<rect x="122" y="${baseY + 2}" width="160" height="40" rx="18" fill="#efe7dc"/>
+            <path d="M136 ${baseY + 12} Q198 ${baseY + 2} 268 ${baseY + 12}" stroke="#d3c6b6" stroke-width="4" fill="none" opacity=".55"/>`;
+        } else if (name.includes('yellowtail') || name.includes('hamachi')) {
+          protein = `<path d="M120 ${baseY + 16} Q198 ${baseY - 4} 284 ${baseY + 10} L276 ${baseY + 40} Q208 ${baseY + 52} 124 ${baseY + 38} Z" fill="#dfc36d"/>
+            <path d="M136 ${baseY + 20} Q198 ${baseY + 8} 266 ${baseY + 20}" stroke="#fff1c6" stroke-width="4" fill="none" opacity=".38"/>`;
+        } else if (name.includes('scallop') || name.includes('hotategai')) {
+          protein = `<g transform="translate(0 ${hash % 8})">
+            <circle cx="170" cy="${baseY + 24}" r="28" fill="#efe4d6"/><circle cx="228" cy="${baseY + 20}" r="24" fill="#e8ddcf"/>
+            <path d="M146 ${baseY + 18} Q170 ${baseY - 2} 194 ${baseY + 18}" stroke="#d0c3b3" stroke-width="3" fill="none" opacity=".5"/>
+            <path d="M208 ${baseY + 16} Q228 ${baseY + 2} 248 ${baseY + 16}" stroke="#d0c3b3" stroke-width="3" fill="none" opacity=".5"/>
+          </g>`;
+        } else if (name.includes('shrimp') || name.includes('ebi')) {
+          protein = `<path d="M132 ${baseY + 36} Q162 ${baseY - 2} 198 ${baseY + 10} Q234 ${baseY + 20} 270 ${baseY - 2} L278 ${baseY + 14} Q238 ${baseY + 42} 198 ${baseY + 28} Q160 ${baseY + 16} 124 ${baseY + 44} Z" fill="#ef9b7a"/>
+            <path d="M144 ${baseY + 28} Q198 ${baseY + 8} 262 ${baseY + 18}" stroke="#ffd6c7" stroke-width="4" fill="none" opacity=".45"/>`;
+        } else if (name.includes('imitation crab') || name.includes('kanikama')) {
+          protein = `<rect x="128" y="${baseY + 4}" width="54" height="40" rx="12" fill="#f5f0e8" opacity=".9"/>
+            <rect x="136" y="${baseY + 10}" width="38" height="28" rx="9" fill="#dc5d48"/>
+            <rect x="214" y="${baseY + 4}" width="54" height="40" rx="12" fill="#f5f0e8" opacity=".9"/>
+            <rect x="222" y="${baseY + 10}" width="38" height="28" rx="9" fill="#dc5d48"/>`;
+        }
+
+        art = `<ellipse cx="200" cy="224" rx="130" ry="24" fill="#120b0c" opacity=".55"/>
+          ${rice}
+          ${protein}
+          <path d="M${96 + (hash % 18)} 212 Q162 ${194 + (hash % 14)} 214 212 Q268 ${224 - (hash % 10)} 314 210" stroke="${garnish}" stroke-width="4" fill="none" opacity=".65"/>
+          <circle cx="${124 + (hash % 30)}" cy="${204 + ((hash >> 1) % 10)}" r="5" fill="#6eb89a" opacity=".75"/>
+          <circle cx="${268 + ((hash >> 2) % 20)}" cy="${202 + ((hash >> 3) % 10)}" r="5" fill="#c9a96e" opacity=".75"/>`;
+      } else {
+        const pieceCount = 3 + (hash % 2);
+        const baseX = 94 + (hash % 22);
+        const baseY = sashimiMode ? 150 : 158;
+        const spacing = 48 + ((hash >> 1) % 14);
+        const pieces = Array.from({ length: pieceCount }, (_, i) => {
+          const x = baseX + i * spacing - (i === pieceCount - 1 ? (hash % 10) : 0);
+          const y = baseY + ((hash >> i) % (sashimiMode ? 24 : 20));
+          const w = (sashimiMode ? 62 : 54) + ((hash + i) % 10);
+          const h = (sashimiMode ? 30 : 26) + ((hash >> (i + 1)) % 6);
+          return {
+            x,
+            y,
+            w,
+            h,
+            r: sashimiMode ? 10 + ((hash + i) % 3) : 15 + ((hash + i) % 4),
+            c: fish[i % fish.length]
+          };
+        });
+
+        art = `<ellipse cx="200" cy="224" rx="130" ry="24" fill="#120b0c" opacity=".55"/>
+          ${pieces.map((piece) => {
+            const riceY = sashimiMode ? piece.y + 22 : piece.y + piece.h - 4;
+            const rice = sashimiMode ? '' : `<rect x="${piece.x - 2}" y="${riceY}" width="${piece.w}" height="14" rx="6" fill="#f4efe6" opacity=".95"/>`;
+            const shine = `<path d="M${piece.x + 8} ${piece.y + 8} Q${piece.x + piece.w / 2} ${piece.y + 2} ${piece.x + piece.w - 8} ${piece.y + 8}" stroke="#f7d8c7" stroke-width="2" fill="none" opacity=".32"/>`;
+            return `${rice}<rect x="${piece.x}" y="${piece.y}" width="${piece.w}" height="${piece.h}" rx="${piece.r}" fill="${piece.c}" opacity=".96"/>${shine}`;
+          }).join('')}
+          <path d="M${92 + (hash % 14)} 212 Q156 ${194 + (hash % 16)} 214 212 Q272 ${224 - (hash % 12)} 320 210" stroke="${garnish}" stroke-width="4" fill="none" opacity=".65"/>
+          <circle cx="${120 + (hash % 34)}" cy="${206 + ((hash >> 1) % 10)}" r="5" fill="#6eb89a" opacity=".75"/>
+          <circle cx="${266 + ((hash >> 2) % 24)}" cy="${204 + ((hash >> 3) % 10)}" r="5" fill="#c9a96e" opacity=".75"/>`;
+      }
     }
   } else if (name.includes('soup') || name.includes('udon') || name.includes('ramen')) {
+    const broths = ['#c98a3a', '#b86a32', '#8a4a24', '#d4b15a'];
+    const bowlShapes = [
+      `<path d="M92 130 Q200 176 308 130 L282 206 Q200 238 118 206 Z" fill="#1b2430"/>`,
+      `<path d="M96 138 Q200 120 304 138 L286 206 Q200 230 114 206 Z" fill="#20283a"/>`,
+      `<path d="M104 128 Q200 188 296 128 L274 206 Q200 236 126 206 Z" fill="#251f36"/>`,
+      `<path d="M90 142 Q200 112 310 142 L284 204 Q200 238 116 204 Z" fill="#1f2630"/>`
+    ];
     art = `<ellipse cx="200" cy="224" rx="132" ry="26" fill="#120b0c" opacity=".55"/>
-      <path d="M92 130 Q200 176 308 130 L282 206 Q200 238 118 206 Z" fill="#1b2430"/>
-      <ellipse cx="200" cy="130" rx="108" ry="36" fill="#2a1a10"/><ellipse cx="200" cy="126" rx="92" ry="24" fill="#c98a3a" opacity=".85"/>
+      ${bowlShapes[variant]}
+      <ellipse cx="200" cy="130" rx="108" ry="36" fill="#2a1a10"/><ellipse cx="200" cy="126" rx="92" ry="24" fill="${broths[variant]}" opacity=".85"/>
       <path d="M130 126 Q158 110 186 126 T242 126 T290 124" stroke="#f0d270" stroke-width="5" fill="none" stroke-linecap="round"/>
-      <circle cx="156" cy="120" r="8" fill="#6eb89a"/><circle cx="228" cy="116" r="7" fill="#c02a08"/>
+      <circle cx="${156 + variant * 10}" cy="${120 + (variant % 2) * 6}" r="8" fill="#6eb89a"/><circle cx="${228 - variant * 8}" cy="${116 + (variant % 3) * 4}" r="7" fill="#c02a08"/>
       <path d="M138 86 C128 64 148 58 138 42" stroke="#f5f0e8" stroke-width="2" fill="none"><animate attributeName="opacity" values=".1;.55;.1" dur="3s" repeatCount="indefinite"/></path>
       <path d="M214 84 C204 62 224 56 214 40" stroke="#f5f0e8" stroke-width="2" fill="none"><animate attributeName="opacity" values=".05;.45;.05" dur="3.6s" repeatCount="indefinite"/></path>`;
-  } else if (name.includes('sake') || name.includes('beer') || name.includes('tea')) {
-    art = `<ellipse cx="200" cy="222" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <rect x="118" y="86" width="46" height="114" rx="8" fill="#1d3328"/><rect x="126" y="102" width="30" height="76" rx="4" fill="#d4a840" opacity=".65"/>
-      <rect x="190" y="112" width="58" height="88" rx="9" fill="#efe6d4" opacity=".18"/><rect x="198" y="128" width="42" height="52" rx="6" fill="#c98a3a" opacity=".75"/>
-      <ellipse cx="219" cy="128" rx="21" ry="6" fill="#f7e8b0" opacity=".8"/><path d="M270 145 Q302 132 320 150 Q304 170 270 160 Z" fill="#6eb89a" opacity=".75"/>`;
-  } else if (name.includes('mochi') || name.includes('ice cream')) {
-    art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <path d="M78 184 Q200 132 322 184 Q292 210 200 214 Q108 210 78 184 Z" fill="#e8e0d0" opacity=".22"/>
-      <circle cx="146" cy="156" r="34" fill="#b8394a"/><circle cx="200" cy="144" r="34" fill="#6eb89a"/><circle cx="254" cy="156" r="34" fill="#d4a840"/>`;
+  } else if (name.includes('juice') || name.includes('soda') || name.includes('coke') || name.includes('sprite') || name.includes('shirley') || name.includes('water') || name.includes('tea')) {
+    const leftX = 108 + (hash % 18);
+    const rightX = 198 + ((hash >> 2) % 24);
+    const leftW = 36 + (hash % 20);
+    const rightW = 40 + ((hash >> 3) % 22);
+    const leftFill = name.includes('coke') || name.includes('tea') ? '#7b3f22' : accentA;
+    const rightFill = name.includes('water') ? '#7fd0e8' : name.includes('sprite') ? '#97d16c' : accentB;
+    const straw = variant % 2 === 0;
+    art = `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
+      <rect x="${leftX}" y="${86 + (hash % 12)}" width="${leftW}" height="${110 - (hash % 14)}" rx="${8 + (hash % 10)}" fill="#efe6d4" opacity=".14"/>
+      <rect x="${leftX + 8}" y="${104 + (hash % 10)}" width="${leftW - 16}" height="${70 - (hash % 8)}" rx="${6 + (hash % 6)}" fill="${leftFill}" opacity=".82"/>
+      <rect x="${rightX}" y="${92 - (hash % 10)}" width="${rightW}" height="${112 - ((hash >> 1) % 16)}" rx="${10 + ((hash >> 2) % 10)}" fill="#efe6d4" opacity=".15"/>
+      <rect x="${rightX + 9}" y="${110 - (hash % 6)}" width="${rightW - 18}" height="${72 - ((hash >> 2) % 12)}" rx="${7 + ((hash >> 1) % 6)}" fill="${rightFill}" opacity=".82"/>
+      ${straw ? `<path d="M${leftX + leftW - 14} ${92 + (hash % 10)} L${leftX + leftW - 4} ${68 + (hash % 8)}" stroke="#1d3328" stroke-width="4" stroke-linecap="round"/>` : ``}
+      <ellipse cx="${rightX + rightW / 2}" cy="${118 - (hash % 6)}" rx="${14 + (hash % 8)}" ry="6" fill="#f5f0e8" opacity=".22"/>`;
+  } else if (name.includes('cake') || name.includes('oreo') || name.includes('cheesecake')) {
+    if (name.includes('oreo')) {
+      const cx1 = 144 + (hash % 18);
+      const cx2 = 194 + ((hash >> 2) % 20);
+      const cx3 = 244 + ((hash >> 3) % 16);
+      art = `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <circle cx="${cx1}" cy="168" r="24" fill="#2b1a18"/><circle cx="${cx2}" cy="152" r="24" fill="#2b1a18"/><circle cx="${cx3}" cy="168" r="24" fill="#2b1a18"/>
+        <circle cx="${cx1}" cy="168" r="10" fill="#f5efe2"/><circle cx="${cx2}" cy="152" r="10" fill="#f5efe2"/><circle cx="${cx3}" cy="168" r="10" fill="#f5efe2"/>
+        <path d="M118 122 Q200 92 282 122" stroke="${accentA}" stroke-width="6" fill="none" opacity=".65"/>`;
+    } else if (name.includes('cheesecake')) {
+      art = `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="${110 + (hash % 10)}" y="138" width="${170 - (hash % 8)}" height="44" rx="14" fill="#e0caa8"/><rect x="${122 + (hash % 8)}" y="150" width="${146 - (hash % 12)}" height="20" rx="10" fill="#f5efe2"/>
+        <path d="M132 138 Q200 ${104 - (hash % 8)} 268 138" stroke="${accentA}" stroke-width="8" fill="none" opacity=".7"/>`;
+    } else {
+      art = `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <path d="M${110 + (hash % 12)} 196 L${152 + (hash % 8)} 124 L${238 - (hash % 8)} 124 L${280 - (hash % 12)} 196 Z" fill="#5b3326"/><path d="M132 144 L216 144" stroke="#f0d8c0" stroke-width="6" opacity=".35"/>
+        <circle cx="${154 + (hash % 10)}" cy="${114 + (hash % 6)}" r="10" fill="${accentA}"/><circle cx="${246 - (hash % 10)}" cy="${114 + ((hash >> 1) % 6)}" r="10" fill="${accentB}"/>`;
+    }
+  } else if (name.includes('salad')) {
+    const leaves = Array.from({ length: 4 }, (_, i) => {
+      const cx = 132 + i * 34 + ((hash + i) % 10);
+      const cy = 154 + ((hash >> i) % 18);
+      const fill = i % 2 === 0 ? '#5a8d48' : '#6eb89a';
+      return `<path d="M${cx} ${cy} Q${cx + 18} ${cy - 28} ${cx + 34} ${cy} Q${cx + 18} ${cy + 18} ${cx} ${cy} Z" fill="${fill}" opacity=".85"/>`;
+    }).join('');
+    art = `<ellipse cx="200" cy="224" rx="124" ry="22" fill="#120b0c" opacity=".55"/>
+      <ellipse cx="200" cy="174" rx="96" ry="42" fill="#223022"/>
+      ${leaves}
+      <circle cx="${152 + (hash % 80)}" cy="${142 + (hash % 18)}" r="5" fill="#f0d270"/><circle cx="${198 + (hash % 60)}" cy="${150 + ((hash >> 1) % 16)}" r="5" fill="#c9a96e"/>`;
+  } else if (name.includes('tataki')) {
+    art = `<ellipse cx="200" cy="224" rx="124" ry="22" fill="#120b0c" opacity=".55"/>
+      <rect x="108" y="150" width="184" height="38" rx="14" fill="#efe6d4" opacity=".12"/>
+      ${Array.from({ length: 4 }, (_, i) => {
+        const x = 118 + i * 42 + ((hash + i) % 8);
+        return `<path d="M${x} 170 Q${x + 18} 144 ${x + 36} 170 L${x + 30} 186 Q${x + 18} 194 ${x + 6} 186 Z" fill="${i % 2 === 0 ? '#b62828' : '#cf4545'}" opacity=".92"/>`;
+      }).join('')}
+      <path d="M126 146 Q200 ${126 - (hash % 10)} 274 146" stroke="#8b5a00" stroke-width="4" fill="none" opacity=".55"/>`;
+  } else if (name.includes('crispy')) {
+    art = `<ellipse cx="200" cy="224" rx="124" ry="22" fill="#120b0c" opacity=".55"/>
+      ${Array.from({ length: 4 }, (_, i) => {
+        const x = 120 + i * 40 + ((hash + i) % 6);
+        const y = 158 + (i % 2) * 10;
+        return `<rect x="${x}" y="${y}" width="34" height="34" rx="8" fill="#d4a840"/><circle cx="${x + 17}" cy="${y + 12}" r="8" fill="#c02a08"/><path d="M${x + 5} ${y + 4} L${x + 29} ${y + 4}" stroke="#f0d270" stroke-width="2" opacity=".55"/>`;
+      }).join('')}
+      <path d="M110 144 Q200 ${130 - (hash % 10)} 290 144" stroke="#f0a040" stroke-width="5" fill="none" opacity=".5"/>`;
+  } else if (name.includes('chips')) {
+    art = `<ellipse cx="200" cy="224" rx="124" ry="22" fill="#120b0c" opacity=".55"/>
+      ${Array.from({ length: 5 }, (_, i) => {
+        const x = 112 + i * 34 + ((hash + i) % 10);
+        const y = 160 - ((hash >> i) % 14);
+        return `<path d="M${x} ${y} Q${x + 14} ${y - 18} ${x + 28} ${y} Q${x + 18} ${y + 20} ${x} ${y} Z" fill="#6d7a52" opacity=".85"/>`;
+      }).join('')}
+      <ellipse cx="262" cy="176" rx="24" ry="18" fill="#d8b38a"/><ellipse cx="262" cy="176" rx="16" ry="10" fill="#c98a3a" opacity=".65"/>`;
+  } else if (name.includes('dumplings') || name.includes('gyoza')) {
+    art = `<ellipse cx="200" cy="224" rx="124" ry="22" fill="#120b0c" opacity=".55"/>
+      ${Array.from({ length: 3 }, (_, i) => {
+        const cx = 138 + i * 54 + ((hash + i) % 8);
+        return `<path d="M${cx - 26} 180 Q${cx} 130 ${cx + 26} 180 Z" fill="#e8d2a6"/><path d="M${cx - 18} 168 Q${cx} 154 ${cx + 18} 168" stroke="#9b6b2d" stroke-width="3" fill="none"/>`;
+      }).join('')}`;
+  } else if (name.includes('firecracker') || name.includes('signature') || name.includes('special')) {
+    art = `<ellipse cx="200" cy="224" rx="126" ry="22" fill="#120b0c" opacity=".55"/>
+      <rect x="118" y="150" width="164" height="40" rx="16" fill="#241a12"/>
+      <path d="M132 170 Q166 130 200 166 T268 170" stroke="${accentA}" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="148" cy="148" r="6" fill="#f0d270"/><circle cx="224" cy="142" r="6" fill="${accentB}"/><circle cx="258" cy="156" r="6" fill="#c02a08"/>`;
   } else if (name.includes('edamame') || name.includes('sunomono')) {
+    const pods = Array.from({ length: 2 + (hash % 2) }, (_, i) => {
+      const x = 88 + i * (78 + ((hash >> i) % 12));
+      const y = 172 - ((hash + i * 7) % 18);
+      const w = 92 - ((hash + i) % 10);
+      const fill = i % 2 === 0 ? '#4a8a50' : '#5aaa60';
+      return `<path d="M${x} ${y} Q${x + w/2} ${y - 54} ${x + w} ${y} Q${x + w/2} ${y + 40} ${x} ${y} Z" fill="${fill}"/>`;
+    }).join('');
+    const peas = Array.from({ length: 5 }, (_, i) => {
+      const cx = 120 + i * 34 + ((hash + i) % 10);
+      const cy = 162 + ((hash >> i) % 14);
+      return `<circle cx="${cx}" cy="${cy}" r="${7 + ((hash + i) % 3)}" fill="#8ed08a"/>`;
+    }).join('');
     art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <path d="M78 174 Q132 122 194 166 Q140 218 78 174 Z" fill="#4a8a50"/><path d="M176 162 Q232 112 306 164 Q248 220 176 162 Z" fill="#5aaa60"/>
-      <circle cx="118" cy="164" r="9" fill="#8ed08a"/><circle cx="154" cy="166" r="9" fill="#8ed08a"/><circle cx="226" cy="158" r="9" fill="#8ed08a"/><circle cx="264" cy="164" r="9" fill="#8ed08a"/>`;
+      ${pods}
+      ${peas}`;
   } else if (name.includes('gyoza')) {
     art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <path d="M86 174 Q120 118 154 174 Z" fill="#e8d2a6"/><path d="M146 174 Q180 118 214 174 Z" fill="#e8d2a6"/><path d="M206 174 Q240 118 274 174 Z" fill="#e8d2a6"/>
-      <path d="M98 166 Q120 150 144 166 M158 166 Q180 150 204 166 M218 166 Q240 150 264 166" stroke="#9b6b2d" stroke-width="3" fill="none"/>`;
+      ${Array.from({ length: 3 }, (_, i) => {
+        const cx = 120 + i * 60 + ((hash + i) % 10);
+        const topY = 120 + ((hash >> i) % 12);
+        return `<path d="M${cx - 28} 176 Q${cx} ${topY} ${cx + 28} 176 Z" fill="#e8d2a6"/><path d="M${cx - 18} 164 Q${cx} ${topY + 22} ${cx + 18} 164" stroke="#9b6b2d" stroke-width="3" fill="none"/>`;
+      }).join('')}`;
   } else if (name.includes('tempura') || name.includes('tofu')) {
+    const pieces = Array.from({ length: 3 + (hash % 2) }, (_, i) => {
+      const cx = 110 + i * (54 + ((hash + i) % 8));
+      const peakY = 112 + ((hash >> i) % 24);
+      const fill = i % 3 === 0 ? '#d4a840' : i % 3 === 1 ? '#c98a3a' : '#d9ad58';
+      return `<path d="M${cx - 24} 180 Q${cx} ${peakY} ${cx + 24} 180 Q${cx} ${194 + ((hash + i) % 8)} ${cx - 24} 180 Z" fill="${fill}"/>`;
+    }).join('');
+    const garnish = Array.from({ length: 3 }, (_, i) => {
+      const x1 = 126 + i * 66 + ((hash + i) % 8);
+      const x2 = x1 + 26;
+      const y = 126 + ((hash >> i) % 18);
+      return `<path d="M${x1} ${y} Q${(x1 + x2) / 2} ${y - 14} ${x2} ${y}" stroke="#f0d270" stroke-width="3" fill="none"/>`;
+    }).join('');
     art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <path d="M92 178 Q126 116 160 178 Z" fill="#d4a840"/><path d="M166 178 Q200 116 234 178 Z" fill="#c98a3a"/><path d="M238 178 Q272 116 306 178 Z" fill="#d4a840"/>
-      <circle cx="136" cy="130" r="5" fill="#f0d270"/><circle cx="214" cy="132" r="5" fill="#f0d270"/><circle cx="286" cy="134" r="5" fill="#f0d270"/>`;
+      ${pieces}
+      ${garnish}`;
   } else if (name.includes('teriyaki') || name.includes('filet')) {
-    art = `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
-      <ellipse cx="200" cy="178" rx="122" ry="34" fill="#1b2430"/><rect x="114" y="134" width="88" height="44" rx="18" fill="#8b3a22"/><rect x="210" y="138" width="76" height="38" rx="18" fill="#b85a30"/>
-      <path d="M124 148 Q196 166 278 146" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="152" cy="190" r="7" fill="#6eb89a"/><circle cx="248" cy="190" r="7" fill="#6eb89a"/>`;
+    const teriyakiArts = [
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#1b2430"/><rect x="114" y="134" width="88" height="44" rx="18" fill="#8b3a22"/><rect x="210" y="138" width="76" height="38" rx="18" fill="#b85a30"/>
+        <path d="M124 148 Q196 166 278 146" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="152" cy="190" r="7" fill="#6eb89a"/><circle cx="248" cy="190" r="7" fill="#6eb89a"/>`,
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#202838"/><rect x="106" y="136" width="104" height="40" rx="20" fill="#6f2f1d"/><rect x="226" y="134" width="56" height="42" rx="16" fill="#d8c8a8"/>
+        <path d="M116 152 Q188 136 260 152" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="248" cy="144" r="7" fill="#5a8d48"/><circle cx="266" cy="154" r="7" fill="#6eb89a"/>`,
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#1a2430"/><rect x="110" y="132" width="82" height="46" rx="20" fill="#b85a30"/><rect x="202" y="140" width="92" height="34" rx="14" fill="#8b3a22"/>
+        <path d="M120 142 Q194 170 284 146" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="236" cy="190" r="7" fill="#d4a840"/>`,
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#24202c"/><rect x="112" y="138" width="90" height="36" rx="18" fill="#7c2f22"/><rect x="214" y="132" width="74" height="46" rx="20" fill="#c97045"/>
+        <path d="M124 150 Q196 138 280 154" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="150" cy="192" r="7" fill="#6eb89a"/><circle cx="170" cy="188" r="7" fill="#d4a840"/>`
+    ];
+    art = teriyakiArts[variant];
+  } else if (name.includes('roll')) {
+    const pieceCount = 3 + (hash % 3);
+    const startX = 74 + (hash % 26);
+    const baseY = 148 + (hash % 20);
+    const tilt = (hash % 7) - 3;
+    const step = 42 + ((hash >> 1) % 12);
+    const seaweed = ['#171a14', '#233048', '#2a2014', '#36281f'][variant];
+    const centers = Array.from({ length: pieceCount }, (_, i) => startX + i * step);
+    const dots = centers.map((cx, i) => {
+      const cy = baseY - (i % 2 === 0 ? (hash % 10) : ((hash >> 2) % 8));
+      const fill = i % 3 === 0 ? accentA : i % 3 === 1 ? accentB : '#d4a840';
+      return `<ellipse cx="${cx}" cy="${cy}" rx="${20 + ((hash + i) % 8)}" ry="${14 + ((hash >> 1) % 5)}" fill="${seaweed}"/><ellipse cx="${cx}" cy="${cy}" rx="${13 + ((hash + i) % 5)}" ry="${9 + ((hash >> 2) % 3)}" fill="#f4efe6"/><ellipse cx="${cx}" cy="${cy}" rx="${6 + ((hash + i) % 4)}" ry="${6 + ((hash >> 3) % 3)}" fill="${fill}"/>`;
+    }).join('');
+    const garnishY = 214 - (hash % 10);
+    art = `<ellipse cx="200" cy="226" rx="${118 + (hash % 20)}" ry="22" fill="#120b0c" opacity=".55"/>
+      <g transform="rotate(${tilt} 200 150)">${dots}</g>
+      <path d="M${startX - 18} ${garnishY} Q200 ${garnishY - (10 + (hash % 12))} ${startX + (pieceCount - 1) * step + 18} ${garnishY}" stroke="#8b5a00" stroke-width="4" fill="none" opacity=".65"/>
+      <circle cx="${120 + (hash % 120)}" cy="${200 + (hash % 12)}" r="${4 + (hash % 3)}" fill="#6eb89a" opacity=".8"/>
+      <circle cx="${220 + (hash % 90)}" cy="${194 + ((hash >> 1) % 12)}" r="${4 + ((hash >> 2) % 3)}" fill="#c9a96e" opacity=".75"/>`;
   }
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280"><defs><radialGradient id="bg" cx="50%" cy="45%" r="75%"><stop offset="0%" stop-color="#192018"/><stop offset="100%" stop-color="#0d0a0b"/></radialGradient></defs><rect width="400" height="280" fill="url(#bg)"/><ellipse cx="200" cy="222" rx="130" ry="24" fill="#120b0c" opacity=".45"/>${art}</svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function deriveFacts(item) {
+  const facts = [];
+  const name = item.name || '';
+  const desc = item.desc || '';
+  const combined = `${name} ${desc}`;
+
+  if (name.includes('*')) facts.push('Raw Item');
+  if (combined.includes('[Tempura Fried]')) facts.push('Tempura Fried');
+  if (combined.includes('[No Rice/No Nori]')) facts.push('No Rice/No Nori');
+  if (combined.includes('2pcs/3pcs')) facts.push('2pcs/3pcs');
+  if (combined.includes('served with steamed white rice, steamed mixed vegetables, and miso soup')) facts.push('Served with Miso Soup');
+  if (combined.includes('rich pork bone broth')) facts.push('Pork Bone Broth');
+  if (combined.includes('[add Spicy Pepper Paste +2]')) facts.push('Add Spicy Pepper Paste +2');
+  if (combined.includes('Choice of one side:')) facts.push('Choice of One Side');
+  if (combined.includes('No free refills on Shirley Temples and juices.')) facts.push('No Free Refills');
+  if (combined.includes('Sparkling or still bottled Saratoga water.')) facts.push('Sparkling or Still');
+  if (combined.includes('[5pcs]') || combined.includes('[5 pcs]')) facts.push('5 Pieces');
+
+  return Array.from(new Set(facts));
 }
 
 function buildMenus() {
@@ -1605,7 +2156,7 @@ function buildMenus() {
     const grid = document.getElementById('grid-' + tab);
     grid.innerHTML = ids.map((id, index) => {
       const item = menuData[id];
-      const tags = item.tags.slice(0,4).map(t => `<span class="pill">${t}</span>`).join('');
+      const tags = deriveFacts(item).slice(0,4).map(t => `<span class="pill">${t}</span>`).join('');
       const visual = item.photo || menuIllustration(item);
       const imgHtml = `<img class="card-img" src="${visual}" alt="${item.name}" loading="lazy">`;
       return `<div class="menu-card has-img" onclick="openModal('${id}')">
@@ -1614,8 +2165,8 @@ function buildMenus() {
           <span class="card-name">${item.name}</span>
           <span class="card-price">${item.price}</span>
         </div>
-        <p class="card-desc">${item.desc.substring(0,90)}…</p>
-        <div class="card-tags">${tags}</div>
+        <p class="card-desc">${item.desc}</p>
+        ${tags ? `<div class="card-tags">${tags}</div>` : ''}
       </div>`;
     }).join('');
   }
@@ -1630,8 +2181,7 @@ function openModal(id) {
   document.getElementById('modal-name').textContent = item.name;
   document.getElementById('modal-price').textContent = item.price;
   document.getElementById('modal-desc').textContent = item.desc;
-  document.getElementById('modal-fact').textContent = item.fact;
-  document.getElementById('modal-tags').innerHTML = item.tags.map(t => `<span class="pill">${t}</span>`).join('');
+  document.getElementById('modal-tags').innerHTML = deriveFacts(item).map(t => `<span class="pill">${t}</span>`).join('');
   // inject visual
   let photoEl = document.getElementById('modal-photo');
   if (!photoEl) {
@@ -1673,6 +2223,7 @@ function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
   event.target.classList.add('active');
+  try { localStorage.setItem('makiActiveMenuTab', tab); } catch (_) {}
 }
 
 // ═══ PAGE NAVIGATION ═══
@@ -1682,6 +2233,10 @@ function showPage(page) {
   document.getElementById('page-' + page).classList.add('active');
   const navBtn = document.getElementById('nav-' + page);
   if (navBtn) navBtn.classList.add('active');
+  try { localStorage.setItem('makiActivePage', page); } catch (_) {}
+  if (window.location.hash !== '#' + page) {
+    history.replaceState(null, '', '#' + page);
+  }
   window.scrollTo(0,0);
 }
 
@@ -1823,6 +2378,19 @@ function initMakiSlideshow() {
 buildMenus();
 highlightToday();
 initMakiSlideshow();
+try {
+  const savedPage = (window.location.hash || '').replace('#', '') || localStorage.getItem('makiActivePage') || 'home';
+  if (document.getElementById('page-' + savedPage)) showPage(savedPage);
+  const savedTab = localStorage.getItem('makiActiveMenuTab');
+  if (savedTab && document.getElementById('tab-' + savedTab)) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + savedTab).classList.add('active');
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const activeBtn = tabButtons.find(btn => btn.textContent.toLowerCase().includes(savedTab === 'nigiri' ? 'nigiri' : savedTab));
+    if (activeBtn) activeBtn.classList.add('active');
+  }
+} catch (_) {}
 </script>
 
 <script>
