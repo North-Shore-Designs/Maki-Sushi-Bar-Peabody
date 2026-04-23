@@ -1428,6 +1428,8 @@ const tabMap = {
 
 function menuIllustration(item) {
   const name = item.name.toLowerCase();
+  const hash = [...name].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+  const variant = hash % 4;
   let art = `<g transform="translate(84 96)">
     <ellipse cx="30" cy="58" rx="25" ry="25" fill="#171a14"/><ellipse cx="30" cy="58" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="30" cy="58" rx="8" ry="8" fill="#c02a08"/>
     <ellipse cx="88" cy="54" rx="25" ry="25" fill="#171a14"/><ellipse cx="88" cy="54" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="88" cy="54" rx="8" ry="8" fill="#d4a840"/>
@@ -1469,17 +1471,21 @@ function menuIllustration(item) {
         <ellipse cx="196" cy="212" rx="10" ry="4" fill="#5a8d48" opacity=".85"/>
         <ellipse cx="242" cy="208" rx="11" ry="4" fill="#4d7a3d" opacity=".75"/>`;
     } else {
-      const pieces = name.includes('sashimi')
-        ? [
-            { x: 110, y: 160, w: 64, h: 34, r: 11, c: fish[0] },
-            { x: 178, y: 154, w: 64, h: 34, r: 11, c: fish[1] || fish[0] },
-            { x: 246, y: 160, w: 64, h: 34, r: 11, c: fish[2] || fish[0] }
-          ]
-        : [
-            { x: 102, y: 166, w: 58, h: 28, r: 18, c: fish[0] },
-            { x: 171, y: 162, w: 58, h: 28, r: 18, c: fish[1] || fish[0] },
-            { x: 240, y: 166, w: 58, h: 28, r: 18, c: fish[2] || fish[0] }
-          ];
+      const nigiriLayouts = [
+        name.includes('sashimi')
+          ? [{ x: 110, y: 160, w: 64, h: 34, r: 11, c: fish[0] }, { x: 178, y: 154, w: 64, h: 34, r: 11, c: fish[1] || fish[0] }, { x: 246, y: 160, w: 64, h: 34, r: 11, c: fish[2] || fish[0] }]
+          : [{ x: 102, y: 166, w: 58, h: 28, r: 18, c: fish[0] }, { x: 171, y: 162, w: 58, h: 28, r: 18, c: fish[1] || fish[0] }, { x: 240, y: 166, w: 58, h: 28, r: 18, c: fish[2] || fish[0] }],
+        name.includes('sashimi')
+          ? [{ x: 92, y: 168, w: 68, h: 30, r: 10, c: fish[0] }, { x: 168, y: 150, w: 68, h: 30, r: 10, c: fish[1] || fish[0] }, { x: 244, y: 168, w: 68, h: 30, r: 10, c: fish[2] || fish[0] }]
+          : [{ x: 98, y: 170, w: 54, h: 26, r: 16, c: fish[0] }, { x: 174, y: 156, w: 54, h: 26, r: 16, c: fish[1] || fish[0] }, { x: 250, y: 170, w: 54, h: 26, r: 16, c: fish[2] || fish[0] }],
+        name.includes('sashimi')
+          ? [{ x: 118, y: 150, w: 70, h: 32, r: 10, c: fish[0] }, { x: 156, y: 172, w: 70, h: 32, r: 10, c: fish[1] || fish[0] }, { x: 230, y: 154, w: 70, h: 32, r: 10, c: fish[2] || fish[0] }]
+          : [{ x: 110, y: 158, w: 58, h: 28, r: 18, c: fish[0] }, { x: 164, y: 176, w: 58, h: 28, r: 18, c: fish[1] || fish[0] }, { x: 236, y: 162, w: 58, h: 28, r: 18, c: fish[2] || fish[0] }],
+        name.includes('sashimi')
+          ? [{ x: 100, y: 154, w: 66, h: 32, r: 10, c: fish[0] }, { x: 182, y: 154, w: 66, h: 32, r: 10, c: fish[1] || fish[0] }, { x: 142, y: 184, w: 66, h: 32, r: 10, c: fish[2] || fish[0] }]
+          : [{ x: 100, y: 160, w: 56, h: 28, r: 18, c: fish[0] }, { x: 182, y: 160, w: 56, h: 28, r: 18, c: fish[1] || fish[0] }, { x: 142, y: 188, w: 56, h: 28, r: 18, c: fish[2] || fish[0] }]
+      ];
+      const pieces = nigiriLayouts[variant];
 
       art = `<ellipse cx="200" cy="224" rx="130" ry="24" fill="#120b0c" opacity=".55"/>
         ${pieces.map((piece) => {
@@ -1493,22 +1499,57 @@ function menuIllustration(item) {
         <circle cx="282" cy="208" r="5" fill="#c9a96e" opacity=".75"/>`;
     }
   } else if (name.includes('soup') || name.includes('udon') || name.includes('ramen')) {
+    const broths = ['#c98a3a', '#b86a32', '#8a4a24', '#d4b15a'];
+    const bowlShapes = [
+      `<path d="M92 130 Q200 176 308 130 L282 206 Q200 238 118 206 Z" fill="#1b2430"/>`,
+      `<path d="M96 138 Q200 120 304 138 L286 206 Q200 230 114 206 Z" fill="#20283a"/>`,
+      `<path d="M104 128 Q200 188 296 128 L274 206 Q200 236 126 206 Z" fill="#251f36"/>`,
+      `<path d="M90 142 Q200 112 310 142 L284 204 Q200 238 116 204 Z" fill="#1f2630"/>`
+    ];
     art = `<ellipse cx="200" cy="224" rx="132" ry="26" fill="#120b0c" opacity=".55"/>
-      <path d="M92 130 Q200 176 308 130 L282 206 Q200 238 118 206 Z" fill="#1b2430"/>
-      <ellipse cx="200" cy="130" rx="108" ry="36" fill="#2a1a10"/><ellipse cx="200" cy="126" rx="92" ry="24" fill="#c98a3a" opacity=".85"/>
+      ${bowlShapes[variant]}
+      <ellipse cx="200" cy="130" rx="108" ry="36" fill="#2a1a10"/><ellipse cx="200" cy="126" rx="92" ry="24" fill="${broths[variant]}" opacity=".85"/>
       <path d="M130 126 Q158 110 186 126 T242 126 T290 124" stroke="#f0d270" stroke-width="5" fill="none" stroke-linecap="round"/>
-      <circle cx="156" cy="120" r="8" fill="#6eb89a"/><circle cx="228" cy="116" r="7" fill="#c02a08"/>
+      <circle cx="${156 + variant * 10}" cy="${120 + (variant % 2) * 6}" r="8" fill="#6eb89a"/><circle cx="${228 - variant * 8}" cy="${116 + (variant % 3) * 4}" r="7" fill="#c02a08"/>
       <path d="M138 86 C128 64 148 58 138 42" stroke="#f5f0e8" stroke-width="2" fill="none"><animate attributeName="opacity" values=".1;.55;.1" dur="3s" repeatCount="indefinite"/></path>
       <path d="M214 84 C204 62 224 56 214 40" stroke="#f5f0e8" stroke-width="2" fill="none"><animate attributeName="opacity" values=".05;.45;.05" dur="3.6s" repeatCount="indefinite"/></path>`;
-  } else if (name.includes('sake') || name.includes('beer') || name.includes('tea')) {
-    art = `<ellipse cx="200" cy="222" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <rect x="118" y="86" width="46" height="114" rx="8" fill="#1d3328"/><rect x="126" y="102" width="30" height="76" rx="4" fill="#d4a840" opacity=".65"/>
-      <rect x="190" y="112" width="58" height="88" rx="9" fill="#efe6d4" opacity=".18"/><rect x="198" y="128" width="42" height="52" rx="6" fill="#c98a3a" opacity=".75"/>
-      <ellipse cx="219" cy="128" rx="21" ry="6" fill="#f7e8b0" opacity=".8"/><path d="M270 145 Q302 132 320 150 Q304 170 270 160 Z" fill="#6eb89a" opacity=".75"/>`;
-  } else if (name.includes('mochi') || name.includes('ice cream')) {
-    art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <path d="M78 184 Q200 132 322 184 Q292 210 200 214 Q108 210 78 184 Z" fill="#e8e0d0" opacity=".22"/>
-      <circle cx="146" cy="156" r="34" fill="#b8394a"/><circle cx="200" cy="144" r="34" fill="#6eb89a"/><circle cx="254" cy="156" r="34" fill="#d4a840"/>`;
+  } else if (name.includes('juice') || name.includes('soda') || name.includes('coke') || name.includes('sprite') || name.includes('shirley') || name.includes('water') || name.includes('tea')) {
+    const drinkArts = [
+      `<ellipse cx="200" cy="222" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="118" y="86" width="46" height="114" rx="8" fill="#1d3328"/><rect x="126" y="102" width="30" height="76" rx="4" fill="#d4a840" opacity=".65"/>
+        <rect x="190" y="112" width="58" height="88" rx="9" fill="#efe6d4" opacity=".18"/><rect x="198" y="128" width="42" height="52" rx="6" fill="#c98a3a" opacity=".75"/>
+        <ellipse cx="219" cy="128" rx="21" ry="6" fill="#f7e8b0" opacity=".8"/><path d="M270 145 Q302 132 320 150 Q304 170 270 160 Z" fill="#6eb89a" opacity=".75"/>`,
+      `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="118" y="96" width="54" height="102" rx="12" fill="#efe6d4" opacity=".16"/><rect x="126" y="114" width="38" height="66" rx="8" fill="#d45330" opacity=".82"/>
+        <rect x="208" y="90" width="64" height="110" rx="16" fill="#efe6d4" opacity=".15"/><rect x="218" y="108" width="44" height="74" rx="10" fill="#f0b340" opacity=".82"/>
+        <path d="M145 92 L155 72" stroke="#1d3328" stroke-width="4" stroke-linecap="round"/><path d="M238 96 L248 72" stroke="#1d3328" stroke-width="4" stroke-linecap="round"/>`,
+      `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="126" y="82" width="40" height="118" rx="6" fill="#203430"/><rect x="132" y="98" width="28" height="92" rx="4" fill="#7fd0e8" opacity=".78"/>
+        <rect x="196" y="108" width="70" height="92" rx="12" fill="#efe6d4" opacity=".14"/><rect x="206" y="122" width="50" height="58" rx="8" fill="#5a6a78" opacity=".72"/>
+        <circle cx="230" cy="138" r="18" fill="#f5f7fa" opacity=".8"/><circle cx="230" cy="138" r="10" fill="#d8ecff" opacity=".6"/>`,
+      `<ellipse cx="200" cy="224" rx="118" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="110" y="92" width="66" height="108" rx="20" fill="#efe6d4" opacity=".14"/><rect x="120" y="112" width="46" height="68" rx="14" fill="#7b3f22" opacity=".78"/>
+        <rect x="220" y="78" width="28" height="122" rx="8" fill="#244a5a"/><rect x="254" y="90" width="28" height="110" rx="8" fill="#5a3c28"/>
+        <path d="M122 122 Q142 108 162 122" stroke="#f5f0e8" stroke-width="3" fill="none" opacity=".35"/>`
+    ];
+    art = drinkArts[variant];
+  } else if (name.includes('cake') || name.includes('oreo') || name.includes('cheesecake')) {
+    const dessertArts = [
+      `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
+        <path d="M78 184 Q200 132 322 184 Q292 210 200 214 Q108 210 78 184 Z" fill="#e8e0d0" opacity=".22"/>
+        <circle cx="146" cy="156" r="34" fill="#b8394a"/><circle cx="200" cy="144" r="34" fill="#6eb89a"/><circle cx="254" cy="156" r="34" fill="#d4a840"/>`,
+      `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <path d="M110 196 L152 124 L238 124 L280 196 Z" fill="#5b3326"/><path d="M132 144 L216 144" stroke="#f0d8c0" stroke-width="6" opacity=".35"/>
+        <circle cx="154" cy="114" r="10" fill="#b8394a"/><circle cx="246" cy="114" r="10" fill="#b8394a"/>`,
+      `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="110" y="138" width="180" height="44" rx="14" fill="#e0caa8"/><rect x="122" y="150" width="156" height="20" rx="10" fill="#f5efe2"/>
+        <path d="M132 138 Q200 104 268 138" stroke="#d4a840" stroke-width="8" fill="none" opacity=".7"/>`,
+      `<ellipse cx="200" cy="224" rx="122" ry="22" fill="#120b0c" opacity=".55"/>
+        <circle cx="146" cy="168" r="24" fill="#2b1a18"/><circle cx="192" cy="152" r="24" fill="#2b1a18"/><circle cx="238" cy="168" r="24" fill="#2b1a18"/>
+        <circle cx="146" cy="168" r="10" fill="#f5efe2"/><circle cx="192" cy="152" r="10" fill="#f5efe2"/><circle cx="238" cy="168" r="10" fill="#f5efe2"/>
+        <path d="M118 122 Q200 92 282 122" stroke="#d45330" stroke-width="6" fill="none" opacity=".65"/>`
+    ];
+    art = dessertArts[variant];
   } else if (name.includes('edamame') || name.includes('sunomono')) {
     art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
       <path d="M78 174 Q132 122 194 166 Q140 218 78 174 Z" fill="#4a8a50"/><path d="M176 162 Q232 112 306 164 Q248 220 176 162 Z" fill="#5aaa60"/>
@@ -1518,13 +1559,66 @@ function menuIllustration(item) {
       <path d="M86 174 Q120 118 154 174 Z" fill="#e8d2a6"/><path d="M146 174 Q180 118 214 174 Z" fill="#e8d2a6"/><path d="M206 174 Q240 118 274 174 Z" fill="#e8d2a6"/>
       <path d="M98 166 Q120 150 144 166 M158 166 Q180 150 204 166 M218 166 Q240 150 264 166" stroke="#9b6b2d" stroke-width="3" fill="none"/>`;
   } else if (name.includes('tempura') || name.includes('tofu')) {
-    art = `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
-      <path d="M92 178 Q126 116 160 178 Z" fill="#d4a840"/><path d="M166 178 Q200 116 234 178 Z" fill="#c98a3a"/><path d="M238 178 Q272 116 306 178 Z" fill="#d4a840"/>
-      <circle cx="136" cy="130" r="5" fill="#f0d270"/><circle cx="214" cy="132" r="5" fill="#f0d270"/><circle cx="286" cy="134" r="5" fill="#f0d270"/>`;
+    const tempuraArts = [
+      `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
+        <path d="M92 178 Q126 116 160 178 Z" fill="#d4a840"/><path d="M166 178 Q200 116 234 178 Z" fill="#c98a3a"/><path d="M238 178 Q272 116 306 178 Z" fill="#d4a840"/>
+        <circle cx="136" cy="130" r="5" fill="#f0d270"/><circle cx="214" cy="132" r="5" fill="#f0d270"/><circle cx="286" cy="134" r="5" fill="#f0d270"/>`,
+      `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
+        <path d="M104 168 Q132 116 166 164 Q140 204 104 168 Z" fill="#d4a840"/><path d="M174 176 Q214 110 250 176 Z" fill="#b88332"/><path d="M240 166 Q276 120 300 172 Q278 202 240 166 Z" fill="#d8a84e"/>
+        <path d="M120 126 Q140 110 160 126" stroke="#f0d270" stroke-width="3" fill="none"/><path d="M252 130 Q272 112 292 130" stroke="#f0d270" stroke-width="3" fill="none"/>`,
+      `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
+        <rect x="108" y="152" width="72" height="34" rx="10" fill="#d8c8a8"/><path d="M204 178 Q234 112 268 178 Z" fill="#c98a3a"/><path d="M252 176 Q284 122 308 176 Z" fill="#d4a840"/>
+        <circle cx="136" cy="168" r="4" fill="#f0d270"/><circle cx="230" cy="132" r="4" fill="#f0d270"/>`,
+      `<ellipse cx="200" cy="224" rx="120" ry="22" fill="#120b0c" opacity=".55"/>
+        <path d="M94 180 Q124 116 152 174 Q128 204 94 180 Z" fill="#d4a840"/><path d="M152 180 Q186 118 218 178 Q184 206 152 180 Z" fill="#b8742f"/><path d="M222 180 Q258 120 304 176 Q266 210 222 180 Z" fill="#d9ad58"/>
+        <path d="M96 194 L304 194" stroke="#5a3820" stroke-width="4" opacity=".55"/>`
+    ];
+    art = tempuraArts[variant];
   } else if (name.includes('teriyaki') || name.includes('filet')) {
-    art = `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
-      <ellipse cx="200" cy="178" rx="122" ry="34" fill="#1b2430"/><rect x="114" y="134" width="88" height="44" rx="18" fill="#8b3a22"/><rect x="210" y="138" width="76" height="38" rx="18" fill="#b85a30"/>
-      <path d="M124 148 Q196 166 278 146" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="152" cy="190" r="7" fill="#6eb89a"/><circle cx="248" cy="190" r="7" fill="#6eb89a"/>`;
+    const teriyakiArts = [
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#1b2430"/><rect x="114" y="134" width="88" height="44" rx="18" fill="#8b3a22"/><rect x="210" y="138" width="76" height="38" rx="18" fill="#b85a30"/>
+        <path d="M124 148 Q196 166 278 146" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="152" cy="190" r="7" fill="#6eb89a"/><circle cx="248" cy="190" r="7" fill="#6eb89a"/>`,
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#202838"/><rect x="106" y="136" width="104" height="40" rx="20" fill="#6f2f1d"/><rect x="226" y="134" width="56" height="42" rx="16" fill="#d8c8a8"/>
+        <path d="M116 152 Q188 136 260 152" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="248" cy="144" r="7" fill="#5a8d48"/><circle cx="266" cy="154" r="7" fill="#6eb89a"/>`,
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#1a2430"/><rect x="110" y="132" width="82" height="46" rx="20" fill="#b85a30"/><rect x="202" y="140" width="92" height="34" rx="14" fill="#8b3a22"/>
+        <path d="M120 142 Q194 170 284 146" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="236" cy="190" r="7" fill="#d4a840"/>`,
+      `<ellipse cx="200" cy="224" rx="128" ry="24" fill="#120b0c" opacity=".55"/>
+        <ellipse cx="200" cy="178" rx="122" ry="34" fill="#24202c"/><rect x="112" y="138" width="90" height="36" rx="18" fill="#7c2f22"/><rect x="214" y="132" width="74" height="46" rx="20" fill="#c97045"/>
+        <path d="M124 150 Q196 138 280 154" stroke="#f0a040" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="150" cy="192" r="7" fill="#6eb89a"/><circle cx="170" cy="188" r="7" fill="#d4a840"/>`
+    ];
+    art = teriyakiArts[variant];
+  } else if (name.includes('roll')) {
+    const rollArts = [
+      `<g transform="translate(84 96)">
+        <ellipse cx="30" cy="58" rx="25" ry="25" fill="#171a14"/><ellipse cx="30" cy="58" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="30" cy="58" rx="8" ry="8" fill="#c02a08"/>
+        <ellipse cx="88" cy="54" rx="25" ry="25" fill="#171a14"/><ellipse cx="88" cy="54" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="88" cy="54" rx="8" ry="8" fill="#d4a840"/>
+        <ellipse cx="146" cy="58" rx="25" ry="25" fill="#171a14"/><ellipse cx="146" cy="58" rx="15" ry="15" fill="#e8e0d0"/><ellipse cx="146" cy="58" rx="8" ry="8" fill="#6eb89a"/>
+        <path d="M4 126 Q90 105 176 126" stroke="#8b5a00" stroke-width="4" fill="none" opacity=".65"/>
+      </g>`,
+      `<g transform="translate(70 90)">
+        <path d="M10 112 Q64 72 118 108 Q96 144 32 142 Z" fill="#171a14"/><path d="M18 106 Q62 80 108 104 Q88 132 38 132 Z" fill="#f4efe6"/><path d="M28 106 Q60 88 96 104 Q84 120 42 122 Z" fill="#c02a08"/>
+        <path d="M112 126 Q166 82 220 116 Q196 154 134 156 Z" fill="#171a14"/><path d="M120 120 Q164 92 210 114 Q190 142 142 146 Z" fill="#f4efe6"/><path d="M132 118 Q168 98 198 116 Q186 132 146 136 Z" fill="#d4a840"/>
+        <path d="M222 112 Q252 88 284 108 Q268 132 234 132 Z" fill="#171a14"/><path d="M228 108 Q252 92 278 106 Q266 124 238 124 Z" fill="#f4efe6"/><path d="M236 108 Q254 98 272 106 Q264 118 244 118 Z" fill="#6eb89a"/>
+      </g>`,
+      `<g transform="translate(80 94)">
+        <rect x="8" y="34" width="172" height="70" rx="8" fill="#2a2014"/><path d="M18 70 Q56 34 94 66 Q130 34 168 70" stroke="#3b2a14" stroke-width="6" fill="none"/>
+        <ellipse cx="32" cy="56" rx="25" ry="17" fill="#171a14"/><ellipse cx="32" cy="56" rx="16" ry="10" fill="#d86060"/>
+        <ellipse cx="86" cy="56" rx="25" ry="17" fill="#171a14"/><ellipse cx="86" cy="56" rx="16" ry="10" fill="#e8906e"/>
+        <ellipse cx="140" cy="56" rx="25" ry="17" fill="#171a14"/><ellipse cx="140" cy="56" rx="16" ry="10" fill="#d4a840"/>
+        <ellipse cx="86" cy="104" rx="10" ry="4" fill="#6eb89a"/><ellipse cx="142" cy="98" rx="10" ry="4" fill="#5a8d48"/>
+      </g>`,
+      `<g transform="translate(68 96)">
+        <ellipse cx="54" cy="82" rx="48" ry="28" fill="#1a2030"/><ellipse cx="138" cy="84" rx="56" ry="32" fill="#1a2030"/><ellipse cx="216" cy="80" rx="44" ry="26" fill="#2a1c14"/>
+        <circle cx="32" cy="54" r="12" fill="#171a14"/><circle cx="32" cy="54" r="7" fill="#6eb89a"/>
+        <circle cx="68" cy="52" r="12" fill="#171a14"/><circle cx="68" cy="52" r="7" fill="#e8906e"/>
+        <circle cx="104" cy="54" r="12" fill="#171a14"/><circle cx="104" cy="54" r="7" fill="#d4a840"/>
+        <circle cx="140" cy="52" r="12" fill="#171a14"/><circle cx="140" cy="52" r="7" fill="#c02a08"/>
+        <path d="M20 100 Q56 84 90 100" stroke="#8b5a00" stroke-width="4" fill="none"/><path d="M164 84 Q190 52 220 72" stroke="#d4a840" stroke-width="5" fill="none"/><path d="M224 72 Q246 56 266 78" stroke="#e8906e" stroke-width="5" fill="none"/>`
+    ];
+    art = rollArts[variant];
   }
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280"><defs><radialGradient id="bg" cx="50%" cy="45%" r="75%"><stop offset="0%" stop-color="#192018"/><stop offset="100%" stop-color="#0d0a0b"/></radialGradient></defs><rect width="400" height="280" fill="url(#bg)"/><ellipse cx="200" cy="222" rx="130" ry="24" fill="#120b0c" opacity=".45"/>${art}</svg>`;
