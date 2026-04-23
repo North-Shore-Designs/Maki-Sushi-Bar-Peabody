@@ -89,22 +89,50 @@ body::before{
 #banner{
   background:linear-gradient(90deg,var(--accent3),var(--accent),var(--accent3));
   color:#fff;text-align:center;
-  padding:14px 20px;
+  padding:18px 20px;
   font-family:'Josefin Sans',sans-serif;
   font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
   position:relative;z-index:10;
 }
-#banner strong{display:block;font-size:.82rem;letter-spacing:.18em;margin-bottom:6px}
-#banner small{
+#banner strong{display:block;font-size:.82rem;letter-spacing:.18em;margin-bottom:10px}
+#banner .bons-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin:0 auto;
+  max-width:980px;
+}
+#banner .bons-badge{
+  width:108px;
+  height:108px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+#banner .bons-badge img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
   display:block;
-  font-size:.68rem;
-  letter-spacing:.08em;
-  line-height:1.5;
-  opacity:.95;
 }
 #banner .banner-note{
-  margin-top:6px;
+  margin-top:12px;
   opacity:1;
+  display:block;
+  font-size:.66rem;
+  letter-spacing:.12em;
+}
+#banner .salem-note{
+  display:block;
+  margin-top:14px;
+  font-size:.84rem;
+  letter-spacing:.14em;
+  line-height:1.6;
+  opacity:1;
+  text-transform:uppercase;
+  font-weight:700;
 }
 
 /* ── NAV ── */
@@ -243,6 +271,25 @@ nav{
   box-shadow:0 8px 30px rgba(155,35,53,.35);
 }
 .hero-cta:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(155,35,53,.45)}
+.hero-actions{
+  margin-top:36px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+}
+.hero-cta.secondary{
+  background:rgba(247,242,236,.92);
+  color:#22161a;
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+.hero-cta.secondary:hover{
+  background:#fff;
+  border-color:rgba(255,255,255,.7);
+  color:var(--accent);
+  box-shadow:0 12px 30px rgba(0,0,0,.16);
+}
 
 /* decorative kanji */
 .hero-kanji{
@@ -483,9 +530,191 @@ nav{
 }
 .catering-box p{opacity:.88;line-height:1.7;font-size:1rem;margin-bottom:16px}
 .catering-note{
-  background:rgba(255,255,255,.12);border-radius:8px;
+  background:color-mix(in srgb, var(--surface2) 88%, var(--accent) 12%);
+  border:1px solid color-mix(in srgb, var(--accent) 22%, var(--border) 78%);
+  border-radius:8px;
   padding:12px 18px;font-family:'Josefin Sans',sans-serif;
-  font-size:.72rem;letter-spacing:.1em;
+  font-size:.86rem;letter-spacing:.04em;
+  color:var(--text);
+  line-height:1.45;
+}
+[data-theme="light"] .catering-note{color:var(--text)}
+[data-theme="dark"] .catering-note{color:#fff}
+.catering-note a{
+  color:var(--accent);
+  font-weight:700;
+  text-decoration:none;
+}
+.catering-note a:hover{text-decoration:underline}
+.catering-page-wrap{
+  max-width:1180px;
+  margin:0 auto 90px;
+  padding:0 5%;
+}
+.catering-intro{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);
+  gap:24px;
+  align-items:stretch;
+  margin-bottom:28px;
+}
+.catering-panel{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:30px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(12px);
+}
+.catering-panel h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.6rem;
+  color:var(--text);
+  margin-bottom:12px;
+}
+.catering-panel p{
+  color:var(--text2);
+  line-height:1.7;
+  font-size:.98rem;
+}
+.catering-contact{
+  display:grid;
+  gap:14px;
+}
+.catering-contact a{
+  color:var(--gold2);
+  text-decoration:none;
+}
+.catering-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+.catering-actions a{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 20px;border-radius:999px;
+  font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;text-decoration:none;
+}
+.catering-actions button{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 20px;border-radius:999px;
+  font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;text-decoration:none;
+}
+.catering-actions .primary{background:var(--accent);color:#fff}
+.catering-actions .secondary{
+  border:1px solid var(--border);
+  color:var(--text);
+  background:transparent;
+}
+.catering-menu-frame{
+  background:rgba(0,0,0,.22);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.catering-menu-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+.catering-menu-layout{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+}
+.catering-section-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+.catering-section-card.full{grid-column:1/-1}
+.catering-section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.catering-section-head h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.5rem;
+  color:var(--text);
+}
+.catering-section-head span{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.65rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text3);
+}
+.catering-item{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  padding:18px 0;
+  border-bottom:1px solid var(--border);
+}
+.catering-item:last-child{border-bottom:none;padding-bottom:0}
+.catering-item:first-child{padding-top:0}
+.catering-item-name{
+  display:block;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.9rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--text);
+  margin-bottom:6px;
+}
+.catering-item-meta{
+  display:block;
+  color:var(--text3);
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.64rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.catering-item p{
+  font-size:.95rem;
+  color:var(--text2);
+  line-height:1.65;
+}
+.catering-price{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.45rem;
+  color:var(--gold2);
+  white-space:nowrap;
+}
+.catering-cta-strip{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+}
+.catering-cta-copy{
+  color:var(--text2);
+  font-size:.95rem;
+  line-height:1.6;
+}
+.catering-contact-card{
+  text-align:center;
+}
+.catering-contact-card p{
+  max-width:760px;
+  margin:0 auto;
 }
 
 /* ── CHATBOT ── */
@@ -782,6 +1011,8 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
+  .catering-intro{grid-template-columns:1fr}
+  .catering-menu-layout{grid-template-columns:1fr}
   #banner{
     padding:12px 14px;
     font-size:.66rem;
@@ -789,7 +1020,8 @@ footer{
     line-height:1.45;
   }
   #banner strong{font-size:.74rem;letter-spacing:.15em}
-  #banner small{font-size:.62rem;line-height:1.45}
+  #banner .bons-badge{width:92px;height:92px;border-radius:20px}
+  #banner .salem-note{font-size:.58rem}
   #banner .banner-note{margin-top:5px}
   .nav-links{display:none}
   #hamburger{display:flex}
@@ -800,13 +1032,19 @@ footer{
   .photo-strip-item:first-child,.photo-strip-item:nth-child(4){grid-row:auto;aspect-ratio:3/4}
 }
 @media(max-width:600px){
+  .catering-panel{padding:22px}
+  .catering-actions{flex-direction:column}
+  .catering-actions a{width:100%}
+  .catering-item{grid-template-columns:1fr}
   #banner{
     padding:10px 12px;
     font-size:.58rem;
     letter-spacing:.08em;
   }
   #banner strong{font-size:.66rem;letter-spacing:.12em}
-  #banner small{font-size:.56rem;line-height:1.4}
+  #banner .bons-row{gap:8px}
+  #banner .bons-badge{width:74px;height:74px;border-radius:16px}
+  #banner .salem-note{font-size:.52rem;line-height:1.4}
   #banner .banner-note{margin-top:4px}
   .footer-grid{grid-template-columns:1fr}
   #chatbot-window{width:290px}
@@ -832,6 +1070,7 @@ footer{
   <div class="nav-links">
     <button onclick="showPage('home')" id="nav-home" class="active">Home</button>
     <button onclick="showPage('menu')" id="nav-menu">Menu</button>
+    <button onclick="showPage('catering')" id="nav-catering">Catering</button>
     <button onclick="showPage('about')" id="nav-about">About</button>
     <button onclick="showPage('visit')" id="nav-visit">Visit Us</button>
   </div>
@@ -846,6 +1085,7 @@ footer{
   <button id="mobile-close" onclick="toggleMobile()">✕</button>
   <button onclick="showPage('home');toggleMobile()">Home</button>
   <button onclick="showPage('menu');toggleMobile()">Menu</button>
+  <button onclick="showPage('catering');toggleMobile()">Catering</button>
   <button onclick="showPage('about');toggleMobile()">About</button>
   <button onclick="showPage('visit');toggleMobile()">Visit Us</button>
   <button onclick="openChat();toggleMobile()">Chat with Us</button>
@@ -858,7 +1098,11 @@ footer{
     <img src="assets/gallery/logo-design.png" alt="Maki Sushi Bar &amp; Grill" class="hero-logo" style="width:clamp(240px,40vw,420px);margin:0 auto 16px;display:block;filter:drop-shadow(0 4px 24px rgba(0,0,0,0.55));animation:fadeUp .6s .2s both;">
     <p class="hero-sub" style="animation:fadeUp .6s .3s both;">Where the art of Japan meets the heart of New England</p>
     <div class="hero-badge" style="animation:fadeUp .6s .4s both;">Est. in Peabody · 43 Main Street</div>
-    <button class="hero-cta" onclick="showPage('menu')" style="animation:fadeUp .6s .5s both;">Explore Our Menu →</button>
+    <div class="hero-actions" style="animation:fadeUp .6s .5s both;">
+      <button class="hero-cta" onclick="showPage('menu')">Explore Menu →</button>
+      <a class="hero-cta secondary" href="https://order.toasttab.com/online/maki-sushi-bar-grill-43-main-st" target="_blank" style="text-decoration:none">Online Ordering</a>
+    </div>
+    <p style="margin-top:14px;color:var(--text);font-size:.84rem;line-height:1.6;text-align:center;animation:fadeUp .6s .55s both;">Delivery available through Uber Eats, DoorDash, and Grubhub.</p>
 
     <!-- SVG Illustration: North Shore Coastline meets Japanese motifs -->
     <svg class="hero-svg" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -913,8 +1157,15 @@ footer{
   <!-- ANNOUNCEMENT BANNER -->
   <div id="banner">
     <strong>The BONS - Best of Northshore</strong>
-    <small>Maki won 2013, 2018, 2021, 2023, 2024, 2025</small>
-    <small>Best of The Salem News 2019, 2020, 2021, 2022, 2023, 2024</small>
+    <div class="bons-row">
+      <div class="bons-badge"><img src="assets/gallery/BONS 2013-transparent.png" alt="BONS 2013 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-HOME-2018-LOGO-transparent.png" alt="BONS Home 2018 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2021-Black_550x825-transparent.png" alt="BONS 2021 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2023-Logo_550x825-transparent.png" alt="BONS 2023 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2024-Logo-transparent.png" alt="BONS 2024 award badge"></div>
+      <div class="bons-badge"><img src="assets/gallery/BONS-2025-transparent.png" alt="BONS 2025 award badge"></div>
+    </div>
+    <small class="salem-note">Best of The Salem News 2019, 2020, 2021, 2022, 2023, 2024</small>
     <small class="banner-note">Walk-ins welcome · Reservations for parties of 6+</small>
   </div>
 
@@ -1006,6 +1257,11 @@ footer{
     <span class="section-label">Explore Our Offerings</span>
     <h2 class="section-title">The <em>Menu</em></h2>
     <div class="section-divider"></div>
+    <div class="hero-actions" style="margin-top:26px">
+      <button class="hero-cta" onclick="showPage('menu')">Explore Menu</button>
+      <a class="hero-cta secondary" href="https://order.toasttab.com/online/maki-sushi-bar-grill-43-main-st" target="_blank" style="text-decoration:none">Online Ordering</a>
+    </div>
+    <p style="margin-top:14px;color:var(--text2);font-size:.84rem;line-height:1.6;text-align:center">Delivery available through Uber Eats, DoorDash, and Grubhub.</p>
   </div>
 
   <div class="menu-tabs">
@@ -1050,6 +1306,122 @@ footer{
     <p style="max-width:1100px;margin:28px auto 0;padding:0 5%;color:var(--text3);font-size:.82rem;line-height:1.7;text-align:center">
       ***Consuming raw or undercooked food may increase your risk of food borne illness. Before placing your order, please inform your server if a person in your party has a food allergy. A gratuity of 20% will be added to parties of six or larger. Menu and prices are subject to change without notice***
     </p>
+  </div>
+</div>
+
+<!-- ═══════════════ CATERING PAGE ═══════════════ -->
+<div class="page" id="page-catering">
+  <div class="section-header">
+    <span class="section-label">Events & Gatherings</span>
+    <h2 class="section-title">Catering <em>Menu</em></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="catering-page-wrap">
+    <div class="catering-intro">
+      <div class="catering-panel">
+        <h3>Catering by Maki</h3>
+        <p>Choose from our sushi platters and appetizer trays for office lunches, celebrations, family parties, and larger group orders.</p>
+        <div class="catering-note" style="margin-top:18px">
+          Email is preferred for catering. Please send your event date, pickup time, and order details to <strong><a href="mailto:MakiPeabody@gmail.com">MakiPeabody@gmail.com</a></strong> rather than calling when discussing catering.
+        </div>
+        <div class="catering-cta-strip">
+          <div class="catering-cta-copy">
+            Delivery available through Uber Eats, DoorDash, and Grubhub.
+          </div>
+          <div class="catering-actions" style="margin-top:0">
+            <a class="secondary" href="https://order.toasttab.com/online/maki-sushi-bar-grill-43-main-st" target="_blank">Online Ordering</a>
+            <a class="secondary" href="javascript:void(0)" onclick="showPage('menu')">Explore Menu</a>
+          </div>
+        </div>
+      </div>
+      <div class="catering-panel catering-contact">
+        <div>
+          <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Preferred Contact</span>
+          <a href="mailto:MakiPeabody@gmail.com" style="font-family:'Shippori Mincho',serif;font-size:1.2rem">MakiPeabody@gmail.com</a>
+        </div>
+        <div>
+          <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Call to Order</span>
+          <p>During business hours 5pm-10pm at <a href="tel:9788545426" style="font-family:'Shippori Mincho',serif;font-size:1.1rem;color:var(--text)">(978) 854-5426</a>.</p>
+        </div>
+        <div>
+          <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Lead Time</span>
+          <p>Orders must be placed at least <strong style="color:var(--text)">72 hours in advance</strong> with a <strong style="color:var(--text)">50% deposit</strong>.</p>
+        </div>
+        <div>
+          <p>For catering orders, please email <a href="mailto:MakiPeabody@gmail.com" style="color:var(--gold2);font-weight:700;text-decoration:none">MakiPeabody@gmail.com</a> with your event date, pickup time, guest count, and the trays you want. If needed, you can also call during business hours from 5pm-10pm.</p>
+        </div>
+        <div class="catering-actions">
+          <a class="primary" href="mailto:MakiPeabody@gmail.com?subject=Catering%20Inquiry">Email Catering</a>
+          <a class="secondary" href="javascript:void(0)" onclick="showPage('menu')">Explore Menu</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="catering-menu-layout">
+      <div class="catering-section-card">
+        <div class="catering-section-head">
+          <h3>Sushi Platters</h3>
+          <span>Best for gatherings</span>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Tray A</span>
+            <span class="catering-item-meta">6-8 people · 84 pieces</span>
+            <p>Boston Roll (2), California Roll (2), Firecracker Roll, Rainbow Roll, Shrimp Tempura Roll, Spicy Tuna Roll (2), Vegetable Tempura Roll (2).</p>
+          </div>
+          <div class="catering-price">$114.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Tray B</span>
+            <span class="catering-item-meta">All cooked sushi · 6-8 people · 128 pieces</span>
+            <p>Two each of: Avocado Roll, Butterfly Roll, Chicken Teriyaki Roll, California Roll, Mexican Roll, Shrimp Tempura Roll, Salmon Tempura Roll.</p>
+          </div>
+          <div class="catering-price">$140.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Tray C</span>
+            <span class="catering-item-meta">10-12 people · 192 pieces</span>
+            <p>Two each of: Bubba Roll, Crunchy Crab Roll, Crab Rangoon Roll, Double Tuna Roll, Firecracker Roll, Hurricane Roll, Kamikaze Roll, Mango Roll, Rainbow Roll, Spicy Salmon Roll, Spicy Tuna Roll, Sweet Potato Roll.</p>
+          </div>
+          <div class="catering-price">$295.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Vegetarian Tray</span>
+            <span class="catering-item-meta">6-8 people · 108 pieces</span>
+            <p>Two each of: Cucumber Roll, Avocado Roll, Avocado-Cucumber Roll, Avocado-Mango Roll, Sweet Potato Roll, Vegetable Tempura Roll.</p>
+          </div>
+          <div class="catering-price">$94.95</div>
+        </div>
+      </div>
+
+      <div class="catering-section-card">
+        <div class="catering-section-head">
+          <h3>Appetizer Trays</h3>
+          <span>Party starters</span>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Dumpling Tray</span>
+            <span class="catering-item-meta">50 pieces</span>
+            <p>Choose cream cheese dumplings, fried gyoza, or half-and-half.</p>
+          </div>
+          <div class="catering-price">$79.95</div>
+        </div>
+        <div class="catering-item">
+          <div>
+            <span class="catering-item-name">Edamame Half Tray</span>
+            <span class="catering-item-meta">Half tray</span>
+            <p>Steamed edamame with sea salt. Maki spicy edamame add $5.</p>
+          </div>
+          <div class="catering-price">$45.95</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -1205,12 +1577,8 @@ footer{
       <div style="margin-top:18px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="tel:9788545426" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);color:#fff;padding:12px 22px;border-radius:6px;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.25)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call to Order
+          Call to Order (5pm-10pm)
         </a>
-        <button onclick="openChat()" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);cursor:pointer;padding:12px 22px;border-radius:6px;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          Ask via Chat
-        </button>
       </div>
     </div>
 
@@ -1280,6 +1648,7 @@ footer{
       <div style="margin-top:18px;display:flex;gap:10px">
         <a href="https://www.facebook.com/MakiSushiBarPeabody/" target="_blank" style="background:var(--surface2);color:var(--text3);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;transition:background .2s" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text3)'">f</a>
         <a href="https://www.yelp.com/biz/maki-sushi-bar-peabody" target="_blank" style="background:var(--surface2);color:var(--text3);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;font-weight:700;transition:background .2s" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text3)'">y</a>
+        <a href="https://www.google.com/search?q=Maki+Sushi+Bar+%26+Grill+43+Main+St+Peabody+MA+01960" target="_blank" aria-label="Google listing for Maki Sushi Bar & Grill" style="background:var(--surface2);color:var(--text3);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.72rem;font-weight:700;transition:background .2s" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text3)'">G</a>
       </div>
     </div>
     <div class="footer-col">
@@ -1287,6 +1656,7 @@ footer{
       <ul>
         <li><button onclick="showPage('home')">Home</button></li>
         <li><button onclick="showPage('menu')">Menu</button></li>
+        <li><button onclick="showPage('catering')">Catering</button></li>
         <li><button onclick="showPage('about')">About Us</button></li>
         <li><button onclick="showPage('visit')">Visit Us</button></li>
       </ul>
@@ -1853,6 +2223,7 @@ function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
   event.target.classList.add('active');
+  try { localStorage.setItem('makiActiveMenuTab', tab); } catch (_) {}
 }
 
 // ═══ PAGE NAVIGATION ═══
@@ -1862,6 +2233,10 @@ function showPage(page) {
   document.getElementById('page-' + page).classList.add('active');
   const navBtn = document.getElementById('nav-' + page);
   if (navBtn) navBtn.classList.add('active');
+  try { localStorage.setItem('makiActivePage', page); } catch (_) {}
+  if (window.location.hash !== '#' + page) {
+    history.replaceState(null, '', '#' + page);
+  }
   window.scrollTo(0,0);
 }
 
@@ -2003,6 +2378,19 @@ function initMakiSlideshow() {
 buildMenus();
 highlightToday();
 initMakiSlideshow();
+try {
+  const savedPage = (window.location.hash || '').replace('#', '') || localStorage.getItem('makiActivePage') || 'home';
+  if (document.getElementById('page-' + savedPage)) showPage(savedPage);
+  const savedTab = localStorage.getItem('makiActiveMenuTab');
+  if (savedTab && document.getElementById('tab-' + savedTab)) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + savedTab).classList.add('active');
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const activeBtn = tabButtons.find(btn => btn.textContent.toLowerCase().includes(savedTab === 'nigiri' ? 'nigiri' : savedTab));
+    if (activeBtn) activeBtn.classList.add('active');
+  }
+} catch (_) {}
 </script>
 
 <script>
