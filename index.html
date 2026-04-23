@@ -89,12 +89,23 @@ body::before{
 #banner{
   background:linear-gradient(90deg,var(--accent3),var(--accent),var(--accent3));
   color:#fff;text-align:center;
-  padding:10px 20px;
+  padding:14px 20px;
   font-family:'Josefin Sans',sans-serif;
-  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
-  position:relative;z-index:200;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  position:relative;z-index:10;
 }
-#banner span{opacity:.7;margin:0 14px}
+#banner strong{display:block;font-size:.82rem;letter-spacing:.18em;margin-bottom:6px}
+#banner small{
+  display:block;
+  font-size:.68rem;
+  letter-spacing:.08em;
+  line-height:1.5;
+  opacity:.95;
+}
+#banner .banner-note{
+  margin-top:6px;
+  opacity:1;
+}
 
 /* ── NAV ── */
 nav{
@@ -132,14 +143,6 @@ nav{
   transition:all .2s;
 }
 #theme-btn:hover{border-color:var(--accent);color:var(--accent)}
-#chat-btn{
-  background:var(--accent);border:none;cursor:pointer;
-  color:#fff;padding:9px 18px;border-radius:22px;
-  font-family:'Josefin Sans',sans-serif;font-size:.72rem;letter-spacing:.12em;
-  text-transform:uppercase;font-weight:600;
-  transition:background .2s,transform .1s;
-}
-#chat-btn:hover{background:var(--accent2);transform:translateY(-1px)}
 #hamburger{
   display:none;background:none;border:none;cursor:pointer;
   color:var(--text);font-size:1.4rem;padding:8px;
@@ -779,6 +782,15 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
+  #banner{
+    padding:12px 14px;
+    font-size:.66rem;
+    letter-spacing:.12em;
+    line-height:1.45;
+  }
+  #banner strong{font-size:.74rem;letter-spacing:.15em}
+  #banner small{font-size:.62rem;line-height:1.45}
+  #banner .banner-note{margin-top:5px}
   .nav-links{display:none}
   #hamburger{display:flex}
   .about-grid,.visit-grid{grid-template-columns:1fr}
@@ -788,6 +800,14 @@ footer{
   .photo-strip-item:first-child,.photo-strip-item:nth-child(4){grid-row:auto;aspect-ratio:3/4}
 }
 @media(max-width:600px){
+  #banner{
+    padding:10px 12px;
+    font-size:.58rem;
+    letter-spacing:.08em;
+  }
+  #banner strong{font-size:.66rem;letter-spacing:.12em}
+  #banner small{font-size:.56rem;line-height:1.4}
+  #banner .banner-note{margin-top:4px}
   .footer-grid{grid-template-columns:1fr}
   #chatbot-window{width:290px}
   .section-header{padding:50px 5% 30px}
@@ -804,15 +824,6 @@ footer{
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BANNER -->
-<div id="banner">
-  Best of the North Shore · Editor's &amp; Readers' Choice · Northshore Magazine 2023
-  <span>•</span>
-  Walk-ins welcome · Reservations for parties of 6+
-  <span>•</span>
-  Catering available
-</div>
-
 <!-- NAV -->
 <nav>
   <div class="nav-logo" onclick="showPage('home')" style="background:none;padding:0">
@@ -826,7 +837,6 @@ footer{
   </div>
   <div class="nav-right">
     <button id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">☽</button>
-    <button id="chat-btn" onclick="openChat()">Maki Assistant</button>
     <button id="hamburger" onclick="toggleMobile()" aria-label="Menu">☰</button>
   </div>
 </nav>
@@ -898,6 +908,14 @@ footer{
         <a href="tel:9788545426" style="color:var(--text);font-family:'Shippori Mincho',serif;text-decoration:none">(978) 854-5426</a>
       </div>
     </div>
+  </div>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="banner">
+    <strong>The BONS - Best of Northshore</strong>
+    <small>Maki won 2013, 2018, 2021, 2023, 2024, 2025</small>
+    <small>Best of The Salem News 2019, 2020, 2021, 2022, 2023, 2024</small>
+    <small class="banner-note">Walk-ins welcome · Reservations for parties of 6+</small>
   </div>
 
   <!-- Photo Gallery -->
