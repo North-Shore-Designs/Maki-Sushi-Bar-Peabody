@@ -225,10 +225,6 @@ nav{
 #hero-section > *{
   position:relative;z-index:1;
 }
-.hero-svg{
-  position:absolute;bottom:0;left:0;right:0;
-  opacity:.18;pointer-events:none;
-}
 .hero-tagline{
   font-family:'Josefin Sans',sans-serif;
   font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;
@@ -290,25 +286,6 @@ nav{
   color:var(--accent);
   box-shadow:0 12px 30px rgba(0,0,0,.16);
 }
-/* decorative kanji */
-.hero-kanji{
-  position:absolute;right:6%;top:15%;
-  font-family:'Shippori Mincho',serif;
-  font-size:clamp(6rem,15vw,14rem);font-weight:800;
-  color:var(--accent);opacity:.06;
-  writing-mode:vertical-rl;line-height:1;
-  pointer-events:none;
-  animation:fadeUp .8s .3s both;
-}
-.hero-kanji2{
-  position:absolute;left:5%;bottom:10%;
-  font-family:'Shippori Mincho',serif;
-  font-size:clamp(4rem,10vw,9rem);font-weight:800;
-  color:var(--gold);opacity:.05;
-  writing-mode:vertical-rl;
-  pointer-events:none;
-}
-
 /* ── SECTION HEADER ── */
 .section-header{
   text-align:center;padding:80px 5% 50px;
@@ -1108,32 +1085,6 @@ footer{
     </div>
     <p style="margin-top:16px;color:#fff;font-size:.96rem;line-height:1.7;text-align:center;font-weight:600;text-shadow:0 4px 18px rgba(0,0,0,.4);animation:fadeUp .6s .55s both;">Delivery available through Uber Eats, DoorDash, and Grubhub.</p>
 
-    <!-- SVG Illustration: North Shore Coastline meets Japanese motifs -->
-    <svg class="hero-svg" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <!-- Ocean waves -->
-      <path d="M0 280 Q100 240 200 265 Q300 290 400 260 Q500 230 600 258 Q700 285 800 255 Q900 225 1000 250 Q1100 275 1200 248 Q1300 220 1400 245 L1400 320 L0 320Z" fill="#9b2335" opacity="0.4"/>
-      <path d="M0 295 Q120 265 240 280 Q360 295 480 270 Q600 245 720 268 Q840 290 960 265 Q1080 240 1200 260 Q1320 280 1400 262 L1400 320 L0 320Z" fill="#9b2335" opacity="0.25"/>
-      <!-- Mount Fuji silhouette left -->
-      <path d="M50 200 L150 80 L250 200Z" fill="currentColor" opacity="0.12"/>
-      <path d="M100 200 L150 95 L200 200Z" fill="white" opacity="0.05"/>
-      <!-- Cherry blossom tree right -->
-      <line x1="1180" y1="280" x2="1180" y2="130" stroke="currentColor" stroke-width="4" opacity="0.2"/>
-      <line x1="1180" y1="180" x2="1130" y2="140" stroke="currentColor" stroke-width="3" opacity="0.15"/>
-      <line x1="1180" y1="160" x2="1230" y2="120" stroke="currentColor" stroke-width="3" opacity="0.15"/>
-      <circle cx="1130" cy="120" r="30" fill="#9b2335" opacity="0.12"/>
-      <circle cx="1230" cy="100" r="25" fill="#9b2335" opacity="0.1"/>
-      <circle cx="1180" cy="90" r="35" fill="#9b2335" opacity="0.11"/>
-      <circle cx="1155" cy="108" r="20" fill="#9b2335" opacity="0.08"/>
-      <circle cx="1205" cy="112" r="22" fill="#9b2335" opacity="0.09"/>
-      <!-- Lighthouse center -->
-      <rect x="690" y="140" width="20" height="100" fill="currentColor" opacity="0.15"/>
-      <polygon points="680,140 710,140 700,110" fill="currentColor" opacity="0.2"/>
-      <rect x="694" y="108" width="12" height="6" fill="#c9a96e" opacity="0.3"/>
-      <!-- Waves detail -->
-      <path d="M200 300 Q250 290 300 300 Q350 310 400 298" stroke="#9b2335" stroke-width="2" fill="none" opacity="0.3"/>
-      <path d="M600 305 Q660 293 720 305 Q780 317 840 302" stroke="#9b2335" stroke-width="2" fill="none" opacity="0.25"/>
-      <path d="M1000 298 Q1060 285 1120 298" stroke="#9b2335" stroke-width="2" fill="none" opacity="0.2"/>
-    </svg>
   </section>
 
   <!-- Quick info strip -->
