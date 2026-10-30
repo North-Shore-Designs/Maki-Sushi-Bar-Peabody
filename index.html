@@ -1092,7 +1092,7 @@ footer{
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:40px;max-width:1000px;margin:0 auto;text-align:center">
       <div>
         <span style="font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:4px">Hours</span>
-        <span style="color:var(--text);font-family:'Shippori Mincho',serif">Sun–Thu 5–10pm · Fri–Sat 5–10:30pm</span>
+        <span style="color:var(--text);font-family:'Shippori Mincho',serif">Sun–Tue 5–10pm · Wed–Thu 12–10pm · Fri–Sat 12–10:30pm</span>
       </div>
       <div>
         <span style="font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:4px">Location</span>
@@ -1280,14 +1280,14 @@ footer{
         </div>
         <div>
           <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Call to Order</span>
-          <p>During business hours 5pm-10pm at <a href="tel:9788545426" style="font-family:'Shippori Mincho',serif;font-size:1.1rem;color:var(--text)">(978) 854-5426</a>.</p>
+          <p>During business hours at <a href="tel:9788545426" style="font-family:'Shippori Mincho',serif;font-size:1.1rem;color:var(--text)">(978) 854-5426</a>.</p>
         </div>
         <div>
           <span style="display:block;font-family:'Josefin Sans',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Lead Time</span>
           <p>Orders must be placed at least <strong style="color:var(--text)">72 hours in advance</strong> with a <strong style="color:var(--text)">50% deposit</strong>.</p>
         </div>
         <div>
-          <p>For catering orders, please email <a href="mailto:MakiPeabody@gmail.com" style="color:var(--gold2);font-weight:700;text-decoration:none">MakiPeabody@gmail.com</a> with your event date, pickup time, guest count, and the trays you want. If needed, you can also call during business hours from 5pm-10pm.</p>
+          <p>For catering orders, please email <a href="mailto:MakiPeabody@gmail.com" style="color:var(--gold2);font-weight:700;text-decoration:none">MakiPeabody@gmail.com</a> with your event date, pickup time, guest count, and the trays you want. If needed, you can also call during business hours.</p>
         </div>
         <div class="catering-actions">
           <a class="primary" href="mailto:MakiPeabody@gmail.com?subject=Catering%20Inquiry">Email Catering</a>
@@ -1456,10 +1456,10 @@ footer{
         <li data-day="0"><span class="day-name">Sunday</span><span class="time">5:00 pm – 10:00 pm</span></li>
         <li data-day="1"><span class="day-name">Monday</span><span class="time">5:00 pm – 10:00 pm</span></li>
         <li data-day="2"><span class="day-name">Tuesday</span><span class="time">5:00 pm – 10:00 pm</span></li>
-        <li data-day="3"><span class="day-name">Wednesday</span><span class="time">5:00 pm – 10:00 pm</span></li>
-        <li data-day="4"><span class="day-name">Thursday</span><span class="time">5:00 pm – 10:00 pm</span></li>
-        <li data-day="5"><span class="day-name">Friday</span><span class="time">5:00 pm – 10:30 pm</span></li>
-        <li data-day="6"><span class="day-name">Saturday</span><span class="time">5:00 pm – 10:30 pm</span></li>
+        <li data-day="3"><span class="day-name">Wednesday</span><span class="time">12:00 pm – 10:00 pm</span></li>
+        <li data-day="4"><span class="day-name">Thursday</span><span class="time">12:00 pm – 10:00 pm</span></li>
+        <li data-day="5"><span class="day-name">Friday</span><span class="time">12:00 pm – 10:30 pm</span></li>
+        <li data-day="6"><span class="day-name">Saturday</span><span class="time">12:00 pm – 10:30 pm</span></li>
       </ul>
     </div>
 
@@ -1513,7 +1513,7 @@ footer{
       <div style="margin-top:18px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="tel:9788545426" style="display:inline-flex;align-items:center;gap:8px;background:var(--surface2);color:var(--text);padding:12px 22px;border-radius:6px;font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call to Order (5pm-10pm)
+          Call to Order
         </a>
       </div>
     </div>
@@ -2243,7 +2243,7 @@ function sendChat() {
 
 function getBotReply(q) {
   if (/hours|open|close|when|time/.test(q))
-    return "We are open Sunday through Thursday 5pm-10pm, and Friday through Saturday 5pm-10:30pm.";
+    return "We are open Sunday through Tuesday 5pm-10pm, Wednesday and Thursday 12pm-10pm, and Friday and Saturday 12pm-10:30pm.";
   if (/only location|another location|other location|multiple locations/.test(q))
     return "Yes, 43 Main St. in Peabody is our only location.";
   if (/address|location|where|find|street|peabody/.test(q))
