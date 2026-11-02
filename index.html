@@ -466,6 +466,7 @@ nav{
   color:var(--text);margin-bottom:20px;
   display:flex;align-items:center;gap:10px;
 }
+.strip-hours{display:inline-grid;grid-template-columns:auto auto;gap:2px 14px;text-align:left}
 .hours-list{list-style:none}
 .hours-list li{
   display:flex;justify-content:space-between;align-items:center;
@@ -1092,7 +1093,15 @@ footer{
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:40px;max-width:1000px;margin:0 auto;text-align:center">
       <div>
         <span style="font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:4px">Hours</span>
-        <span style="color:var(--text);font-family:'Shippori Mincho',serif">Sun–Tue 5–10pm · Wed–Thu 12–10pm · Fri–Sat 12–10:30pm</span>
+        <span class="strip-hours" style="color:var(--text);font-family:'Shippori Mincho',serif">
+          <span>Mon</span><span>5–10pm</span>
+          <span>Tue</span><span>5–10pm</span>
+          <span>Wed</span><span>12–10pm</span>
+          <span>Thu</span><span>12–10pm</span>
+          <span>Fri</span><span>12–10:30pm</span>
+          <span>Sat</span><span>12–10:30pm</span>
+          <span>Sun</span><span>5–10pm</span>
+        </span>
       </div>
       <div>
         <span style="font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:4px">Location</span>
@@ -1453,13 +1462,13 @@ footer{
     <div class="visit-card">
       <h3>Hours</h3>
       <ul class="hours-list" id="hours-list">
-        <li data-day="0"><span class="day-name">Sunday</span><span class="time">5:00 pm – 10:00 pm</span></li>
         <li data-day="1"><span class="day-name">Monday</span><span class="time">5:00 pm – 10:00 pm</span></li>
         <li data-day="2"><span class="day-name">Tuesday</span><span class="time">5:00 pm – 10:00 pm</span></li>
         <li data-day="3"><span class="day-name">Wednesday</span><span class="time">12:00 pm – 10:00 pm</span></li>
         <li data-day="4"><span class="day-name">Thursday</span><span class="time">12:00 pm – 10:00 pm</span></li>
         <li data-day="5"><span class="day-name">Friday</span><span class="time">12:00 pm – 10:30 pm</span></li>
         <li data-day="6"><span class="day-name">Saturday</span><span class="time">12:00 pm – 10:30 pm</span></li>
+        <li data-day="0"><span class="day-name">Sunday</span><span class="time">5:00 pm – 10:00 pm</span></li>
       </ul>
     </div>
 
@@ -2243,7 +2252,7 @@ function sendChat() {
 
 function getBotReply(q) {
   if (/hours|open|close|when|time/.test(q))
-    return "We are open Sunday through Tuesday 5pm-10pm, Wednesday and Thursday 12pm-10pm, and Friday and Saturday 12pm-10:30pm.";
+    return "Our hours are Monday 5pm-10pm, Tuesday 5pm-10pm, Wednesday 12pm-10pm, Thursday 12pm-10pm, Friday 12pm-10:30pm, Saturday 12pm-10:30pm, and Sunday 5pm-10pm.";
   if (/only location|another location|other location|multiple locations/.test(q))
     return "Yes, 43 Main St. in Peabody is our only location.";
   if (/address|location|where|find|street|peabody/.test(q))
