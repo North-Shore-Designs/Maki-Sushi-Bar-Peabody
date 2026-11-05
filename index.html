@@ -1094,13 +1094,13 @@ footer{
       <div>
         <span style="font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:4px">Hours</span>
         <span class="strip-hours" style="color:var(--text);font-family:'Shippori Mincho',serif">
-          <span>Mon</span><span>5–10pm</span>
-          <span>Tue</span><span>5–10pm</span>
-          <span>Wed</span><span>12–10pm</span>
-          <span>Thu</span><span>12–10pm</span>
-          <span>Fri</span><span>12–10:30pm</span>
-          <span>Sat</span><span>12–10:30pm</span>
-          <span>Sun</span><span>5–10pm</span>
+          <span>Mon</span><span>5–10 PM</span>
+          <span>Tue</span><span>5–10 PM</span>
+          <span>Wed</span><span>12–10 PM</span>
+          <span>Thu</span><span>12–10 PM</span>
+          <span>Fri</span><span>12–10:30 PM</span>
+          <span>Sat</span><span>12–10:30 PM</span>
+          <span>Sun</span><span>5–10 PM</span>
         </span>
       </div>
       <div>
@@ -1462,13 +1462,13 @@ footer{
     <div class="visit-card">
       <h3>Hours</h3>
       <ul class="hours-list" id="hours-list">
-        <li data-day="1"><span class="day-name">Monday</span><span class="time">5:00 pm – 10:00 pm</span></li>
-        <li data-day="2"><span class="day-name">Tuesday</span><span class="time">5:00 pm – 10:00 pm</span></li>
-        <li data-day="3"><span class="day-name">Wednesday</span><span class="time">12:00 pm – 10:00 pm</span></li>
-        <li data-day="4"><span class="day-name">Thursday</span><span class="time">12:00 pm – 10:00 pm</span></li>
-        <li data-day="5"><span class="day-name">Friday</span><span class="time">12:00 pm – 10:30 pm</span></li>
-        <li data-day="6"><span class="day-name">Saturday</span><span class="time">12:00 pm – 10:30 pm</span></li>
-        <li data-day="0"><span class="day-name">Sunday</span><span class="time">5:00 pm – 10:00 pm</span></li>
+        <li data-day="1"><span class="day-name">Monday</span><span class="time">5:00 PM – 10:00 PM</span></li>
+        <li data-day="2"><span class="day-name">Tuesday</span><span class="time">5:00 PM – 10:00 PM</span></li>
+        <li data-day="3"><span class="day-name">Wednesday</span><span class="time">12:00 PM – 10:00 PM</span></li>
+        <li data-day="4"><span class="day-name">Thursday</span><span class="time">12:00 PM – 10:00 PM</span></li>
+        <li data-day="5"><span class="day-name">Friday</span><span class="time">12:00 PM – 10:30 PM</span></li>
+        <li data-day="6"><span class="day-name">Saturday</span><span class="time">12:00 PM – 10:30 PM</span></li>
+        <li data-day="0"><span class="day-name">Sunday</span><span class="time">5:00 PM – 10:00 PM</span></li>
       </ul>
     </div>
 
@@ -2252,7 +2252,7 @@ function sendChat() {
 
 function getBotReply(q) {
   if (/hours|open|close|when|time/.test(q))
-    return "Our hours are Monday 5pm-10pm, Tuesday 5pm-10pm, Wednesday 12pm-10pm, Thursday 12pm-10pm, Friday 12pm-10:30pm, Saturday 12pm-10:30pm, and Sunday 5pm-10pm.";
+    return "Our hours are Monday 5-10 PM, Tuesday 5-10 PM, Wednesday 12-10 PM, Thursday 12-10 PM, Friday 12-10:30 PM, Saturday 12-10:30 PM, and Sunday 5-10 PM.";
   if (/only location|another location|other location|multiple locations/.test(q))
     return "Yes, 43 Main St. in Peabody is our only location.";
   if (/address|location|where|find|street|peabody/.test(q))
@@ -2274,7 +2274,7 @@ function getBotReply(q) {
   if (/chinese|teriyaki|fried rice|katsu|udon|ramen/.test(q))
     return "We do not serve Chinese food, but we do offer chicken and beef teriyaki plates, beef, chicken, or egg fried rice, katsu chicken, udon noodles, and ramen noodles.";
   if (/happy hour|maki madness|deal|deals|specials/.test(q))
-    return "Yes, our Maki Madness deal runs every day from 5pm-6pm for dine-in only. It includes selected rolls and appetizers at a great price, with no modifications.";
+    return "Yes, our Maki Madness deal runs every day from 5-6 PM for dine-in only. It includes selected rolls and appetizers at a great price, with no modifications.";
   if (/best|special|recommend|popular|favorite|famous/.test(q))
     return "Our menu has a wide selection of sushi, rolls, appetizers, entrees, ramen, udon, and more. If you want a recommendation, ask your server what is popular or fresh that day.";
   if (/vegan|vegetarian|veggie|plant/.test(q))
